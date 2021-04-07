@@ -12,6 +12,14 @@ class GameScene: SKScene {
     var player: SKNode?
     var joystick: SKNode?
     var joystickKnob: SKNode?
+    var actionButton: SKNode?
+    var talkButton: SKNode?
+    var bag: SKNode?
+    var book: SKNode?
+    var anton: SKNode?
+    var yusuf: SKNode?
+    var toni: SKNode?
+    var action: SKLabelNode?
     
     // Animation
     var framePlayerSide = [SKTexture]()
@@ -29,24 +37,46 @@ class GameScene: SKScene {
     var previousTimeInterval : TimeInterval = 0
     var playerIsFacingRight = true
     let playerSpeed = 2.0
-    
+    let objectRange = 100.0
     
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
         joystick = childNode(withName: "joystick")
         joystickKnob = joystick?.childNode(withName: "knob")
+        bag = childNode(withName: "bag")
+        actionButton = childNode(withName: "actionButton")
+        talkButton = childNode(withName: "talkButton")
+        action = childNode(withName: "actionName") as? SKLabelNode
         
-        player?.physicsBody = SKPhysicsBody(circleOfRadius: 50.0, center: CGPoint(x: 0, y: -112.15))
-        player?.physicsBody?.affectedByGravity = false
+        // Item
+        book = childNode(withName: "book")
+        
+        // NPC
+        anton = childNode(withName: "anton")
+        yusuf = childNode(withName: "yusuf")
+        toni = childNode(withName: "toni")
+        
+        actionButton?.isHidden = true
+        talkButton?.isHidden = true
+        
+        action?.isHidden = true
+        action?.fontSize = 32.0
+        action?.horizontalAlignmentMode = .center
+        action?.lineBreakMode = .byTruncatingMiddle
         
         buildPlayer()
+        
     }
     
     func buildPlayer() {
         let playerSideAtlas = SKTextureAtlas(named: "UdinSide")
         let playerFrontAtlas = SKTextureAtlas(named: "UdinFront")
         let playerRearAtlas = SKTextureAtlas(named: "UdinRear")
+        
+        // Physics
+        player?.physicsBody = SKPhysicsBody(circleOfRadius: 50.0, center: CGPoint(x: 0, y: -112.15))
+        player?.physicsBody?.affectedByGravity = false
         
         for i in 0..<playerSideAtlas.textureNames.count {
             let textureSideName = "Side" + String(i)
@@ -63,6 +93,7 @@ class GameScene: SKScene {
             framePlayerRear.append(playerRearAtlas.textureNamed(textureRearName))
         }
     }
+    
 }
 
 // MARK: Touches
@@ -103,6 +134,10 @@ extension GameScene {
                 player?.run(.repeatForever(.animate(with: framePlayerRear, timePerFrame: frameDuration)))
             } else {
                 player?.run(.repeatForever(.animate(with: framePlayerSide, timePerFrame: frameDuration)))
+            }
+            
+            if length > 300.0 {
+                resetKnobPosition()
             }
         }
     }
@@ -153,6 +188,48 @@ extension GameScene {
         }
         
         player?.run(move)
-        
+        event()
     }
+    
+    // Event: Variable
+    func event() {
+        guard let bookPosition = book?.position else { return }
+        guard let antonPosition = anton?.position else { return }
+        guard let yusufPosition = yusuf?.position else { return }
+        guard let toniPosition = toni?.position else { return }
+        guard let playerPosition = player?.position else { return }
+        
+        if abs(playerPosition.x - bookPosition.x) < 100.0 && abs(playerPosition.y - bookPosition.y) < 100.0 {
+            actionButton?.isHidden = false
+            textAlignment(string: "Baca \nDiari Udin")
+            action?.isHidden = false
+        } else if abs(playerPosition.x - antonPosition.x) < 100.0 && abs(playerPosition.y - antonPosition.y) < 100.0 {
+            talkButton?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nAnton")
+            action?.isHidden = false
+        } else if abs(playerPosition.x - yusufPosition.x) < 100.0 && abs(playerPosition.y - yusufPosition.y) < 100.0 {
+            talkButton?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nYusuf")
+            action?.isHidden = false
+        } else if abs(playerPosition.x - toniPosition.x) < 100.0 && abs(playerPosition.y - toniPosition.y) < 100.0 {
+            talkButton?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nToni")
+            action?.isHidden = false
+        } else {
+            actionButton?.isHidden = true
+            talkButton?.isHidden = true
+            action?.isHidden = true
+        }
+    }
+    
+    func textAlignment(string: String) {
+        let attrString = NSMutableAttributedString(string: string)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let range = NSRange(location: 0, length: string.count)
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 32)], range: range)
+        action?.attributedText = attrString
+    }
+    
 }
