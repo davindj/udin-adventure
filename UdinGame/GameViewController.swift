@@ -1,8 +1,8 @@
 //
 //  GameViewController.swift
-//  UdinGame
+//  UdinTest
 //
-//  Created by Dimas A. Prabowo on 07/04/21.
+//  Created by Dimas A. Prabowo on 06/04/21.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "Gameplay") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
@@ -24,10 +24,11 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
             }
             
-            view.ignoresSiblingOrder = true
+            view.ignoresSiblingOrder = false
             
             view.showsFPS = true
             view.showsNodeCount = true
+            view.showsPhysics = false
         }
     }
 
