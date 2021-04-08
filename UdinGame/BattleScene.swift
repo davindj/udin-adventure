@@ -21,12 +21,13 @@ class BattleScene: SKScene{
 //        player?.physicsBody?.affectedByGravity = false
 //
 //        buildPlayer()
-        guard let camera = = childNode(withName: "camera") as SKCameraNode{
-            
-        }
-        camera
-        let scaleOut = SKAction.scale(to: 2, duration: 1000)
-        camera?.run(scaleOut)
+        
+//        guard let camera = = childNode(withName: "camera") as SKCameraNode{
+//
+//        }
+//        camera
+//        let scaleOut = SKAction.scale(to: 2, duration: 1000)
+//        camera?.run(scaleOut)
         
     }
     override func update(_ currentTime: TimeInterval) {
