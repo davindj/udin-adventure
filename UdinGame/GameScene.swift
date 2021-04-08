@@ -13,7 +13,9 @@ class GameScene: SKScene {
     var joystick: SKNode?
     var joystickKnob: SKNode?
     var actionButton: SKNode?
-    var talkButton: SKNode?
+    var antonButton: SKNode?
+    var yusufButton: SKNode?
+    var toniButton: SKNode?
     var bag: SKNode?
     var book: SKNode?
     var anton: SKNode?
@@ -46,7 +48,9 @@ class GameScene: SKScene {
         joystickKnob = joystick?.childNode(withName: "knob")
         bag = childNode(withName: "bag")
         actionButton = childNode(withName: "actionButton")
-        talkButton = childNode(withName: "talkButton")
+        antonButton = childNode(withName: "antonButton")
+        yusufButton = childNode(withName: "yusufButton")
+        toniButton = childNode(withName: "toniButton")
         action = childNode(withName: "actionName") as? SKLabelNode
         
         // Item
@@ -58,7 +62,9 @@ class GameScene: SKScene {
         toni = childNode(withName: "toni")
         
         actionButton?.isHidden = true
-        talkButton?.isHidden = true
+        antonButton?.isHidden = true
+        yusufButton?.isHidden = true
+        toniButton?.isHidden = true
         
         action?.isHidden = true
         action?.fontSize = 32.0
@@ -66,6 +72,7 @@ class GameScene: SKScene {
         action?.lineBreakMode = .byTruncatingMiddle
         
         buildPlayer()
+        
         
     }
     
@@ -101,11 +108,34 @@ extension GameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             if let joystickKnob = joystickKnob {
-                let location = touch.location(in: joystick!)
-                joystickAction = joystickKnob.frame.contains(location)
+                let locationJoystick = touch.location(in: joystick!)
+                joystickAction = joystickKnob.frame.contains(locationJoystick)
             }
             
-            player?.run(.repeatForever(.animate(with: framePlayerSide, timePerFrame: frameDuration)))
+            if joystickAction {
+                player?.run(.repeatForever(.animate(with: framePlayerSide, timePerFrame: frameDuration)))
+            }
+            
+            let locationButton = touch.location(in: self)
+            let buttonName = atPoint(locationButton)
+            
+            if buttonName.name == "actionButton" {
+                actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
+                print("Go to UdinDiaryScene")
+            } else if buttonName.name == "antonButton" {
+                antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                print("Go to antonScene")
+            } else if buttonName.name == "yusufButton" {
+                yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                print("Go to yusufScene")
+            } else if buttonName.name == "toniButton" {
+                toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                print("Go to toniScene")
+            } else if buttonName.name == "bag" {
+                bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
+                print("Go to bagScene")
+            }
+            
         }
     }
     
@@ -150,6 +180,26 @@ extension GameScene {
                 resetKnobPosition()
             }
             player!.removeAllActions()
+            
+            let locationButton = touch.location(in: self)
+            let buttonName = atPoint(locationButton)
+            
+            if buttonName.name == "actionButton" {
+                actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton")))
+                print("Go to UdinDiaryScene")
+            } else if buttonName.name == "antonButton" {
+                antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
+                print("Go to antonScene")
+            } else if buttonName.name == "yusufButton" {
+                yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
+                print("Go to yusufScene")
+            } else if buttonName.name == "toniButton" {
+                toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
+                print("Go to toniScene")
+            } else if buttonName.name == "bag" {
+                bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
+                print("Go to bagScene")
+            }
         }
     }
 }
@@ -204,20 +254,22 @@ extension GameScene {
             textAlignment(string: "Baca \nDiari Udin")
             action?.isHidden = false
         } else if abs(playerPosition.x - antonPosition.x) < 100.0 && abs(playerPosition.y - antonPosition.y) < 100.0 {
-            talkButton?.isHidden = false
+            antonButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nAnton")
             action?.isHidden = false
         } else if abs(playerPosition.x - yusufPosition.x) < 100.0 && abs(playerPosition.y - yusufPosition.y) < 100.0 {
-            talkButton?.isHidden = false
+            yusufButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nYusuf")
             action?.isHidden = false
         } else if abs(playerPosition.x - toniPosition.x) < 100.0 && abs(playerPosition.y - toniPosition.y) < 100.0 {
-            talkButton?.isHidden = false
+            toniButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nToni")
             action?.isHidden = false
         } else {
             actionButton?.isHidden = true
-            talkButton?.isHidden = true
+            antonButton?.isHidden = true
+            yusufButton?.isHidden = true
+            toniButton?.isHidden = true
             action?.isHidden = true
         }
     }
