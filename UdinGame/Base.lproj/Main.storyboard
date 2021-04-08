@@ -1,24 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cf6-C5-Ric">
+    <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
-        <scene sceneID="tXr-a1-R10">
+        <!--Main Menu View Controller-->
+        <scene sceneID="eb2-u9-2P3">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="Cf6-C5-Ric" customClass="MainMenuViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Opu-ZE-cPf">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="mainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="kPU-sO-Qr9">
+                                <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="school" translatesAutoresizingMaskIntoConstraints="NO" id="6OR-af-Fn6">
+                                <rect key="frame" x="66" y="80" width="712" height="263"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="263" id="APN-Mv-PAx"/>
+                                    <constraint firstAttribute="width" constant="712" id="EkG-Qe-BLQ"/>
+                                    <constraint firstAttribute="width" secondItem="6OR-af-Fn6" secondAttribute="height" multiplier="712:263" id="QIR-Ls-4f5"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="trees2" translatesAutoresizingMaskIntoConstraints="NO" id="xlT-T2-iSX">
+                                <rect key="frame" x="634" y="58" width="214" height="332"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xlT-T2-iSX" secondAttribute="height" multiplier="107:166" id="ZDH-2C-iMO"/>
+                                    <constraint firstAttribute="width" constant="214" id="lvH-Ic-q6w"/>
+                                    <constraint firstAttribute="height" constant="332" id="sGo-oB-rt2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="trees" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-gc-Om0">
+                                <rect key="frame" x="-14" y="58" width="214" height="332"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XGy-gc-Om0" secondAttribute="height" multiplier="107:166" id="Nci-RY-7hS"/>
+                                    <constraint firstAttribute="height" constant="332" id="Nf7-7C-HUP"/>
+                                    <constraint firstAttribute="width" constant="214" id="OCL-xe-WJQ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mainCharacter" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-zT-uvp">
+                                <rect key="frame" x="217.66666666666663" y="109" width="409" height="268"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="409" id="IqG-TK-pqb"/>
+                                    <constraint firstAttribute="height" constant="268" id="hqU-8S-YwN"/>
+                                    <constraint firstAttribute="width" secondItem="C5L-zT-uvp" secondAttribute="height" multiplier="409:268" id="jVf-jB-vRe"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfY-M3-acu">
+                                <rect key="frame" x="297" y="286" width="250" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pfY-M3-acu" secondAttribute="height" multiplier="10:3" id="8oo-nA-zTO"/>
+                                    <constraint firstAttribute="width" constant="250" id="Rqr-b2-h6g"/>
+                                    <constraint firstAttribute="height" constant="75" id="t2k-Lx-PaO"/>
+                                </constraints>
+                                <state key="normal" image="playButton"/>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="Cf6-C5-Ric" eventType="touchUpInside" id="xbA-cC-gIt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRY-TU-bx9">
+                                <rect key="frame" x="733" y="291" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cRY-TU-bx9" secondAttribute="height" multiplier="1:1" id="0hP-vj-vmB"/>
+                                    <constraint firstAttribute="height" constant="70" id="YGT-SN-hm3"/>
+                                    <constraint firstAttribute="width" constant="70" id="ZgR-jx-ePP"/>
+                                </constraints>
+                                <state key="normal" image="settingButton"/>
+                                <connections>
+                                    <action selector="settingButtonPressed:" destination="Cf6-C5-Ric" eventType="touchUpInside" id="dGh-RS-niz"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo game" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-sT-F1O">
+                                <rect key="frame" x="256" y="36" width="333" height="107"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="333" id="LpZ-TZ-XJJ"/>
+                                    <constraint firstAttribute="height" constant="107" id="bka-iE-29e"/>
+                                    <constraint firstAttribute="width" secondItem="LoM-sT-F1O" secondAttribute="height" multiplier="333:107" id="sA2-08-JUa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bLo-Ey-G3u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bLo-Ey-G3u" firstAttribute="bottom" secondItem="pfY-M3-acu" secondAttribute="bottom" constant="8" id="1Ic-ZJ-R5B"/>
+                            <constraint firstAttribute="trailing" secondItem="kPU-sO-Qr9" secondAttribute="trailing" id="9nT-I9-5rR"/>
+                            <constraint firstAttribute="bottom" secondItem="XGy-gc-Om0" secondAttribute="bottom" id="Az2-sS-1iN"/>
+                            <constraint firstAttribute="bottom" secondItem="xlT-T2-iSX" secondAttribute="bottom" id="Eui-Bx-hBS"/>
+                            <constraint firstItem="XGy-gc-Om0" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="58" id="Le6-Rk-rWZ"/>
+                            <constraint firstItem="C5L-zT-uvp" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="109" id="MCt-XK-N17"/>
+                            <constraint firstItem="LoM-sT-F1O" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="N7E-aI-VkF"/>
+                            <constraint firstItem="pfY-M3-acu" firstAttribute="top" secondItem="LoM-sT-F1O" secondAttribute="bottom" constant="143" id="Q4n-K8-r4c"/>
+                            <constraint firstItem="bLo-Ey-G3u" firstAttribute="bottom" secondItem="cRY-TU-bx9" secondAttribute="bottom" constant="8" id="R5u-Ig-tM3"/>
+                            <constraint firstItem="LoM-sT-F1O" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="36" id="Wsc-lH-Cym"/>
+                            <constraint firstItem="kPU-sO-Qr9" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" id="azA-As-ZbQ"/>
+                            <constraint firstItem="pfY-M3-acu" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="bgM-T4-cfs"/>
+                            <constraint firstItem="xlT-T2-iSX" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="58" id="eF0-6F-gU6"/>
+                            <constraint firstAttribute="bottom" secondItem="kPU-sO-Qr9" secondAttribute="bottom" id="gNY-X9-iMb"/>
+                            <constraint firstAttribute="trailing" secondItem="cRY-TU-bx9" secondAttribute="trailing" constant="41" id="jR6-JF-Q1e"/>
+                            <constraint firstItem="XGy-gc-Om0" firstAttribute="leading" secondItem="Opu-ZE-cPf" secondAttribute="leading" constant="-14" id="jaL-0w-bbo"/>
+                            <constraint firstAttribute="trailing" secondItem="xlT-T2-iSX" secondAttribute="trailing" constant="-4" id="oHD-3B-xOm"/>
+                            <constraint firstItem="6OR-af-Fn6" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="p49-Up-8oh"/>
+                            <constraint firstItem="6OR-af-Fn6" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="80" id="qoT-kl-1fk"/>
+                            <constraint firstItem="kPU-sO-Qr9" firstAttribute="leading" secondItem="Opu-ZE-cPf" secondAttribute="leading" id="vDE-SB-Ks5"/>
+                            <constraint firstItem="C5L-zT-uvp" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="w7h-5L-Asv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="pfY-M3-acu" id="Ejj-PF-0fC"/>
+                        <outlet property="settingButton" destination="cRY-TU-bx9" id="vrU-qj-nZK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WCO-3Z-oTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-9.24170616113744" y="947.69230769230762"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo game" width="879" height="403"/>
+        <image name="mainCharacter" width="1153" height="662"/>
+        <image name="mainMenu" width="2533" height="1172"/>
+        <image name="playButton" width="610" height="184"/>
+        <image name="school" width="2228" height="942"/>
+        <image name="settingButton" width="193" height="193"/>
+        <image name="trees" width="682" height="839"/>
+        <image name="trees2" width="662" height="840"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
