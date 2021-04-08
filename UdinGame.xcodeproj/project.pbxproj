@@ -66,8 +66,8 @@
 			children = (
 				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
-				C38D1D96261D911D00D9EC1C /* GameScene.swift */,
 				D7E07637261DC97700F20CD9 /* GameScene.sks */,
+				C38D1D96261D911D00D9EC1C /* GameScene.swift */,
 				C38D1D97261D911D00D9EC1C /* GameViewController.swift */,
 				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
