@@ -10,6 +10,7 @@
 		05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */; };
 		4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */; };
 		4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECFC85261EF08E00043358 /* SettingsMenu.swift */; };
+		C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C35A07F8261F124000CD47BD /* BagpackScene.sks */; };
 		C38D1D76261D8F1300D9EC1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */; };
 		C38D1D81261D8F1300D9EC1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38D1D7F261D8F1300D9EC1C /* Main.storyboard */; };
 		C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38D1D82261D8F1400D9EC1C /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsMenu.sks; sourceTree = "<group>"; };
 		4EECFC85261EF08E00043358 /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
+		C35A07F8261F124000CD47BD /* BagpackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BagpackScene.sks; sourceTree = "<group>"; };
 		C38D1D72261D8F1300D9EC1C /* UdinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C38D1D80261D8F1300D9EC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,8 +68,10 @@
 		C38D1D74261D8F1300D9EC1C /* UdinGame */ = {
 			isa = PBXGroup;
 			children = (
-				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
+				C35A07F8261F124000CD47BD /* BagpackScene.sks */,
+				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
+				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
 				D7E07637261DC97700F20CD9 /* GameScene.sks */,
 				C38D1D96261D911D00D9EC1C /* GameScene.swift */,
 				C38D1D97261D911D00D9EC1C /* GameViewController.swift */,
@@ -77,7 +81,6 @@
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
 				C38D1D82261D8F1400D9EC1C /* Assets.xcassets */,
 				C38D1D84261D8F1400D9EC1C /* Info.plist */,
-				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
 			);
 			path = UdinGame;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */,
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
 				C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */,
+				C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */,
 				C38D1DB0261DC87100D9EC1C /* BattleScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
