@@ -26,6 +26,7 @@ class GameScene: SKScene {
     var book: SKNode?
     var settingButton: SKNode?
     var action: SKLabelNode?
+    var background: SKNode?
     
     // Animation
     var framePlayerSide = [SKTexture]()
@@ -66,6 +67,7 @@ class GameScene: SKScene {
         antonButton = childNode(withName: "antonButton")
         yusufButton = childNode(withName: "yusufButton")
         toniButton = childNode(withName: "toniButton")
+        background = childNode(withName: "background")
         action = childNode(withName: "actionName") as? SKLabelNode
         
         actionButton?.isHidden = true
@@ -77,6 +79,7 @@ class GameScene: SKScene {
         action?.fontSize = 32.0
         action?.horizontalAlignmentMode = .center
         action?.lineBreakMode = .byTruncatingMiddle
+        
     }
     
     func buildPlayer() {
