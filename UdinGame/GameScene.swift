@@ -9,7 +9,14 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    // Character
     var player: SKNode?
+    var anton: SKNode?
+    var yusuf: SKNode?
+    var toni: SKNode?
+    
+    
+    // Utility
     var joystick: SKNode?
     var joystickKnob: SKNode?
     var actionButton: SKNode?
@@ -18,9 +25,7 @@ class GameScene: SKScene {
     var toniButton: SKNode?
     var bag: SKNode?
     var book: SKNode?
-    var anton: SKNode?
-    var yusuf: SKNode?
-    var toni: SKNode?
+    var settingButton: SKNode?
     var action: SKLabelNode?
     
     // Animation
@@ -44,14 +49,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
-        joystick = childNode(withName: "joystick")
-        joystickKnob = joystick?.childNode(withName: "knob")
-        bag = childNode(withName: "bag")
-        actionButton = childNode(withName: "actionButton")
-        antonButton = childNode(withName: "antonButton")
-        yusufButton = childNode(withName: "yusufButton")
-        toniButton = childNode(withName: "toniButton")
-        action = childNode(withName: "actionName") as? SKLabelNode
+        buildPlayer()
         
         // Item
         book = childNode(withName: "book")
@@ -60,6 +58,17 @@ class GameScene: SKScene {
         anton = childNode(withName: "anton")
         yusuf = childNode(withName: "yusuf")
         toni = childNode(withName: "toni")
+        
+        // Utility
+        joystick = childNode(withName: "joystick")
+        joystickKnob = joystick?.childNode(withName: "knob")
+        settingButton = childNode(withName: "setting")
+        bag = childNode(withName: "bag")
+        actionButton = childNode(withName: "actionButton")
+        antonButton = childNode(withName: "antonButton")
+        yusufButton = childNode(withName: "yusufButton")
+        toniButton = childNode(withName: "toniButton")
+        action = childNode(withName: "actionName") as? SKLabelNode
         
         actionButton?.isHidden = true
         antonButton?.isHidden = true
@@ -70,9 +79,6 @@ class GameScene: SKScene {
         action?.fontSize = 32.0
         action?.horizontalAlignmentMode = .center
         action?.lineBreakMode = .byTruncatingMiddle
-        
-        buildPlayer()
-        
         
     }
     
@@ -138,6 +144,10 @@ extension GameScene {
                 let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
                 bagpackScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 0.5))
+            } else if buttonPoint.name == "setting" {
+                settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
+                
+                
             }
             
         }
