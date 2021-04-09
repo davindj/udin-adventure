@@ -21,7 +21,7 @@ class BagpackScene: SKScene {
             let buttonName = atPoint(locationButton)
             
             if buttonName.name == "closeButton" {
-                buttonName.run(.setTexture(SKTexture(imageNamed: "bagcloseButton")))
+                buttonName.run(.setTexture(SKTexture(imageNamed: "bagcloseButton2")))
                 
                 //Back to GameScene
                 let gameScene = GameScene(fileNamed: "GameScene")
