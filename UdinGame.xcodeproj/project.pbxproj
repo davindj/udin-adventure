@@ -16,6 +16,7 @@
 		C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D1D97261D911D00D9EC1C /* GameViewController.swift */; };
 		C38D1DAF261DC87100D9EC1C /* BattleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D1DAD261DC87100D9EC1C /* BattleScene.swift */; };
 		C38D1DB0261DC87100D9EC1C /* BattleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D1DAE261DC87100D9EC1C /* BattleScene.sks */; };
+		D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D726C9261F069100C10602 /* BattleSceneViewController.swift */; };
 		D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7E07637261DC97700F20CD9 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		C38D1D97261D911D00D9EC1C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C38D1DAD261DC87100D9EC1C /* BattleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleScene.swift; sourceTree = "<group>"; };
 		C38D1DAE261DC87100D9EC1C /* BattleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BattleScene.sks; sourceTree = "<group>"; };
+		D7D726C9261F069100C10602 /* BattleSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSceneViewController.swift; sourceTree = "<group>"; };
 		D7E07637261DC97700F20CD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				C38D1D97261D911D00D9EC1C /* GameViewController.swift */,
 				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
+				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
 				C38D1D7F261D8F1300D9EC1C /* Main.storyboard */,
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
 				C38D1D82261D8F1400D9EC1C /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				C38D1D99261D911D00D9EC1C /* GameScene.swift in Sources */,
 				05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */,
 				C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */,
+				D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */,
 				C38D1DAF261DC87100D9EC1C /* BattleScene.swift in Sources */,
 				C38D1D76261D8F1300D9EC1C /* AppDelegate.swift in Sources */,
 			);
