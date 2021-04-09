@@ -218,6 +218,10 @@ extension GameScene {
 // MARK: Game Loop
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+        if let cameraplay = camera, let pl = player{
+            cameraplay.position = pl.position
+        }
         let deltaTime = currentTime - previousTimeInterval
         previousTimeInterval = currentTime
         
@@ -239,6 +243,14 @@ extension GameScene {
         
         player?.run(move)
         event()
+        guard let positionPlayer = player?.position else{ return }
+        
+        joystick!.position = CGPoint(x: positionPlayer.x-1000, y: positionPlayer.y-400)
+        actionButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
+        antonButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
+        yusufButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
+        toniButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
+        bag!.position = CGPoint(x: positionPlayer.x+1000, y: positionPlayer.y-400)
     }
     
     // Event: Variable
