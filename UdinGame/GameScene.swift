@@ -15,7 +15,6 @@ class GameScene: SKScene {
     var yusuf: SKNode?
     var toni: SKNode?
     
-    
     // Utility
     var joystick: SKNode?
     var joystickKnob: SKNode?
@@ -27,6 +26,7 @@ class GameScene: SKScene {
     var book: SKNode?
     var settingButton: SKNode?
     var action: SKLabelNode?
+    var background: SKNode?
     
     // Animation
     var framePlayerSide = [SKTexture]()
@@ -45,7 +45,6 @@ class GameScene: SKScene {
     var playerIsFacingRight = true
     let playerSpeed = 2.0
     let objectRange = 100.0
-    
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
@@ -68,6 +67,7 @@ class GameScene: SKScene {
         antonButton = childNode(withName: "antonButton")
         yusufButton = childNode(withName: "yusufButton")
         toniButton = childNode(withName: "toniButton")
+        background = childNode(withName: "background")
         action = childNode(withName: "actionName") as? SKLabelNode
         
         actionButton?.isHidden = true
@@ -125,32 +125,25 @@ extension GameScene {
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             
-            if buttonPoint.name == "actionButton" {
+            switch buttonPoint.name {
+            case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
                 print("Go to UdinDiaryScene")
-            } else if buttonPoint.name == "antonButton" {
+            case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to antonScene")
-            } else if buttonPoint.name == "yusufButton" {
+            case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to yusufScene")
-            } else if buttonPoint.name == "toniButton" {
+            case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to toniScene")
-            } else if buttonPoint.name == "bag" {
+            case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
-                
-                // Go to BagpackScene
-                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
-                bagpackScene?.scaleMode = .aspectFill
-                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 0.5))
-            } else if buttonPoint.name == "setting" {
+            case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
-                
-                // Go to SettingsMenu
-                let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
-                settingScene?.scaleMode = .aspectFill
-                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 0.5))
+            default:
+                print("")
             }
             
         }
@@ -199,23 +192,34 @@ extension GameScene {
             player!.removeAllActions()
             
             let locationButton = touch.location(in: self)
-            let buttonName = atPoint(locationButton)
+            let buttonPoint = atPoint(locationButton)
             
-            if buttonName.name == "actionButton" {
+            switch buttonPoint.name {
+            case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton")))
-                print("Go to UdinDiaryScene")
-            } else if buttonName.name == "antonButton" {
+            case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
-                print("Go to antonScene")
-            } else if buttonName.name == "yusufButton" {
+            case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
-                print("Go to yusufScene")
-            } else if buttonName.name == "toniButton" {
+            case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 print("Go to toniScene")
-            } else if buttonName.name == "bag" {
+            case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
-                print("Go to bagScene")
+                
+                // Go to BagpackScene
+                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
+                bagpackScene?.scaleMode = .aspectFill
+                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
+            case "setting":
+                settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton")))
+                
+                // Go to SettingsMenu
+                let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
+                settingScene?.scaleMode = .aspectFill
+                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 1.0))
+            default:
+                print("")
             }
         }
     }
@@ -260,14 +264,16 @@ extension GameScene {
         
         player?.run(move)
         event()
+        
         guard let positionPlayer = player?.position else{ return }
         
-        joystick!.position = CGPoint(x: positionPlayer.x-1000, y: positionPlayer.y-400)
-        actionButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        antonButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        yusufButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        toniButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        bag!.position = CGPoint(x: positionPlayer.x+1000, y: positionPlayer.y-400)
+        joystick!.position = CGPoint(x: positionPlayer.x - 1000, y: positionPlayer.y - 400)
+        actionButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        antonButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        yusufButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        toniButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        bag!.position = CGPoint(x: positionPlayer.x + 1000, y: positionPlayer.y - 400)
+        settingButton!.position = CGPoint(x: positionPlayer.x - 1050, y: positionPlayer.y + 450)
     }
     
     // Event: Variable
@@ -282,24 +288,32 @@ extension GameScene {
             actionButton?.isHidden = false
             textAlignment(string: "Baca \nDiari Udin")
             action?.isHidden = false
+            book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
         } else if abs(playerPosition.x - antonPosition.x) < 100.0 && abs(playerPosition.y - antonPosition.y) < 100.0 {
             antonButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nAnton")
             action?.isHidden = false
+            anton?.run(.setTexture(SKTexture(imageNamed: "highlightedBully1")))
         } else if abs(playerPosition.x - yusufPosition.x) < 100.0 && abs(playerPosition.y - yusufPosition.y) < 100.0 {
             yusufButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nYusuf")
             action?.isHidden = false
+            yusuf?.run(.setTexture(SKTexture(imageNamed: "highlightedBully2")))
         } else if abs(playerPosition.x - toniPosition.x) < 100.0 && abs(playerPosition.y - toniPosition.y) < 100.0 {
             toniButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nToni")
             action?.isHidden = false
+            toni?.run(.setTexture(SKTexture(imageNamed: "highlightedBully3")))
         } else {
             actionButton?.isHidden = true
             antonButton?.isHidden = true
             yusufButton?.isHidden = true
             toniButton?.isHidden = true
             action?.isHidden = true
+            book?.run(.setTexture(SKTexture(imageNamed: "buku")))
+            anton?.run(.setTexture(SKTexture(imageNamed: "bully1")))
+            yusuf?.run(.setTexture(SKTexture(imageNamed: "bully2")))
+            toni?.run(.setTexture(SKTexture(imageNamed: "bully3")))
         }
     }
     
