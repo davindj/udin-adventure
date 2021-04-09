@@ -137,18 +137,8 @@ extension GameScene {
                 print("Go to toniScene")
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
-                
-                // Go to BagpackScene
-                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
-                bagpackScene?.scaleMode = .aspectFill
-                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
-                
-                // Go to SettingsMenu
-                let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
-                settingScene?.scaleMode = .aspectFill
-                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 1.0))
             default:
                 print("")
             }
@@ -213,8 +203,18 @@ extension GameScene {
                 print("Go to toniScene")
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
+                
+                // Go to BagpackScene
+                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
+                bagpackScene?.scaleMode = .aspectFill
+                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton")))
+                
+                // Go to SettingsMenu
+                let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
+                settingScene?.scaleMode = .aspectFill
+                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 1.0))
             default:
                 print("")
             }
