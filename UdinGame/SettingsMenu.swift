@@ -29,7 +29,7 @@ class SettingsMenu: SKScene {
             let buttonName = atPoint(locationButton)
             
             if buttonName.name == "closeButton" {
-                buttonName.run(.setTexture(SKTexture(imageNamed: "bagcloseButton")))
+                buttonName.run(.setTexture(SKTexture(imageNamed: "closeButton")))
                 
                 //Back to GameScene
                 let gameScene = GameScene(fileNamed: "GameScene")
