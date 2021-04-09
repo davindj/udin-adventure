@@ -125,32 +125,35 @@ extension GameScene {
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             
-            if buttonPoint.name == "actionButton" {
+            switch buttonPoint.name {
+            case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
                 print("Go to UdinDiaryScene")
-            } else if buttonPoint.name == "antonButton" {
+            case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to antonScene")
-            } else if buttonPoint.name == "yusufButton" {
+            case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to yusufScene")
-            } else if buttonPoint.name == "toniButton" {
+            case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to toniScene")
-            } else if buttonPoint.name == "bag" {
+            case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
                 
                 // Go to BagpackScene
                 let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
                 bagpackScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 0.5))
-            } else if buttonPoint.name == "setting" {
+            case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
                 
                 // Go to SettingsMenu
                 let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
                 settingScene?.scaleMode = .aspectFill
                 self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 0.5))
+            default:
+                print("")
             }
             
         }
@@ -199,23 +202,24 @@ extension GameScene {
             player!.removeAllActions()
             
             let locationButton = touch.location(in: self)
-            let buttonName = atPoint(locationButton)
+            let buttonPoint = atPoint(locationButton)
             
-            if buttonName.name == "actionButton" {
+            switch buttonPoint.name {
+            case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton")))
-                print("Go to UdinDiaryScene")
-            } else if buttonName.name == "antonButton" {
+            case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
-                print("Go to antonScene")
-            } else if buttonName.name == "yusufButton" {
+            case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
-                print("Go to yusufScene")
-            } else if buttonName.name == "toniButton" {
+            case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 print("Go to toniScene")
-            } else if buttonName.name == "bag" {
+            case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
-                print("Go to bagScene")
+            case "setting":
+                settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton")))
+            default:
+                print("")
             }
         }
     }
@@ -260,14 +264,16 @@ extension GameScene {
         
         player?.run(move)
         event()
+        
         guard let positionPlayer = player?.position else{ return }
         
-        joystick!.position = CGPoint(x: positionPlayer.x-1000, y: positionPlayer.y-400)
-        actionButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        antonButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        yusufButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        toniButton!.position = CGPoint(x: positionPlayer.x+850, y: positionPlayer.y-250)
-        bag!.position = CGPoint(x: positionPlayer.x+1000, y: positionPlayer.y-400)
+        joystick!.position = CGPoint(x: positionPlayer.x - 1000, y: positionPlayer.y - 400)
+        actionButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        antonButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        yusufButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        toniButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        bag!.position = CGPoint(x: positionPlayer.x + 1000, y: positionPlayer.y - 400)
+        settingButton!.position = CGPoint(x: positionPlayer.x - 1050, y: positionPlayer.y + 450)
     }
     
     // Event: Variable
