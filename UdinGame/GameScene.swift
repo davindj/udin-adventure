@@ -83,9 +83,9 @@ class GameScene: SKScene {
     }
     
     func buildPlayer() {
-        let playerSideAtlas = SKTextureAtlas(named: "UdinSide")
-        let playerFrontAtlas = SKTextureAtlas(named: "UdinFront")
-        let playerRearAtlas = SKTextureAtlas(named: "UdinRear")
+        let playerSideAtlas = SKTextureAtlas(named: "PlayerSide")
+        let playerFrontAtlas = SKTextureAtlas(named: "PlayerFront")
+        let playerRearAtlas = SKTextureAtlas(named: "PlayerRear")
         
         // Physics
         player?.physicsBody = SKPhysicsBody(circleOfRadius: 50.0, center: CGPoint(x: 0, y: -112.15))
