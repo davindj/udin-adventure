@@ -23,7 +23,10 @@ class BagpackScene: SKScene {
             if buttonName.name == "closeButton" {
                 buttonName.run(.setTexture(SKTexture(imageNamed: "bagcloseButton")))
                 
-                
+                //Back to GameScene
+                let gameScene = GameScene(fileNamed: "GameScene")
+                gameScene?.scaleMode = .aspectFill
+                self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.5))
             }
         }
     }

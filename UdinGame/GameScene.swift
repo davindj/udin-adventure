@@ -117,23 +117,27 @@ extension GameScene {
             }
             
             let locationButton = touch.location(in: self)
-            let buttonName = atPoint(locationButton)
+            let buttonPoint = atPoint(locationButton)
             
-            if buttonName.name == "actionButton" {
+            if buttonPoint.name == "actionButton" {
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
                 print("Go to UdinDiaryScene")
-            } else if buttonName.name == "antonButton" {
+            } else if buttonPoint.name == "antonButton" {
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to antonScene")
-            } else if buttonName.name == "yusufButton" {
+            } else if buttonPoint.name == "yusufButton" {
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to yusufScene")
-            } else if buttonName.name == "toniButton" {
+            } else if buttonPoint.name == "toniButton" {
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to toniScene")
-            } else if buttonName.name == "bag" {
+            } else if buttonPoint.name == "bag" {
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
-                print("Go to bagScene")
+                
+                // Go to BagpackScene
+                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
+                bagpackScene?.scaleMode = .aspectFill
+                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 0.5))
             }
             
         }
