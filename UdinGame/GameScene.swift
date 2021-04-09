@@ -147,7 +147,10 @@ extension GameScene {
             } else if buttonPoint.name == "setting" {
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
                 
-                
+                // Go to SettingsMenu
+                let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
+                settingScene?.scaleMode = .aspectFill
+                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 0.5))
             }
             
         }
