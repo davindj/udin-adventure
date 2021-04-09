@@ -144,14 +144,14 @@ extension GameScene {
                 // Go to BagpackScene
                 let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
                 bagpackScene?.scaleMode = .aspectFill
-                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 0.5))
+                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
                 
                 // Go to SettingsMenu
                 let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
                 settingScene?.scaleMode = .aspectFill
-                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 0.5))
+                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 1.0))
             default:
                 print("")
             }

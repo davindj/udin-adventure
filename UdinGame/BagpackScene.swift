@@ -26,7 +26,18 @@ class BagpackScene: SKScene {
                 //Back to GameScene
                 let gameScene = GameScene(fileNamed: "GameScene")
                 gameScene?.scaleMode = .aspectFill
-                self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 0.5))
+                self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let locationButton = touch.location(in: self)
+            let buttonName = atPoint(locationButton)
+            
+            if buttonName.name == "closeButton" {
+                buttonName.run(.setTexture(SKTexture(imageNamed: "bagcloseButton")))
             }
         }
     }
