@@ -8,10 +8,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="u1l-lp-ei4">
+            <objects>
+                <viewController storyboardIdentifier="gamescene" id="fB7-TT-LNg" customClass="GameViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="0C1-AW-Xb7">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <navigationItem key="navigationItem" id="Oxi-iC-XRG"/>
+                    <connections>
+                        <outlet property="Gamescene" destination="0C1-AW-Xb7" id="L0V-Bv-ASL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8t-HQ-qp4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="948"/>
+        </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="eb2-u9-2P3">
             <objects>
-                <viewController id="Cf6-C5-Ric" customClass="MainMenuViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainmenu" id="Cf6-C5-Ric" customClass="MainMenuViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Opu-ZE-cPf">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,6 +78,9 @@
                                 <state key="normal" image="playButton"/>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="Cf6-C5-Ric" eventType="touchUpInside" id="xbA-cC-gIt"/>
+                                    <segue destination="fB7-TT-LNg" kind="popoverPresentation" popoverAnchorView="pfY-M3-acu" id="WhQ-Iy-8OR">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRY-TU-bx9">
@@ -76,7 +96,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo game" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-sT-F1O">
-                                <rect key="frame" x="256" y="36" width="333" height="107"/>
+                                <rect key="frame" x="255.66666666666663" y="36" width="333" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="333" id="LpZ-TZ-XJJ"/>
                                     <constraint firstAttribute="height" constant="107" id="bka-iE-29e"/>
