@@ -15,7 +15,6 @@ class GameScene: SKScene {
     var yusuf: SKNode?
     var toni: SKNode?
     
-    
     // Utility
     var joystick: SKNode?
     var joystickKnob: SKNode?
@@ -45,7 +44,6 @@ class GameScene: SKScene {
     var playerIsFacingRight = true
     let playerSpeed = 2.0
     let objectRange = 100.0
-    
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
@@ -79,7 +77,6 @@ class GameScene: SKScene {
         action?.fontSize = 32.0
         action?.horizontalAlignmentMode = .center
         action?.lineBreakMode = .byTruncatingMiddle
-        
     }
     
     func buildPlayer() {
