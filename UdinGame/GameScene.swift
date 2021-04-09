@@ -46,8 +46,11 @@ class GameScene: SKScene {
     let playerSpeed = 2.0
     let objectRange = 100.0
     
+    static var playerPosition = CGPoint(x: 650, y: -145)
+    
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
+        player?.position = GameScene.playerPosition
         buildPlayer()
         
         // Item
@@ -274,6 +277,8 @@ extension GameScene {
         toniButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
         bag!.position = CGPoint(x: positionPlayer.x + 1000, y: positionPlayer.y - 400)
         settingButton!.position = CGPoint(x: positionPlayer.x - 1050, y: positionPlayer.y + 450)
+        
+        GameScene.playerPosition = positionPlayer
     }
     
     // Event: Variable
