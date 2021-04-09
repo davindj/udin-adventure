@@ -288,24 +288,32 @@ extension GameScene {
             actionButton?.isHidden = false
             textAlignment(string: "Baca \nDiari Udin")
             action?.isHidden = false
+            book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
         } else if abs(playerPosition.x - antonPosition.x) < 100.0 && abs(playerPosition.y - antonPosition.y) < 100.0 {
             antonButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nAnton")
             action?.isHidden = false
+            anton?.run(.setTexture(SKTexture(imageNamed: "highlightedBully1")))
         } else if abs(playerPosition.x - yusufPosition.x) < 100.0 && abs(playerPosition.y - yusufPosition.y) < 100.0 {
             yusufButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nYusuf")
             action?.isHidden = false
+            yusuf?.run(.setTexture(SKTexture(imageNamed: "highlightedBully2")))
         } else if abs(playerPosition.x - toniPosition.x) < 100.0 && abs(playerPosition.y - toniPosition.y) < 100.0 {
             toniButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nToni")
             action?.isHidden = false
+            toni?.run(.setTexture(SKTexture(imageNamed: "highlightedBully3")))
         } else {
             actionButton?.isHidden = true
             antonButton?.isHidden = true
             yusufButton?.isHidden = true
             toniButton?.isHidden = true
             action?.isHidden = true
+            book?.run(.setTexture(SKTexture(imageNamed: "buku")))
+            anton?.run(.setTexture(SKTexture(imageNamed: "bully1")))
+            yusuf?.run(.setTexture(SKTexture(imageNamed: "bully2")))
+            toni?.run(.setTexture(SKTexture(imageNamed: "bully3")))
         }
     }
     
