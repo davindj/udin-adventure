@@ -28,6 +28,10 @@
 		C38D435F262178A0006DBA57 /* UdinDiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */; };
 		C38D43652621868A006DBA57 /* InteractionAnton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D43632621868A006DBA57 /* InteractionAnton.swift */; };
 		C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D43642621868A006DBA57 /* InteractionAnton.sks */; };
+		C38D43692621874F006DBA57 /* InteractionYusuf.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D43682621874F006DBA57 /* InteractionYusuf.sks */; };
+		C38D436C26218840006DBA57 /* InteractionYusuf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D436B26218840006DBA57 /* InteractionYusuf.swift */; };
+		C38D437126218886006DBA57 /* InteractionToni.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D437026218886006DBA57 /* InteractionToni.sks */; };
+		C38D43742621891C006DBA57 /* InteractionToni.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D43732621891C006DBA57 /* InteractionToni.swift */; };
 		C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39CB4EF262022F1009F0D52 /* BagpackScene.swift */; };
 		D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D726C9261F069100C10602 /* BattleSceneViewController.swift */; };
 		D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7E07637261DC97700F20CD9 /* GameScene.sks */; };
@@ -57,6 +61,10 @@
 		C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdinDiaryScene.swift; sourceTree = "<group>"; };
 		C38D43632621868A006DBA57 /* InteractionAnton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionAnton.swift; sourceTree = "<group>"; };
 		C38D43642621868A006DBA57 /* InteractionAnton.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InteractionAnton.sks; sourceTree = "<group>"; };
+		C38D43682621874F006DBA57 /* InteractionYusuf.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InteractionYusuf.sks; sourceTree = "<group>"; };
+		C38D436B26218840006DBA57 /* InteractionYusuf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionYusuf.swift; sourceTree = "<group>"; };
+		C38D437026218886006DBA57 /* InteractionToni.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InteractionToni.sks; sourceTree = "<group>"; };
+		C38D43732621891C006DBA57 /* InteractionToni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionToni.swift; sourceTree = "<group>"; };
 		C39CB4EF262022F1009F0D52 /* BagpackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagpackScene.swift; sourceTree = "<group>"; };
 		D7D726C9261F069100C10602 /* BattleSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSceneViewController.swift; sourceTree = "<group>"; };
 		D7E07637261DC97700F20CD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				C39CB4EF262022F1009F0D52 /* BagpackScene.swift */,
 				C38D43642621868A006DBA57 /* InteractionAnton.sks */,
 				C38D43632621868A006DBA57 /* InteractionAnton.swift */,
+				C38D43682621874F006DBA57 /* InteractionYusuf.sks */,
+				C38D436B26218840006DBA57 /* InteractionYusuf.swift */,
+				C38D437026218886006DBA57 /* InteractionToni.sks */,
+				C38D43732621891C006DBA57 /* InteractionToni.swift */,
 				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
 				C38D435B262177C4006DBA57 /* UdinDiaryScene.sks */,
@@ -195,8 +207,10 @@
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
 				C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */,
 				C37313F32620757900EDAAF8 /* Intro4.sks in Resources */,
+				C38D43692621874F006DBA57 /* InteractionYusuf.sks in Resources */,
 				C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */,
 				C38D1DB0261DC87100D9EC1C /* BattleScene.sks in Resources */,
+				C38D437126218886006DBA57 /* InteractionToni.sks in Resources */,
 				C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */,
 				C37313F62620758400EDAAF8 /* Intro5.sks in Resources */,
 			);
@@ -210,10 +224,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C38D1D99261D911D00D9EC1C /* GameScene.swift in Sources */,
+				C38D436C26218840006DBA57 /* InteractionYusuf.swift in Sources */,
 				C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */,
 				05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */,
 				C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */,
 				C38D435F262178A0006DBA57 /* UdinDiaryScene.swift in Sources */,
+				C38D43742621891C006DBA57 /* InteractionToni.swift in Sources */,
 				D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */,
 				4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */,
 				C38D1DAF261DC87100D9EC1C /* BattleScene.swift in Sources */,
