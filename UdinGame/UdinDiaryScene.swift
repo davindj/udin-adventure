@@ -10,10 +10,15 @@ import SpriteKit
 class UdinDiaryScene: SKScene {
     var closeButton: SKNode?
     
+    static var fromScene = ""
+    
     override func didMove(to view: SKView) {
         closeButton = childNode(withName: "closeButton")
         
-        GameScene.point += 10
+        if UdinDiaryScene.fromScene != "BagpackScene" {
+            BagpackScene.items.append("diary")
+            GameScene.point += 10
+        }
         
     }
     
@@ -36,9 +41,15 @@ class UdinDiaryScene: SKScene {
             if buttonPoint.name == "closeButton" {
                 closeButton?.run(.setTexture(SKTexture(imageNamed: "closeButton")))
                 
-                let scene = SKScene(fileNamed: "GameScene")
-                scene?.scaleMode = .aspectFill
-                self.view?.presentScene(scene!, transition: SKTransition.fade(withDuration: 1.0))
+                if UdinDiaryScene.fromScene == "BagpackScene" {
+                    let bagpackScene = SKScene(fileNamed: "BagpackScene")
+                    bagpackScene?.scaleMode = .aspectFill
+                    self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
+                } else {
+                    let scene = SKScene(fileNamed: "GameScene")
+                    scene?.scaleMode = .aspectFill
+                    self.view?.presentScene(scene!, transition: SKTransition.fade(withDuration: 1.0))
+                }
             }
         }
     }

@@ -18,16 +18,21 @@ class InteractionToni: SKScene {
     var textPlayer = ""
     var textPlayer1 = ""
     
-    static var touchCount = 0
+    var touchCount = 0
+    
+    static var fromScene = ""
     
     override func didMove(to view: SKView) {
         playerBubble = childNode(withName: "playerBubble")
         toniBubble = childNode(withName: "toniBubble")
         
         playerChat = playerBubble?.childNode(withName: "playerChat") as? SKLabelNode
-        toniChat = toniBubble?.childNode(withName: "toniBubble") as? SKLabelNode
-       
-        GameScene.point += 10
+        toniChat = toniBubble?.childNode(withName: "toniChat") as? SKLabelNode
+        
+        if InteractionToni.fromScene != "BagpackScene" {
+            BagpackScene.items.append("insight2")
+            GameScene.point += 10
+        }
         
         playerBubble?.isHidden = true
         toniBubble?.isHidden = true
@@ -44,26 +49,37 @@ class InteractionToni: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let playerChat = playerChat else { return }
-        guard let yusufChat = toniChat else { return }
-        InteractionYusuf.touchCount += 1
+        guard let toniChat = toniChat else { return }
+        touchCount += 1
         
-        switch InteractionYusuf.touchCount {
+        switch touchCount {
         case 1:
             toniBubble?.isHidden = false
-            textAlignment(label: yusufChat, string: textToni)
+            textAlignment(label: toniChat, string: textToni)
         case 2:
+            toniBubble?.isHidden = true
             playerBubble?.isHidden = false
             textAlignment(label: playerChat, string: textPlayer)
         case 3:
-            textAlignment(label: yusufChat, string: textToni1)
+            playerBubble?.isHidden = true
+            toniBubble?.isHidden = false
+            textAlignment(label: toniChat, string: textToni1)
         case 4:
+            toniBubble?.isHidden = true
+            playerBubble?.isHidden = false
             textAlignment(label: playerChat, string: textPlayer1)
         case 5:
-            let gameScene = GameScene(fileNamed: "GameScene")
-            gameScene?.scaleMode = .aspectFill
-            self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
+            if InteractionToni.fromScene == "BagpackScene" {
+                let bagpackScene = SKScene(fileNamed: "BagpackScene")
+                bagpackScene?.scaleMode = .aspectFill
+                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
+            } else {
+                let gameScene = GameScene(fileNamed: "GameScene")
+                gameScene?.scaleMode = .aspectFill
+                self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
+            }
         default:
-            textAlignment(label: yusufChat, string: textToni)
+            textAlignment(label: toniChat, string: textToni)
         }
     }
     

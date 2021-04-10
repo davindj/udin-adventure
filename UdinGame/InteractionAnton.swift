@@ -13,6 +13,8 @@ class InteractionAnton: SKScene {
     var answerButton1: SKNode!
     var answerButton2: SKNode!
     
+    static var fromScene = ""
+    
     override func didMove(to view: SKView) {
         answerButton1 = childNode(withName: "answerButton1")
         answerButton2 = childNode(withName: "answerButton2")

@@ -19,7 +19,9 @@ class InteractionYusuf: SKScene {
     var textPlayer = ""
     var textPlayer1 = ""
     
-    static var touchCount = 0
+    var touchCount = 0
+    
+    static var fromScene = ""
     
     override func didMove(to view: SKView) {
         playerBubble = childNode(withName: "playerBubble")
@@ -27,8 +29,11 @@ class InteractionYusuf: SKScene {
         
         playerChat = playerBubble?.childNode(withName: "playerChat") as? SKLabelNode
         yusufChat = yusufBubble?.childNode(withName: "yusufChat") as? SKLabelNode
-       
-        GameScene.point += 10
+        
+        if InteractionYusuf.fromScene != "BagpackScene" {
+            BagpackScene.items.append("insight1")
+            GameScene.point += 10
+        }
         
         playerBubble?.isHidden = true
         yusufBubble?.isHidden = true
@@ -47,9 +52,9 @@ class InteractionYusuf: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let playerChat = playerChat else { return }
         guard let yusufChat = yusufChat else { return }
-        InteractionYusuf.touchCount += 1
+        touchCount += 1
         
-        switch InteractionYusuf.touchCount {
+        switch touchCount{
         case 1:
             yusufBubble?.isHidden = false
             textAlignment(label: yusufChat, string: textYusuf)
@@ -70,9 +75,15 @@ class InteractionYusuf: SKScene {
             yusufBubble?.isHidden = false
             textAlignment(label: yusufChat, string: textYusuf2)
         case 6:
-            let gameScene = GameScene(fileNamed: "GameScene")
-            gameScene?.scaleMode = .aspectFill
-            self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
+            if InteractionYusuf.fromScene == "BagpackScene" {
+                let bagpackScene = SKScene(fileNamed: "BagpackScene")
+                bagpackScene?.scaleMode = .aspectFill
+                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
+            } else {
+                let gameScene = SKScene(fileNamed: "GameScene")
+                gameScene?.scaleMode = .aspectFill
+                self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
+            }
         default:
             textAlignment(label: yusufChat, string: textYusuf1)
         }

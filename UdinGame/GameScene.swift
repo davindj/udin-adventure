@@ -195,7 +195,7 @@ extension GameScene {
             player!.removeAllActions()
             
             // MARK: Navigation to other scene
-            // triggered by button
+            // Triggered by button
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             

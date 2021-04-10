@@ -84,6 +84,7 @@
 		C37313F926207A8200EDAAF8 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
+				C37313E62620710F00EDAAF8 /* IntroScene.swift */,
 				C37313E32620707D00EDAAF8 /* Intro1.sks */,
 				C37313EB2620746200EDAAF8 /* Intro2.sks */,
 				C37313EF2620756A00EDAAF8 /* Intro3.sks */,
@@ -132,7 +133,6 @@
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
 				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
 				C37313F926207A8200EDAAF8 /* Introduction */,
-				C37313E62620710F00EDAAF8 /* IntroScene.swift */,
 				C38D1D7F261D8F1300D9EC1C /* Main.storyboard */,
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
 				C38D1D82261D8F1400D9EC1C /* Assets.xcassets */,
