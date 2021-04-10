@@ -355,8 +355,8 @@ extension GameScene {
         antonButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
         yusufButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
         toniButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
-        buttonText?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 350.0)
-        bag?.position = CGPoint(x: positionPlayer.x + 1000.0, y: positionPlayer.y - 400.0)
+        buttonText?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 400.0)
+        bag?.position = CGPoint(x: positionPlayer.x + 1050.0, y: positionPlayer.y - 400.0)
         settingButton?.position = CGPoint(x: positionPlayer.x - 1050.0, y: positionPlayer.y + 450.0)
         popUpUdin?.position = CGPoint(x: positionPlayer.x, y: positionPlayer.y)
     }
@@ -374,31 +374,31 @@ extension GameScene {
         if getDistanceMax(itemPosition: bookPosition, distance: 100.0) && !GameScene.hasDiaryUdin {
             // Udin Diary
             actionButton?.isHidden = false
-            textAlignment(string: "Baca \nDiari Udin", label: textButton)
+            textAlignment(string: "Baca \nDiari Udin", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
         } else if getDistanceMax(itemPosition: udinPosition, distance: 100.0) && GameScene.point >= 20 {
             // Confront Udin
             udinButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nUdin", label: textButton)
+            textAlignment(string: "Ngobrol \nDengan Udin", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             udin?.run(.setTexture(SKTexture(imageNamed: "highlightedUdin")))
         } else if getDistanceMax(itemPosition: antonPosition, distance: 100.0) && !GameScene.hasAntonInsight {
             // Anton Insight
             antonButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nAnton", label: textButton)
+            textAlignment(string: "Ngobrol \nDengan Anton", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             anton?.run(.setTexture(SKTexture(imageNamed: "highlightedBully1")))
         } else if getDistanceMax(itemPosition: yusufPosition, distance: 100.0) && !GameScene.hasYusufInsight {
             // Yusuf Insight
             yusufButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nYusuf", label: textButton)
+            textAlignment(string: "Ngobrol \nDengan Yusuf", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             yusuf?.run(.setTexture(SKTexture(imageNamed: "highlightedBully2")))
         } else if getDistanceMax(itemPosition: toniPosition, distance: 100.0) && !GameScene.hasToniInsight {
             // Toni Insight
             toniButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nToni", label: textButton)
+            textAlignment(string: "Ngobrol \nDengan Toni", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             toni?.run(.setTexture(SKTexture(imageNamed: "highlightedBully3")))
         } else {
@@ -433,13 +433,13 @@ extension GameScene {
         return false
     }
     
-    func textAlignment(string: String, label: SKLabelNode, color: UIColor = .white) {
+    func textAlignment(string: String, label: SKLabelNode, size: CGFloat = 32.0, color: UIColor = .white) {
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 32.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: size)!], range: range)
         label.attributedText = attrString
     }
     
