@@ -17,7 +17,6 @@ class UdinDiaryScene: SKScene {
         
         if UdinDiaryScene.fromScene != "BagpackScene" {
             BagpackScene.items.append("diary")
-            GameScene.point += 10
         }
         
         GameScene.hasDiaryUdin = true
@@ -48,6 +47,7 @@ class UdinDiaryScene: SKScene {
                     bagpackScene?.scaleMode = .aspectFill
                     self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
                 } else {
+                    GameScene.point += 10
                     let scene = SKScene(fileNamed: "GameScene")
                     scene?.scaleMode = .aspectFill
                     self.view?.presentScene(scene!, transition: SKTransition.fade(withDuration: 1.0))

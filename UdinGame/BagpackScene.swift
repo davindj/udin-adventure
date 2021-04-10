@@ -38,11 +38,18 @@ class BagpackScene: SKScene {
         item2?.isHidden = true
         item3?.isHidden = true
         
+        
+        
         print(GameScene.point)
         insertItem()
     }
     
     func insertItem() {
+        guard let textItem0 = textItem0 else { return }
+        guard let textItem1 = textItem1 else { return }
+        guard let textItem2 = textItem2 else { return }
+        guard let textItem3 = textItem3 else { return }
+        
         for (index, item) in BagpackScene.items.enumerated() {
             switch index {
             case 0:
@@ -50,25 +57,25 @@ class BagpackScene: SKScene {
                 item0?.isHidden = false
                 item0?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text0, _) = getItemLabelAndScene(item: item)
-                textItem0?.text = text0
+                textAlignment(string: text0, label: textItem0, color: UIColor.brown)
             case 1:
                 let text1: String
                 item1?.isHidden = false
                 item1?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text1, _) = getItemLabelAndScene(item: item)
-                textItem1?.text = text1
+                textAlignment(string: text1, label: textItem1, color: UIColor.brown)
             case 2:
                 let text2: String
                 item2?.isHidden = false
                 item2?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text2, _) = getItemLabelAndScene(item: item)
-                textItem2?.text = text2
+                textAlignment(string: text2, label: textItem2, color: UIColor.brown)
             case 3:
                 let text3: String
                 item3?.isHidden = false
                 item3?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text3, _) = getItemLabelAndScene(item: item)
-                textItem3?.text = text3
+                textAlignment(string: text3, label: textItem3, color: UIColor.brown)
             default:
                 print("")
             }
@@ -215,5 +222,15 @@ class BagpackScene: SKScene {
         default:
             print("")
         }
+    }
+    
+    func textAlignment(string: String, label: SKLabelNode, color: UIColor = .white) {
+        let attrString = NSMutableAttributedString(string: string)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let range = NSRange(location: 0, length: string.count)
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 32.0)!], range: range)
+        label.attributedText = attrString
     }
 }

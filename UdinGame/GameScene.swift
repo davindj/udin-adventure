@@ -16,9 +16,11 @@ class GameScene: SKScene {
     var yusuf: SKNode?
     var toni: SKNode?
     
-    // Utility
+    // Joystick
     var joystick: SKNode?
     var joystickKnob: SKNode?
+    
+    // Button
     var actionButton: SKNode?
     var udinButton: SKNode?
     var antonButton: SKNode?
@@ -27,8 +29,15 @@ class GameScene: SKScene {
     var bag: SKNode?
     var book: SKNode?
     var settingButton: SKNode?
-    var action: SKLabelNode?
+    var buttonText: SKLabelNode?
+    
+    // Background
     var background: SKNode?
+    
+    // PopUp
+    var popUpUdin: SKNode?
+    var popUpLabel: SKLabelNode?
+    let popUpText = "Kamu sudah mendapat cukup informasi \nAyo bicara dengan Udin"
     
     // Animation
     var framePlayerSide = [SKTexture]()
@@ -53,6 +62,7 @@ class GameScene: SKScene {
     static var hasAntonInsight = false
     static var hasYusufInsight = false
     static var hasToniInsight = false
+    static var hasPopUp = false
     
     // Player position data
     static var playerPosition = CGPoint(x: 650, y: -145)
@@ -72,9 +82,11 @@ class GameScene: SKScene {
         yusuf = childNode(withName: "yusuf")
         toni = childNode(withName: "toni")
         
-        // Utility
+        // Joystick
         joystick = childNode(withName: "joystick")
         joystickKnob = joystick?.childNode(withName: "knob")
+        
+        // Button
         settingButton = childNode(withName: "setting")
         bag = childNode(withName: "bag")
         actionButton = childNode(withName: "actionButton")
@@ -82,19 +94,24 @@ class GameScene: SKScene {
         antonButton = childNode(withName: "antonButton")
         yusufButton = childNode(withName: "yusufButton")
         toniButton = childNode(withName: "toniButton")
-        background = childNode(withName: "background")
-        action = childNode(withName: "actionName") as? SKLabelNode
+        buttonText = childNode(withName: "buttonText") as? SKLabelNode
         
+        // Background
+        background = childNode(withName: "background")
+        
+        // PopUp Udin
+        popUpUdin = childNode(withName: "popUpUdin")
+        popUpLabel = popUpUdin?.childNode(withName: "popUpText") as? SKLabelNode
+        
+        // Hide
         actionButton?.isHidden = true
         udinButton?.isHidden = true
         antonButton?.isHidden = true
         yusufButton?.isHidden = true
         toniButton?.isHidden = true
+        buttonText?.isHidden = true
+        popUpUdin?.isHidden = true
         
-        action?.isHidden = true
-        action?.fontSize = 32.0
-        action?.horizontalAlignmentMode = .center
-        action?.lineBreakMode = .byTruncatingMiddle
     }
     
     // Build player walk animation
@@ -122,7 +139,6 @@ class GameScene: SKScene {
             framePlayerRear.append(playerRearAtlas.textureNamed(textureRearName))
         }
     }
-    
 }
 
 // MARK: Touches
@@ -139,6 +155,11 @@ extension GameScene {
                 player?.run(.repeatForever(.animate(with: framePlayerSide, timePerFrame: frameDuration)))
             }
             
+            // Close popup
+            if !popUpUdin!.isHidden {
+                popUpUdin?.isHidden = true
+            }
+            
             // MARK: Animate button
             // Button pressed effect
             let locationButton = touch.location(in: self)
@@ -147,18 +168,14 @@ extension GameScene {
             switch buttonPoint.name {
             case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
-                print("Go to UdinDiaryScene")
             case "udinButton":
                 udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                print("Go to antonScene")
             case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                print("Go to yusufScene")
             case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                print("Go to toniScene")
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
             case "setting":
@@ -251,7 +268,6 @@ extension GameScene {
                 self.view?.presentScene(yusufScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
-                print("Go to toniScene")
                 
                 // Go to InteractionToni
                 let toniScene = InteractionToni(fileNamed: "InteractionToni")
@@ -292,6 +308,8 @@ extension GameScene {
 // MARK: Game Loop
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
+        guard let positionPlayer = player?.position else{ return }
+        
         super.update(currentTime)
         if let cameraplay = camera, let pl = player{
             cameraplay.position = pl.position
@@ -317,22 +335,30 @@ extension GameScene {
         }
         
         player?.run(move)
+        
+        showPopUp()
         event()
-        
-        // MARK: Setting Button Position
-        guard let positionPlayer = player?.position else{ return }
-        
-        joystick!.position = CGPoint(x: positionPlayer.x - 1000, y: positionPlayer.y - 400)
-        actionButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
-        udinButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
-        antonButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
-        yusufButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
-        toniButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
-        bag!.position = CGPoint(x: positionPlayer.x + 1000, y: positionPlayer.y - 400)
-        settingButton!.position = CGPoint(x: positionPlayer.x - 1050, y: positionPlayer.y + 450)
+        buttonPosition()
         
         // Set player position
         GameScene.playerPosition = positionPlayer
+    }
+    
+    // MARK: Setting Button Position
+    // From camera
+    func buttonPosition() {
+        guard let positionPlayer = player?.position else{ return }
+        
+        joystick?.position = CGPoint(x: positionPlayer.x - 1000.0, y: positionPlayer.y - 400.0)
+        actionButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
+        udinButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
+        antonButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
+        yusufButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
+        toniButton?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 250.0)
+        buttonText?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 350.0)
+        bag?.position = CGPoint(x: positionPlayer.x + 1000.0, y: positionPlayer.y - 400.0)
+        settingButton?.position = CGPoint(x: positionPlayer.x - 1050.0, y: positionPlayer.y + 450.0)
+        popUpUdin?.position = CGPoint(x: positionPlayer.x, y: positionPlayer.y)
     }
     
     // MARK: Trigger Event
@@ -343,47 +369,59 @@ extension GameScene {
         guard let antonPosition = anton?.position else { return }
         guard let yusufPosition = yusuf?.position else { return }
         guard let toniPosition = toni?.position else { return }
+        guard let textButton = buttonText else { return }
         
         if getDistanceMax(itemPosition: bookPosition, distance: 100.0) && !GameScene.hasDiaryUdin {
             // Udin Diary
             actionButton?.isHidden = false
-            textAlignment(string: "Baca \nDiari Udin")
-            action?.isHidden = false
+            textAlignment(string: "Baca \nDiari Udin", label: textButton)
+            buttonText?.isHidden = false
             book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
         } else if getDistanceMax(itemPosition: udinPosition, distance: 100.0) && GameScene.point >= 20 {
             // Confront Udin
             udinButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nUdin")
-            action?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nUdin", label: textButton)
+            buttonText?.isHidden = false
             udin?.run(.setTexture(SKTexture(imageNamed: "highlightedUdin")))
         } else if getDistanceMax(itemPosition: antonPosition, distance: 100.0) && !GameScene.hasAntonInsight {
             // Anton Insight
             antonButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nAnton")
-            action?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nAnton", label: textButton)
+            buttonText?.isHidden = false
             anton?.run(.setTexture(SKTexture(imageNamed: "highlightedBully1")))
         } else if getDistanceMax(itemPosition: yusufPosition, distance: 100.0) && !GameScene.hasYusufInsight {
             // Yusuf Insight
             yusufButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nYusuf")
-            action?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nYusuf", label: textButton)
+            buttonText?.isHidden = false
             yusuf?.run(.setTexture(SKTexture(imageNamed: "highlightedBully2")))
         } else if getDistanceMax(itemPosition: toniPosition, distance: 100.0) && !GameScene.hasToniInsight {
             // Toni Insight
             toniButton?.isHidden = false
-            textAlignment(string: "Ngobrol Dengan \nToni")
-            action?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nToni", label: textButton)
+            buttonText?.isHidden = false
             toni?.run(.setTexture(SKTexture(imageNamed: "highlightedBully3")))
         } else {
             actionButton?.isHidden = true
             antonButton?.isHidden = true
             yusufButton?.isHidden = true
             toniButton?.isHidden = true
-            action?.isHidden = true
+            buttonText?.isHidden = true
             book?.run(.setTexture(SKTexture(imageNamed: "buku")))
             anton?.run(.setTexture(SKTexture(imageNamed: "bully1")))
             yusuf?.run(.setTexture(SKTexture(imageNamed: "bully2")))
             toni?.run(.setTexture(SKTexture(imageNamed: "bully3")))
+        }
+    }
+    
+    func showPopUp() {
+        guard let labelPopUp = popUpLabel else { return }
+        
+        if GameScene.point >= 20 && !GameScene.hasPopUp {
+            popUpUdin?.isHidden = false
+            GameScene.hasPopUp = true
+            popUpUdin?.alpha = 0.8
+            textAlignment(string: popUpText, label: labelPopUp, color: UIColor.brown)
         }
     }
     
@@ -395,14 +433,14 @@ extension GameScene {
         return false
     }
     
-    func textAlignment(string: String) {
+    func textAlignment(string: String, label: SKLabelNode, color: UIColor = .white) {
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 32)], range: range)
-        action?.attributedText = attrString
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 32.0)!], range: range)
+        label.attributedText = attrString
     }
     
 }

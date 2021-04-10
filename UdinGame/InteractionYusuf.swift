@@ -32,7 +32,6 @@ class InteractionYusuf: SKScene {
         
         if InteractionYusuf.fromScene != "BagpackScene" {
             BagpackScene.items.append("insight1")
-            GameScene.point += 10
         }
         
         GameScene.hasYusufInsight = true
@@ -82,6 +81,7 @@ class InteractionYusuf: SKScene {
                 bagpackScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             } else {
+                GameScene.point += 10
                 let gameScene = SKScene(fileNamed: "GameScene")
                 gameScene?.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))

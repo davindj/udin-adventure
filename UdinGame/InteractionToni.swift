@@ -31,7 +31,6 @@ class InteractionToni: SKScene {
         
         if InteractionToni.fromScene != "BagpackScene" {
             BagpackScene.items.append("insight2")
-            GameScene.point += 10
         }
         
         GameScene.hasToniInsight = true
@@ -76,6 +75,7 @@ class InteractionToni: SKScene {
                 bagpackScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             } else {
+                GameScene.point += 10
                 let gameScene = GameScene(fileNamed: "GameScene")
                 gameScene?.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
