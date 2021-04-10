@@ -116,14 +116,6 @@
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
 				C35A07F8261F124000CD47BD /* BagpackScene.sks */,
 				C39CB4EF262022F1009F0D52 /* BagpackScene.swift */,
-				C38D43642621868A006DBA57 /* InteractionAnton.sks */,
-				C38D43632621868A006DBA57 /* InteractionAnton.swift */,
-				C38D43682621874F006DBA57 /* InteractionYusuf.sks */,
-				C38D436B26218840006DBA57 /* InteractionYusuf.swift */,
-				C38D437026218886006DBA57 /* InteractionToni.sks */,
-				C38D43732621891C006DBA57 /* InteractionToni.swift */,
-				C38D435B262177C4006DBA57 /* UdinDiaryScene.sks */,
-				C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */,
 				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
 				D7E07637261DC97700F20CD9 /* GameScene.sks */,
@@ -132,6 +124,7 @@
 				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
 				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
+				C3A8B66F2622374F00B20028 /* Event */,
 				C37313F926207A8200EDAAF8 /* Introduction */,
 				C38D1D7F261D8F1300D9EC1C /* Main.storyboard */,
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
@@ -139,6 +132,21 @@
 				C38D1D84261D8F1400D9EC1C /* Info.plist */,
 			);
 			path = UdinGame;
+			sourceTree = "<group>";
+		};
+		C3A8B66F2622374F00B20028 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				C38D43642621868A006DBA57 /* InteractionAnton.sks */,
+				C38D43632621868A006DBA57 /* InteractionAnton.swift */,
+				C38D43682621874F006DBA57 /* InteractionYusuf.sks */,
+				C38D436B26218840006DBA57 /* InteractionYusuf.swift */,
+				C38D437026218886006DBA57 /* InteractionToni.sks */,
+				C38D43732621891C006DBA57 /* InteractionToni.swift */,
+				C38D435B262177C4006DBA57 /* UdinDiaryScene.sks */,
+				C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
