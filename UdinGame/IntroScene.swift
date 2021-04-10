@@ -28,14 +28,12 @@ class IntroScene: SKScene {
     
     func setText() {
         let text1 = """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+       Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya.
         """
-        let text2 = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu \nfugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui \nofficia deserunt mollit anim id est laborum."
-        let text3 = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque \nlaudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi \narchitecto beatae vitae dicta sunt explicabo."
-        let text4 = "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia \nconsequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-        let text5 = "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, \nadipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam \naliquam quaerat voluptatem."
+        let text2 = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
+        let text3 = "Namun sifatnya sangat tertutup, dia enggan berbicara banyak dengan ku."
+        let text4 = "Karena sifat tertutup itu, dia sering dijahili oleh teman-temannya yang lain terutama oleh Anton, Toni, dan Yusuf."
+        let text5 = "Kira-kira apa yang harus aku lakukan agar dapat mengetahui mengapa sift Udin seperti itu?"
         
         if let story1 = story1 {
             textAlignment(label: story1, string: text1)
@@ -77,22 +75,22 @@ class IntroScene: SKScene {
             // scene2
             let scene1 = SKScene(fileNamed: "Intro2")
             scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.flipVertical(withDuration: 1.0))
+            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
             // scene2
             let scene1 = SKScene(fileNamed: "Intro3")
             scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.flipVertical(withDuration: 1.0))
+            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 3:
             // scene2
             let scene1 = SKScene(fileNamed: "Intro4")
             scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.flipVertical(withDuration: 1.0))
+            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 4:
             // scene2
             let scene1 = SKScene(fileNamed: "Intro5")
             scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.flipVertical(withDuration: 1.0))
+            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 5:
             // scene2
             let scene1 = SKScene(fileNamed: "GameScene")
