@@ -47,6 +47,7 @@ class GameScene: SKScene {
     let objectRange = 100.0
     
     static var playerPosition = CGPoint(x: 650, y: -145)
+    static var point = 0
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
