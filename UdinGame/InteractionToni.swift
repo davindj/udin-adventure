@@ -34,6 +34,8 @@ class InteractionToni: SKScene {
             GameScene.point += 10
         }
         
+        GameScene.hasToniInsight = true
+        
         playerBubble?.isHidden = true
         toniBubble?.isHidden = true
         

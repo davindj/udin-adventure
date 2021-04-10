@@ -46,6 +46,13 @@ class GameScene: SKScene {
     let playerSpeed = 2.0
     let objectRange = 100.0
     
+    // Event State
+    static var hasDiaryUdin = false
+    static var hasAntonInsight = false
+    static var hasYusufInsight = false
+    static var hasToniInsight = false
+    
+    // Player position data
     static var playerPosition = CGPoint(x: 650, y: -145)
     static var point = 0
     
@@ -85,6 +92,7 @@ class GameScene: SKScene {
         action?.lineBreakMode = .byTruncatingMiddle
     }
     
+    // Build player walk animation
     func buildPlayer() {
         let playerSideAtlas = SKTextureAtlas(named: "PlayerSide")
         let playerFrontAtlas = SKTextureAtlas(named: "PlayerFront")
@@ -116,6 +124,7 @@ class GameScene: SKScene {
 extension GameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            // Read touch in joystick
             if let joystickKnob = joystickKnob {
                 let locationJoystick = touch.location(in: joystick!)
                 joystickAction = joystickKnob.frame.contains(locationJoystick)
@@ -125,6 +134,8 @@ extension GameScene {
                 player?.run(.repeatForever(.animate(with: framePlayerSide, timePerFrame: frameDuration)))
             }
             
+            // MARK: Animate button
+            // Button pressed effect
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             
@@ -153,13 +164,14 @@ extension GameScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Read joystick knob movement
         guard let joystick = joystick else { return }
         guard let joystickKnob = joystickKnob else { return }
         
         if !joystickAction { return }
         
-        // Distance
         for touch in touches {
+            // Get joystick knob displacement
             let position = touch.location(in: joystick)
             
             let length = sqrt(pow(position.y, 2) + pow(position.x, 2))
@@ -171,6 +183,7 @@ extension GameScene {
                 joystickKnob.position = CGPoint(x: cos(angle) * knobRadius, y: sin(angle) * knobRadius)
             }
             
+            // Animate player based on joystick knob
             if abs(position.x) < abs(position.y) && position.y < 0  {
                 player?.run(.repeatForever(.animate(with: framePlayerFront, timePerFrame: frameDuration)))
             } else if abs(position.x) < abs(position.y) && position.y > 0 {
@@ -187,6 +200,7 @@ extension GameScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            // Reset joystick knob position
             let xJoystickCoordinate = touch.location(in: joystick!).x
             let xLimit: CGFloat = 300.0
             if xJoystickCoordinate > -xLimit && xJoystickCoordinate < xLimit {
@@ -271,7 +285,8 @@ extension GameScene {
         let deltaTime = currentTime - previousTimeInterval
         previousTimeInterval = currentTime
         
-        // Player Movement
+        // Set player movement
+        // Based on joystick knob displacement
         guard let joystickKnob = joystickKnob else { return }
         let xPosition = Double(joystickKnob.position.x)
         let yPosition = Double(joystickKnob.position.y)
@@ -290,6 +305,7 @@ extension GameScene {
         player?.run(move)
         event()
         
+        // MARK: Setting Button Position
         guard let positionPlayer = player?.position else{ return }
         
         joystick!.position = CGPoint(x: positionPlayer.x - 1000, y: positionPlayer.y - 400)
@@ -300,33 +316,38 @@ extension GameScene {
         bag!.position = CGPoint(x: positionPlayer.x + 1000, y: positionPlayer.y - 400)
         settingButton!.position = CGPoint(x: positionPlayer.x - 1050, y: positionPlayer.y + 450)
         
+        // Set player position
         GameScene.playerPosition = positionPlayer
     }
     
-    // Event: Variable
+    // MARK: Trigger Event
+    // Based on distance
     func event() {
         guard let bookPosition = book?.position else { return }
         guard let antonPosition = anton?.position else { return }
         guard let yusufPosition = yusuf?.position else { return }
         guard let toniPosition = toni?.position else { return }
-        guard let playerPosition = player?.position else { return }
         
-        if abs(playerPosition.x - bookPosition.x) < 100.0 && abs(playerPosition.y - bookPosition.y) < 100.0 {
+        if getDistanceMax(itemPosition: bookPosition, distance: 100.0) && !GameScene.hasDiaryUdin {
+            // Udin Diary
             actionButton?.isHidden = false
             textAlignment(string: "Baca \nDiari Udin")
             action?.isHidden = false
             book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
-        } else if abs(playerPosition.x - antonPosition.x) < 100.0 && abs(playerPosition.y - antonPosition.y) < 100.0 {
+        } else if getDistanceMax(itemPosition: antonPosition, distance: 100.0) && !GameScene.hasAntonInsight {
+            // Anton Insight
             antonButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nAnton")
             action?.isHidden = false
             anton?.run(.setTexture(SKTexture(imageNamed: "highlightedBully1")))
-        } else if abs(playerPosition.x - yusufPosition.x) < 100.0 && abs(playerPosition.y - yusufPosition.y) < 100.0 {
+        } else if getDistanceMax(itemPosition: yusufPosition, distance: 100.0) && !GameScene.hasYusufInsight {
+            // Yusuf Insight
             yusufButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nYusuf")
             action?.isHidden = false
             yusuf?.run(.setTexture(SKTexture(imageNamed: "highlightedBully2")))
-        } else if abs(playerPosition.x - toniPosition.x) < 100.0 && abs(playerPosition.y - toniPosition.y) < 100.0 {
+        } else if getDistanceMax(itemPosition: toniPosition, distance: 100.0) && !GameScene.hasToniInsight {
+            // Toni Insight
             toniButton?.isHidden = false
             textAlignment(string: "Ngobrol Dengan \nToni")
             action?.isHidden = false
@@ -342,6 +363,14 @@ extension GameScene {
             yusuf?.run(.setTexture(SKTexture(imageNamed: "bully2")))
             toni?.run(.setTexture(SKTexture(imageNamed: "bully3")))
         }
+    }
+    
+    func getDistanceMax(itemPosition: CGPoint, distance: CGFloat) -> Bool {
+        if let playerPosition = player?.position {
+            return abs(playerPosition.x - itemPosition.x) < distance && abs(playerPosition.y - itemPosition.y) < distance
+        }
+        
+        return false
     }
     
     func textAlignment(string: String) {

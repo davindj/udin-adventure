@@ -20,6 +20,8 @@ class UdinDiaryScene: SKScene {
             GameScene.point += 10
         }
         
+        GameScene.hasDiaryUdin = true
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -35,6 +35,8 @@ class InteractionYusuf: SKScene {
             GameScene.point += 10
         }
         
+        GameScene.hasYusufInsight = true
+        
         playerBubble?.isHidden = true
         yusufBubble?.isHidden = true
         
