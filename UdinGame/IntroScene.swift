@@ -76,28 +76,28 @@ class IntroScene: SKScene {
             self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
             // scene2
-            let scene1 = SKScene(fileNamed: "Intro3")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
+            let scene2 = SKScene(fileNamed: "Intro3")
+            scene2?.scaleMode = .aspectFill
+            self.view?.presentScene(scene2!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 3:
             // scene2
-            let scene1 = SKScene(fileNamed: "Intro4")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
+            let scene3 = SKScene(fileNamed: "Intro4")
+            scene3?.scaleMode = .aspectFill
+            self.view?.presentScene(scene3!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 4:
             // scene2
-            let scene1 = SKScene(fileNamed: "Intro5")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
+            let scene4 = SKScene(fileNamed: "Intro5")
+            scene4?.scaleMode = .aspectFill
+            self.view?.presentScene(scene4!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 5:
             // scene2
-            let scene1 = SKScene(fileNamed: "GameScene")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
+            let scene5 = SKScene(fileNamed: "GameScene")
+            scene5?.scaleMode = .aspectFill
+            self.view?.presentScene(scene5!, transition: SKTransition.fade(withDuration: 1.0))
         default:
-            let scene1 = SKScene(fileNamed: "Intro1")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
+            let scene0 = SKScene(fileNamed: "Intro1")
+            scene0?.scaleMode = .aspectFill
+            self.view?.presentScene(scene0!, transition: SKTransition.fade(withDuration: 1.0))
         }
     }
 }
