@@ -82,7 +82,6 @@ class GameScene: SKScene {
         action?.fontSize = 32.0
         action?.horizontalAlignmentMode = .center
         action?.lineBreakMode = .byTruncatingMiddle
-        
     }
     
     func buildPlayer() {

@@ -26,6 +26,8 @@
 		C38D1DB0261DC87100D9EC1C /* BattleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D1DAE261DC87100D9EC1C /* BattleScene.sks */; };
 		C38D435C262177C4006DBA57 /* UdinDiaryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D435B262177C4006DBA57 /* UdinDiaryScene.sks */; };
 		C38D435F262178A0006DBA57 /* UdinDiaryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */; };
+		C38D43652621868A006DBA57 /* InteractionAnton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D43632621868A006DBA57 /* InteractionAnton.swift */; };
+		C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D43642621868A006DBA57 /* InteractionAnton.sks */; };
 		C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39CB4EF262022F1009F0D52 /* BagpackScene.swift */; };
 		D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D726C9261F069100C10602 /* BattleSceneViewController.swift */; };
 		D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7E07637261DC97700F20CD9 /* GameScene.sks */; };
@@ -53,6 +55,8 @@
 		C38D1DAE261DC87100D9EC1C /* BattleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BattleScene.sks; sourceTree = "<group>"; };
 		C38D435B262177C4006DBA57 /* UdinDiaryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = UdinDiaryScene.sks; sourceTree = "<group>"; };
 		C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdinDiaryScene.swift; sourceTree = "<group>"; };
+		C38D43632621868A006DBA57 /* InteractionAnton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionAnton.swift; sourceTree = "<group>"; };
+		C38D43642621868A006DBA57 /* InteractionAnton.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InteractionAnton.sks; sourceTree = "<group>"; };
 		C39CB4EF262022F1009F0D52 /* BagpackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagpackScene.swift; sourceTree = "<group>"; };
 		D7D726C9261F069100C10602 /* BattleSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSceneViewController.swift; sourceTree = "<group>"; };
 		D7E07637261DC97700F20CD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
 				C35A07F8261F124000CD47BD /* BagpackScene.sks */,
 				C39CB4EF262022F1009F0D52 /* BagpackScene.swift */,
+				C38D43642621868A006DBA57 /* InteractionAnton.sks */,
+				C38D43632621868A006DBA57 /* InteractionAnton.swift */,
 				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
 				C38D435B262177C4006DBA57 /* UdinDiaryScene.sks */,
@@ -191,6 +197,7 @@
 				C37313F32620757900EDAAF8 /* Intro4.sks in Resources */,
 				C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */,
 				C38D1DB0261DC87100D9EC1C /* BattleScene.sks in Resources */,
+				C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */,
 				C37313F62620758400EDAAF8 /* Intro5.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +217,7 @@
 				D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */,
 				4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */,
 				C38D1DAF261DC87100D9EC1C /* BattleScene.swift in Sources */,
+				C38D43652621868A006DBA57 /* InteractionAnton.swift in Sources */,
 				C37313E72620710F00EDAAF8 /* IntroScene.swift in Sources */,
 				C38D1D76261D8F1300D9EC1C /* AppDelegate.swift in Sources */,
 			);
