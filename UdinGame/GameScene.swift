@@ -11,6 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     // Character
     var player: SKNode?
+    var udin: SKNode?
     var anton: SKNode?
     var yusuf: SKNode?
     var toni: SKNode?
@@ -19,6 +20,7 @@ class GameScene: SKScene {
     var joystick: SKNode?
     var joystickKnob: SKNode?
     var actionButton: SKNode?
+    var udinButton: SKNode?
     var antonButton: SKNode?
     var yusufButton: SKNode?
     var toniButton: SKNode?
@@ -65,6 +67,7 @@ class GameScene: SKScene {
         book = childNode(withName: "book")
         
         // NPC
+        udin = childNode(withName: "udin")
         anton = childNode(withName: "anton")
         yusuf = childNode(withName: "yusuf")
         toni = childNode(withName: "toni")
@@ -75,6 +78,7 @@ class GameScene: SKScene {
         settingButton = childNode(withName: "setting")
         bag = childNode(withName: "bag")
         actionButton = childNode(withName: "actionButton")
+        udinButton = childNode(withName: "udinButton")
         antonButton = childNode(withName: "antonButton")
         yusufButton = childNode(withName: "yusufButton")
         toniButton = childNode(withName: "toniButton")
@@ -82,6 +86,7 @@ class GameScene: SKScene {
         action = childNode(withName: "actionName") as? SKLabelNode
         
         actionButton?.isHidden = true
+        udinButton?.isHidden = true
         antonButton?.isHidden = true
         yusufButton?.isHidden = true
         toniButton?.isHidden = true
@@ -143,6 +148,8 @@ extension GameScene {
             case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
                 print("Go to UdinDiaryScene")
+            case "udinButton":
+                udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
                 print("Go to antonScene")
@@ -221,6 +228,13 @@ extension GameScene {
                 let bookScene = UdinDiaryScene(fileNamed: "UdinDiaryScene")
                 bookScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bookScene!, transition: SKTransition.fade(withDuration: 1.0))
+            case "udinButton":
+                udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
+                
+                // Go to BattleScene
+                let udinScene = InteractionAnton(fileNamed: "BattleScene")
+                udinScene?.scaleMode = .aspectFill
+                self.view?.presentScene(udinScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
@@ -310,6 +324,7 @@ extension GameScene {
         
         joystick!.position = CGPoint(x: positionPlayer.x - 1000, y: positionPlayer.y - 400)
         actionButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
+        udinButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
         antonButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
         yusufButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
         toniButton!.position = CGPoint(x: positionPlayer.x + 850, y: positionPlayer.y - 250)
@@ -324,6 +339,7 @@ extension GameScene {
     // Based on distance
     func event() {
         guard let bookPosition = book?.position else { return }
+        guard let udinPosition = udin?.position else { return }
         guard let antonPosition = anton?.position else { return }
         guard let yusufPosition = yusuf?.position else { return }
         guard let toniPosition = toni?.position else { return }
@@ -334,6 +350,12 @@ extension GameScene {
             textAlignment(string: "Baca \nDiari Udin")
             action?.isHidden = false
             book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
+        } else if getDistanceMax(itemPosition: udinPosition, distance: 100.0) && GameScene.point >= 20 {
+            // Confront Udin
+            udinButton?.isHidden = false
+            textAlignment(string: "Ngobrol Dengan \nUdin")
+            action?.isHidden = false
+            udin?.run(.setTexture(SKTexture(imageNamed: "highlightedUdin")))
         } else if getDistanceMax(itemPosition: antonPosition, distance: 100.0) && !GameScene.hasAntonInsight {
             // Anton Insight
             antonButton?.isHidden = false
