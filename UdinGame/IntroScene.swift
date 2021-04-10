@@ -27,13 +27,11 @@ class IntroScene: SKScene {
     }
     
     func setText() {
-        let text1 = """
-       Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya.
-        """
+        let text1 = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
         let text2 = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
         let text3 = "Namun sifatnya sangat tertutup, dia enggan berbicara banyak dengan ku."
-        let text4 = "Karena sifat tertutup itu, dia sering dijahili oleh teman-temannya yang lain terutama oleh Anton, Toni, dan Yusuf."
-        let text5 = "Kira-kira apa yang harus aku lakukan agar dapat mengetahui mengapa sift Udin seperti itu?"
+        let text4 = "Karena sifat tertutup itu, dia sering dijahili oleh teman-temannya."
+        let text5 = "Kira-kira apa yang harus aku lakukan agar dapat mengetahui mengapa sifat Udin seperti itu?"
         
         if let story1 = story1 {
             textAlignment(label: story1, string: text1)
@@ -63,7 +61,7 @@ class IntroScene: SKScene {
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 32)], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 48)], range: range)
         label.attributedText = attrString
     }
     
