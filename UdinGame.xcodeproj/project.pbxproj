@@ -68,11 +68,11 @@
 		C37313F926207A8200EDAAF8 /* Introduction */ = {
 			isa = PBXGroup;
 			children = (
+				C37313E32620707D00EDAAF8 /* Intro1.sks */,
+				C37313EB2620746200EDAAF8 /* Intro2.sks */,
 				C37313EF2620756A00EDAAF8 /* Intro3.sks */,
 				C37313F22620757900EDAAF8 /* Intro4.sks */,
 				C37313F52620758400EDAAF8 /* Intro5.sks */,
-				C37313E32620707D00EDAAF8 /* Intro1.sks */,
-				C37313EB2620746200EDAAF8 /* Intro2.sks */,
 			);
 			path = Introduction;
 			sourceTree = "<group>";
