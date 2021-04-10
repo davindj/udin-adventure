@@ -8,11 +8,11 @@
 import SpriteKit
 
 class BagpackScene: SKScene {
-    
     var closeButton: SKNode?
     
     override func didMove(to view: SKView) {
         closeButton = childNode(withName: "closeButton")
+        print(GameScene.point)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

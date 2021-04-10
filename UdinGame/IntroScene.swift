@@ -31,7 +31,7 @@ class IntroScene: SKScene {
         let text2 = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
         let text3 = "Namun sifatnya sangat tertutup, dia enggan berbicara banyak dengan ku."
         let text4 = "Karena sifat tertutup itu, dia sering dijahili oleh teman-temannya."
-        let text5 = "Kira-kira apa yang harus aku lakukan agar dapat mengetahui mengapa sifat Udin seperti itu?"
+        let text5 = "Kira-kira apa yang harus aku lakukan agar dapat mengetahui \nmengapa sifat Udin seperti itu?"
         
         if let story1 = story1 {
             textAlignment(label: story1, string: text1)
@@ -61,7 +61,7 @@ class IntroScene: SKScene {
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 48)], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.underlineColor: UIColor.black, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 48.0)!], range: range)
         label.attributedText = attrString
     }
     
@@ -76,28 +76,28 @@ class IntroScene: SKScene {
             self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
             // scene2
-            let scene1 = SKScene(fileNamed: "Intro3")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
+            let scene2 = SKScene(fileNamed: "Intro3")
+            scene2?.scaleMode = .aspectFill
+            self.view?.presentScene(scene2!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 3:
             // scene2
-            let scene1 = SKScene(fileNamed: "Intro4")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
+            let scene3 = SKScene(fileNamed: "Intro4")
+            scene3?.scaleMode = .aspectFill
+            self.view?.presentScene(scene3!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 4:
             // scene2
-            let scene1 = SKScene(fileNamed: "Intro5")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
+            let scene4 = SKScene(fileNamed: "Intro5")
+            scene4?.scaleMode = .aspectFill
+            self.view?.presentScene(scene4!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 5:
             // scene2
-            let scene1 = SKScene(fileNamed: "GameScene")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
+            let scene5 = SKScene(fileNamed: "GameScene")
+            scene5?.scaleMode = .aspectFill
+            self.view?.presentScene(scene5!, transition: SKTransition.fade(withDuration: 1.0))
         default:
-            let scene1 = SKScene(fileNamed: "Intro1")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
+            let scene0 = SKScene(fileNamed: "Intro1")
+            scene0?.scaleMode = .aspectFill
+            self.view?.presentScene(scene0!, transition: SKTransition.fade(withDuration: 1.0))
         }
     }
 }

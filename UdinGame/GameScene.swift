@@ -47,6 +47,7 @@ class GameScene: SKScene {
     let objectRange = 100.0
     
     static var playerPosition = CGPoint(x: 650, y: -145)
+    static var point = 0
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
@@ -193,25 +194,41 @@ extension GameScene {
             }
             player!.removeAllActions()
             
+            // MARK: Navigation to other scene
+            // triggered by button
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             
             switch buttonPoint.name {
             case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton")))
+                
+                // Go to BookScene
+                let bookScene = UdinDiaryScene(fileNamed: "UdinDiaryScene")
+                bookScene?.scaleMode = .aspectFill
+                self.view?.presentScene(bookScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
-                // Go to interactionanton
-                let interactionAnton = InteractionAnton(fileNamed: "InteractionAnton")
-                interactionAnton?.scaleMode = .aspectFill
-                self.view?.presentScene(interactionAnton!, transition: SKTransition.fade(withDuration: 1.0))
-                
+                // Go to InteractionAnton
+                let antonScene = InteractionAnton(fileNamed: "InteractionAnton")
+                antonScene?.scaleMode = .aspectFill
+                self.view?.presentScene(antonScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
+                
+                // Go to InteractionToni
+                let yusufScene = InteractionYusuf(fileNamed: "InteractionYusuf")
+                yusufScene?.scaleMode = .aspectFill
+                self.view?.presentScene(yusufScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 print("Go to toniScene")
+                
+                // Go to InteractionToni
+                let toniScene = InteractionToni(fileNamed: "InteractionToni")
+                toniScene?.scaleMode = .aspectFill
+                self.view?.presentScene(toniScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
                 

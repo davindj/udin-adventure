@@ -13,6 +13,8 @@ class UdinDiaryScene: SKScene {
     override func didMove(to view: SKView) {
         closeButton = childNode(withName: "closeButton")
         
+        GameScene.point += 10
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
