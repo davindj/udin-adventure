@@ -201,6 +201,12 @@ extension GameScene {
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton")))
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
+                
+                // Go to interactionanton
+                let interactionAnton = InteractionAnton(fileNamed: "InteractionAnton")
+                interactionAnton?.scaleMode = .aspectFill
+                self.view?.presentScene(interactionAnton!, transition: SKTransition.fade(withDuration: 1.0))
+                
             case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
             case "toniButton" :
