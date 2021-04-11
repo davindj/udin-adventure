@@ -28,6 +28,12 @@ class InteractionToni: SKScene {
     static var fontType = "Bold"
     static var fontColor = UIColor.brown
     
+    // Sound and Music
+    var backgroundMusic: SKAudioNode?
+    var playerChatSound: SKAudioNode?
+    var toniChatSound: SKAudioNode?
+    var closeSound: SKAudioNode?
+    
     override func didMove(to view: SKView) {
         playerBubble = childNode(withName: "playerBubble")
         toniBubble = childNode(withName: "toniBubble")
@@ -35,14 +41,23 @@ class InteractionToni: SKScene {
         playerChat = playerBubble?.childNode(withName: "playerChat") as? SKLabelNode
         toniChat = toniBubble?.childNode(withName: "toniChat") as? SKLabelNode
         
-        if InteractionToni.fromScene != "BagpackScene" {
-            BagpackScene.items.append("insight2")
+        backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
+        playerChatSound = childNode(withName: "playerChatSound") as? SKAudioNode
+        toniChatSound = childNode(withName: "toniChatSound") as? SKAudioNode
+        closeSound = childNode(withName: "closeSound") as? SKAudioNode
+        
+        if let backgroundMusic = backgroundMusic {
+            SettingsMenu.runMusic(node: backgroundMusic)
         }
         
         GameScene.hasToniInsight = true
         
         playerBubble?.isHidden = true
         toniBubble?.isHidden = true
+        
+        if InteractionToni.fromScene != "BagpackScene" {
+            BagpackScene.items.append("insight2")
+        }
         
         setText()
     }
@@ -55,27 +70,40 @@ class InteractionToni: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let backgroundMusic = backgroundMusic else { return }
+        guard let playerChatSound = playerChatSound else { return }
+        guard let toniChatSound = toniChatSound else { return }
+        guard let closeSound = closeSound else { return }
+        
         guard let playerChat = playerChat else { return }
         guard let toniChat = toniChat else { return }
         touchCount += 1
+        print(touchCount)
         
         switch touchCount {
         case 1:
             toniBubble?.isHidden = false
             textAlignment(label: toniChat, string: textToni0)
+            SettingsMenu.runSound(node: toniChatSound)
         case 2:
             toniBubble?.isHidden = true
             playerBubble?.isHidden = false
             textAlignment(label: playerChat, string: textPlayer0)
+            SettingsMenu.runSound(node: playerChatSound)
         case 3:
             playerBubble?.isHidden = true
             toniBubble?.isHidden = false
             textAlignment(label: toniChat, string: textToni1)
+            SettingsMenu.runSound(node: toniChatSound)
         case 4:
             toniBubble?.isHidden = true
             playerBubble?.isHidden = false
             textAlignment(label: playerChat, string: textPlayer1)
+            SettingsMenu.runSound(node: playerChatSound)
         case 5:
+            SettingsMenu.stopMusic(node: backgroundMusic)
+            SettingsMenu.runSound(node: closeSound)
+            
             if InteractionToni.fromScene == "BagpackScene" {
                 let bagpackScene = SKScene(fileNamed: "BagpackScene")
                 bagpackScene?.scaleMode = .aspectFill

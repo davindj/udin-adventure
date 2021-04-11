@@ -29,6 +29,12 @@ class InteractionYusuf: SKScene {
     static var fontType = "Bold"
     static var fontColor = UIColor.brown
     
+    // Sound and Music
+    var backgroundMusic: SKAudioNode?
+    var playerChatSound: SKAudioNode?
+    var yusufChatSound: SKAudioNode?
+    var closeSound: SKAudioNode?
+    
     override func didMove(to view: SKView) {
         playerBubble = childNode(withName: "playerBubble")
         yusufBubble = childNode(withName: "yusufBubble")
@@ -36,8 +42,13 @@ class InteractionYusuf: SKScene {
         playerChat = playerBubble?.childNode(withName: "playerChat") as? SKLabelNode
         yusufChat = yusufBubble?.childNode(withName: "yusufChat") as? SKLabelNode
         
-        if InteractionYusuf.fromScene != "BagpackScene" {
-            BagpackScene.items.append("insight1")
+        backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
+        playerChatSound = childNode(withName: "playerChatSound") as? SKAudioNode
+        yusufChatSound = childNode(withName: "yusufChatSound") as? SKAudioNode
+        closeSound = childNode(withName: "closeSound") as? SKAudioNode
+        
+        if let backgroundMusic = backgroundMusic {
+            SettingsMenu.runMusic(node: backgroundMusic)
         }
         
         GameScene.hasYusufInsight = true
@@ -45,7 +56,9 @@ class InteractionYusuf: SKScene {
         playerBubble?.isHidden = true
         yusufBubble?.isHidden = true
         
-        
+        if InteractionYusuf.fromScene != "BagpackScene" {
+            BagpackScene.items.append("insight1")
+        }
         
         setText()
     }
@@ -59,6 +72,11 @@ class InteractionYusuf: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let backgroundMusic = backgroundMusic else { return }
+        guard let playerChatSound = playerChatSound else { return }
+        guard let yusufChatSound = yusufChatSound else { return }
+        guard let closeSound = closeSound else { return }
+        
         guard let playerChat = playerChat else { return }
         guard let yusufChat = yusufChat else { return }
         touchCount += 1
@@ -68,23 +86,31 @@ class InteractionYusuf: SKScene {
         case 1:
             yusufBubble?.isHidden = false
             textAlignment(label: yusufChat, string: textYusuf0)
+            SettingsMenu.runSound(node: yusufChatSound)
         case 2:
             yusufBubble?.isHidden = true
             playerBubble?.isHidden = false
             textAlignment(label: playerChat, string: textPlayer0)
+            SettingsMenu.runSound(node: playerChatSound)
         case 3:
             playerBubble?.isHidden = true
             yusufBubble?.isHidden = false
             textAlignment(label: yusufChat, string: textYusuf1)
+            SettingsMenu.runSound(node: yusufChatSound)
         case 4:
             yusufBubble?.isHidden = true
             playerBubble?.isHidden = false
             textAlignment(label: playerChat, string: textPlayer1)
+            SettingsMenu.runSound(node: playerChatSound)
         case 5:
             playerBubble?.isHidden = true
             yusufBubble?.isHidden = false
             textAlignment(label: yusufChat, string: textYusuf2)
+            SettingsMenu.runSound(node: yusufChatSound)
         case 6:
+            SettingsMenu.stopMusic(node: backgroundMusic)
+            SettingsMenu.runSound(node: closeSound)
+            
             if InteractionYusuf.fromScene == "BagpackScene" {
                 let bagpackScene = SKScene(fileNamed: "BagpackScene")
                 bagpackScene?.scaleMode = .aspectFill

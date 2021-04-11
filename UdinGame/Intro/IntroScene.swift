@@ -23,6 +23,9 @@ class IntroScene: SKScene {
         story3 = childNode(withName: "storyIntro3") as? SKLabelNode
         story4 = childNode(withName: "storyIntro4") as? SKLabelNode
         
+        let backgroundMusic = SKAudioNode(fileNamed: "breakdown")
+        addChild(backgroundMusic)
+        
         setText()
     }
     

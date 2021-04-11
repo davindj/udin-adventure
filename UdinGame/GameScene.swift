@@ -66,11 +66,22 @@ class GameScene: SKScene {
     
     // Player position data
     static var playerPosition = CGPoint(x: 650, y: -145)
+    
+    // Game point
     static var point = 0
     
     // Text properties
     static var fontName = "Verdana"
     static var fontType = "Bold"
+    
+    // Sound and Music
+    var backgroundMusic: SKAudioNode?
+    var walkSound: SKAudioNode?
+    var eventTriggerSound: SKAudioNode?
+    var buttonSound: SKAudioNode?
+    var bagpackSound: SKAudioNode?
+    var settingSound: SKAudioNode?
+    var popUpSound: SKAudioNode?
     
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
@@ -106,6 +117,19 @@ class GameScene: SKScene {
         // PopUp Udin
         popUpUdin = childNode(withName: "popUpUdin")
         popUpLabel = popUpUdin?.childNode(withName: "popUpText") as? SKLabelNode
+        
+        // Music
+        backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
+        walkSound = childNode(withName: "walkSound") as? SKAudioNode
+        eventTriggerSound = childNode(withName: "eventTriggerSound") as? SKAudioNode
+        buttonSound = childNode(withName: "buttonSound") as? SKAudioNode
+        bagpackSound = childNode(withName: "bagpackSound") as? SKAudioNode
+        settingSound = childNode(withName: "settingSound") as? SKAudioNode
+        popUpSound = childNode(withName: "popUpSound") as? SKAudioNode
+        
+        if let backgroundMusic = backgroundMusic {
+            SettingsMenu.runMusic(node: backgroundMusic)
+        }
         
         // Hide
         actionButton?.isHidden = true
@@ -149,6 +173,11 @@ class GameScene: SKScene {
 extension GameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            guard let backgroundMusic = backgroundMusic else { return }
+            guard let buttonSound = buttonSound else { return }
+            guard let bagpackSound = bagpackSound else { return }
+            guard let settingSound = settingSound else { return }
+            
             // Read touch in joystick
             if let joystickKnob = joystickKnob {
                 let locationJoystick = touch.location(in: joystick!)
@@ -164,7 +193,7 @@ extension GameScene {
                 popUpUdin?.isHidden = true
             }
             
-            // MARK: Animate button
+            // MARK: Animate, Sound, and Music button
             // Button pressed effect
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
@@ -172,18 +201,32 @@ extension GameScene {
             switch buttonPoint.name {
             case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: buttonSound)
             case "udinButton":
                 udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: buttonSound)
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: buttonSound)
             case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: buttonSound)
             case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: buttonSound)
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: bagpackSound)
             case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: settingSound)
             default:
                 print("")
             }
@@ -195,6 +238,7 @@ extension GameScene {
         // Read joystick knob movement
         guard let joystick = joystick else { return }
         guard let joystickKnob = joystickKnob else { return }
+        guard let walkSound = walkSound else { return }
         
         if !joystickAction { return }
         
@@ -220,6 +264,10 @@ extension GameScene {
                 player?.run(.repeatForever(.animate(with: framePlayerSide, timePerFrame: frameDuration)))
             }
             
+            // Play walk sound
+            SettingsMenu.runSound(node: walkSound)
+            
+            // Reset Knob
             if length > 300.0 {
                 resetKnobPosition()
             }
@@ -235,6 +283,9 @@ extension GameScene {
                 resetKnobPosition()
             }
             player!.removeAllActions()
+            
+            // Stop walk sound
+            walkSound?.run(SKAction.stop())
             
             // MARK: Navigation to other scene
             // Triggered by button
@@ -374,6 +425,7 @@ extension GameScene {
         guard let yusufPosition = yusuf?.position else { return }
         guard let toniPosition = toni?.position else { return }
         guard let textButton = buttonText else { return }
+        guard let eventSound = eventTriggerSound else { return }
         
         if getDistanceMax(itemPosition: bookPosition, distance: 100.0) && !GameScene.hasDiaryUdin {
             // Udin Diary
@@ -381,30 +433,35 @@ extension GameScene {
             textAlignment(string: "Baca \nDiari Udin", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             book?.run(.setTexture(SKTexture(imageNamed: "highlightedBook")))
+            SettingsMenu.runSound(node: eventSound)
         } else if getDistanceMax(itemPosition: udinPosition, distance: 100.0) && GameScene.point >= 20 {
             // Confront Udin
             udinButton?.isHidden = false
             textAlignment(string: "Ngobrol \nDengan Udin", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             udin?.run(.setTexture(SKTexture(imageNamed: "highlightedUdin")))
+            SettingsMenu.runSound(node: eventSound)
         } else if getDistanceMax(itemPosition: antonPosition, distance: 100.0) && !GameScene.hasAntonInsight {
             // Anton Insight
             antonButton?.isHidden = false
             textAlignment(string: "Ngobrol \nDengan Anton", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             anton?.run(.setTexture(SKTexture(imageNamed: "highlightedBully1")))
+            SettingsMenu.runSound(node: eventSound)
         } else if getDistanceMax(itemPosition: yusufPosition, distance: 100.0) && !GameScene.hasYusufInsight {
             // Yusuf Insight
             yusufButton?.isHidden = false
             textAlignment(string: "Ngobrol \nDengan Yusuf", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             yusuf?.run(.setTexture(SKTexture(imageNamed: "highlightedBully2")))
+            SettingsMenu.runSound(node: eventSound)
         } else if getDistanceMax(itemPosition: toniPosition, distance: 100.0) && !GameScene.hasToniInsight {
             // Toni Insight
             toniButton?.isHidden = false
             textAlignment(string: "Ngobrol \nDengan Toni", label: textButton, size: 30.0, color: UIColor.brown)
             buttonText?.isHidden = false
             toni?.run(.setTexture(SKTexture(imageNamed: "highlightedBully3")))
+            SettingsMenu.runSound(node: eventSound)
         } else {
             actionButton?.isHidden = true
             antonButton?.isHidden = true
@@ -415,13 +472,16 @@ extension GameScene {
             anton?.run(.setTexture(SKTexture(imageNamed: "bully1")))
             yusuf?.run(.setTexture(SKTexture(imageNamed: "bully2")))
             toni?.run(.setTexture(SKTexture(imageNamed: "bully3")))
+            SettingsMenu.stopSound(node: eventSound)
         }
     }
     
     func showPopUp() {
         guard let labelPopUp = popUpLabel else { return }
+        guard let popUpSound = popUpSound else { return }
         
         if GameScene.point >= 20 && !GameScene.hasPopUp {
+            SettingsMenu.runSound(node: popUpSound)
             popUpUdin?.isHidden = false
             GameScene.hasPopUp = true
             popUpUdin?.alpha = 0.8

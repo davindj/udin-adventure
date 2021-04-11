@@ -27,8 +27,14 @@ class BagpackScene: SKScene {
     static var fontType = "Bold"
     static var fontColor = UIColor.brown
     
+    // Sound and Music
+    var backgroundMusic: SKAudioNode?
+    var closeSound: SKAudioNode?
+    var itemSound: SKAudioNode?
+    
     override func didMove(to view: SKView) {
         closeButton = childNode(withName: "closeButton")
+        
         item0 = childNode(withName: "item0") as? SKSpriteNode
         item1 = childNode(withName: "item1") as? SKSpriteNode
         item2 = childNode(withName: "item2") as? SKSpriteNode
@@ -42,6 +48,14 @@ class BagpackScene: SKScene {
         item1?.isHidden = true
         item2?.isHidden = true
         item3?.isHidden = true
+        
+        backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
+        closeSound = childNode(withName: "closeSound") as? SKAudioNode
+        itemSound = childNode(withName: "itemSound") as? SKAudioNode
+        
+        if let music = backgroundMusic {
+            SettingsMenu.runMusic(node: music)
+        }
         
         print(GameScene.point)
         insertItem()
@@ -114,12 +128,31 @@ class BagpackScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            // MARK: Sound and Music
+            guard let closeSound = closeSound else { return }
+            guard let itemSound = itemSound else { return }
+            guard let backgroundMusic = backgroundMusic else { return }
+            
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             
             switch buttonPoint.name {
             case "closeButton":
                 closeButton!.run(.setTexture(SKTexture(imageNamed: "bagcloseButton2")))
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: closeSound)
+            case "item0":
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: itemSound)
+            case "item1":
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: itemSound)
+            case "item2":
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: itemSound)
+            case "item3":
+                SettingsMenu.stopMusic(node: backgroundMusic)
+                SettingsMenu.runSound(node: itemSound)
             default:
                 print("")
             }
@@ -157,6 +190,7 @@ class BagpackScene: SKScene {
                 let sceneName0: String
                 (_, sceneName0) = getItemLabelAndScene(item: itemName0)
                 setFromScene(scene: sceneName0)
+                
                 
                 // Review to item0
                 let scene0 = SKScene(fileNamed: sceneName0)
