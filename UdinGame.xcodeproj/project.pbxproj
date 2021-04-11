@@ -33,6 +33,16 @@
 		C38D437126218886006DBA57 /* InteractionToni.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D437026218886006DBA57 /* InteractionToni.sks */; };
 		C38D43742621891C006DBA57 /* InteractionToni.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D43732621891C006DBA57 /* InteractionToni.swift */; };
 		C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39CB4EF262022F1009F0D52 /* BagpackScene.swift */; };
+		C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C61262346AE00C501A0 /* OutroBad0.sks */; };
+		C3CC1C67262346AE00C501A0 /* OutroBad2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C62262346AE00C501A0 /* OutroBad2.sks */; };
+		C3CC1C68262346AE00C501A0 /* OutroBad1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C63262346AE00C501A0 /* OutroBad1.sks */; };
+		C3CC1C69262346AE00C501A0 /* OutroBad3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C64262346AE00C501A0 /* OutroBad3.sks */; };
+		C3CC1C6A262346AE00C501A0 /* OutroBad4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C65262346AE00C501A0 /* OutroBad4.sks */; };
+		C3CC1C71262346C500C501A0 /* OutroGood4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6C262346C500C501A0 /* OutroGood4.sks */; };
+		C3CC1C72262346C500C501A0 /* OutroGood2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6D262346C500C501A0 /* OutroGood2.sks */; };
+		C3CC1C73262346C500C501A0 /* OutroGood0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6E262346C500C501A0 /* OutroGood0.sks */; };
+		C3CC1C74262346C500C501A0 /* OutroGood1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6F262346C500C501A0 /* OutroGood1.sks */; };
+		C3CC1C75262346C500C501A0 /* OutroGood3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C70262346C500C501A0 /* OutroGood3.sks */; };
 		D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D726C9261F069100C10602 /* BattleSceneViewController.swift */; };
 		D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7E07637261DC97700F20CD9 /* GameScene.sks */; };
 /* End PBXBuildFile section */
@@ -66,6 +76,16 @@
 		C38D437026218886006DBA57 /* InteractionToni.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InteractionToni.sks; sourceTree = "<group>"; };
 		C38D43732621891C006DBA57 /* InteractionToni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionToni.swift; sourceTree = "<group>"; };
 		C39CB4EF262022F1009F0D52 /* BagpackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagpackScene.swift; sourceTree = "<group>"; };
+		C3CC1C61262346AE00C501A0 /* OutroBad0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad0.sks; sourceTree = "<group>"; };
+		C3CC1C62262346AE00C501A0 /* OutroBad2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad2.sks; sourceTree = "<group>"; };
+		C3CC1C63262346AE00C501A0 /* OutroBad1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad1.sks; sourceTree = "<group>"; };
+		C3CC1C64262346AE00C501A0 /* OutroBad3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad3.sks; sourceTree = "<group>"; };
+		C3CC1C65262346AE00C501A0 /* OutroBad4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad4.sks; sourceTree = "<group>"; };
+		C3CC1C6C262346C500C501A0 /* OutroGood4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood4.sks; sourceTree = "<group>"; };
+		C3CC1C6D262346C500C501A0 /* OutroGood2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood2.sks; sourceTree = "<group>"; };
+		C3CC1C6E262346C500C501A0 /* OutroGood0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood0.sks; sourceTree = "<group>"; };
+		C3CC1C6F262346C500C501A0 /* OutroGood1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood1.sks; sourceTree = "<group>"; };
+		C3CC1C70262346C500C501A0 /* OutroGood3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood3.sks; sourceTree = "<group>"; };
 		D7D726C9261F069100C10602 /* BattleSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSceneViewController.swift; sourceTree = "<group>"; };
 		D7E07637261DC97700F20CD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +182,11 @@
 		C3CC1C5A262345EF00C501A0 /* BadEnding */ = {
 			isa = PBXGroup;
 			children = (
+				C3CC1C61262346AE00C501A0 /* OutroBad0.sks */,
+				C3CC1C63262346AE00C501A0 /* OutroBad1.sks */,
+				C3CC1C62262346AE00C501A0 /* OutroBad2.sks */,
+				C3CC1C64262346AE00C501A0 /* OutroBad3.sks */,
+				C3CC1C65262346AE00C501A0 /* OutroBad4.sks */,
 			);
 			path = BadEnding;
 			sourceTree = "<group>";
@@ -169,6 +194,11 @@
 		C3CC1C5B262345FA00C501A0 /* GoodEnding */ = {
 			isa = PBXGroup;
 			children = (
+				C3CC1C6E262346C500C501A0 /* OutroGood0.sks */,
+				C3CC1C6F262346C500C501A0 /* OutroGood1.sks */,
+				C3CC1C6D262346C500C501A0 /* OutroGood2.sks */,
+				C3CC1C70262346C500C501A0 /* OutroGood3.sks */,
+				C3CC1C6C262346C500C501A0 /* OutroGood4.sks */,
 			);
 			path = GoodEnding;
 			sourceTree = "<group>";
@@ -231,19 +261,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37313F02620756A00EDAAF8 /* Intro3.sks in Resources */,
+				C3CC1C69262346AE00C501A0 /* OutroBad3.sks in Resources */,
+				C3CC1C6A262346AE00C501A0 /* OutroBad4.sks in Resources */,
+				C3CC1C73262346C500C501A0 /* OutroGood0.sks in Resources */,
 				C38D1D81261D8F1300D9EC1C /* Main.storyboard in Resources */,
 				C37313EC2620746200EDAAF8 /* Intro2.sks in Resources */,
+				C3CC1C67262346AE00C501A0 /* OutroBad2.sks in Resources */,
+				C3CC1C75262346C500C501A0 /* OutroGood3.sks in Resources */,
+				C3CC1C74262346C500C501A0 /* OutroGood1.sks in Resources */,
 				C37313E42620707D00EDAAF8 /* Intro1.sks in Resources */,
 				C38D435C262177C4006DBA57 /* UdinDiaryScene.sks in Resources */,
 				D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */,
+				C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */,
+				C3CC1C71262346C500C501A0 /* OutroGood4.sks in Resources */,
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
 				C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */,
 				C37313F32620757900EDAAF8 /* Intro4.sks in Resources */,
 				C38D43692621874F006DBA57 /* InteractionYusuf.sks in Resources */,
 				C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */,
+				C3CC1C68262346AE00C501A0 /* OutroBad1.sks in Resources */,
 				C38D1DB0261DC87100D9EC1C /* BattleScene.sks in Resources */,
 				C38D437126218886006DBA57 /* InteractionToni.sks in Resources */,
 				C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */,
+				C3CC1C72262346C500C501A0 /* OutroGood2.sks in Resources */,
 				C37313F62620758400EDAAF8 /* Intro5.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
