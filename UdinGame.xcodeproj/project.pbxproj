@@ -11,12 +11,12 @@
 		4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */; };
 		4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECFC85261EF08E00043358 /* SettingsMenu.swift */; };
 		C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C35A07F8261F124000CD47BD /* BagpackScene.sks */; };
-		C37313E42620707D00EDAAF8 /* Intro1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313E32620707D00EDAAF8 /* Intro1.sks */; };
+		C37313E42620707D00EDAAF8 /* Intro0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313E32620707D00EDAAF8 /* Intro0.sks */; };
 		C37313E72620710F00EDAAF8 /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37313E62620710F00EDAAF8 /* IntroScene.swift */; };
-		C37313EC2620746200EDAAF8 /* Intro2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313EB2620746200EDAAF8 /* Intro2.sks */; };
-		C37313F02620756A00EDAAF8 /* Intro3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313EF2620756A00EDAAF8 /* Intro3.sks */; };
-		C37313F32620757900EDAAF8 /* Intro4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313F22620757900EDAAF8 /* Intro4.sks */; };
-		C37313F62620758400EDAAF8 /* Intro5.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313F52620758400EDAAF8 /* Intro5.sks */; };
+		C37313EC2620746200EDAAF8 /* Intro1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313EB2620746200EDAAF8 /* Intro1.sks */; };
+		C37313F02620756A00EDAAF8 /* Intro2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313EF2620756A00EDAAF8 /* Intro2.sks */; };
+		C37313F32620757900EDAAF8 /* Intro3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313F22620757900EDAAF8 /* Intro3.sks */; };
+		C37313F62620758400EDAAF8 /* Intro4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313F52620758400EDAAF8 /* Intro4.sks */; };
 		C38D1D76261D8F1300D9EC1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */; };
 		C38D1D81261D8F1300D9EC1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38D1D7F261D8F1300D9EC1C /* Main.storyboard */; };
 		C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38D1D82261D8F1400D9EC1C /* Assets.xcassets */; };
@@ -52,12 +52,12 @@
 		4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsMenu.sks; sourceTree = "<group>"; };
 		4EECFC85261EF08E00043358 /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
 		C35A07F8261F124000CD47BD /* BagpackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BagpackScene.sks; sourceTree = "<group>"; };
-		C37313E32620707D00EDAAF8 /* Intro1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro1.sks; sourceTree = "<group>"; };
+		C37313E32620707D00EDAAF8 /* Intro0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro0.sks; sourceTree = "<group>"; };
 		C37313E62620710F00EDAAF8 /* IntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
-		C37313EB2620746200EDAAF8 /* Intro2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro2.sks; sourceTree = "<group>"; };
-		C37313EF2620756A00EDAAF8 /* Intro3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro3.sks; sourceTree = "<group>"; };
-		C37313F22620757900EDAAF8 /* Intro4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro4.sks; sourceTree = "<group>"; };
-		C37313F52620758400EDAAF8 /* Intro5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro5.sks; sourceTree = "<group>"; };
+		C37313EB2620746200EDAAF8 /* Intro1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro1.sks; sourceTree = "<group>"; };
+		C37313EF2620756A00EDAAF8 /* Intro2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro2.sks; sourceTree = "<group>"; };
+		C37313F22620757900EDAAF8 /* Intro3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro3.sks; sourceTree = "<group>"; };
+		C37313F52620758400EDAAF8 /* Intro4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro4.sks; sourceTree = "<group>"; };
 		C38D1D72261D8F1300D9EC1C /* UdinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C38D1D80261D8F1300D9EC1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,11 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				C37313E62620710F00EDAAF8 /* IntroScene.swift */,
-				C37313E32620707D00EDAAF8 /* Intro1.sks */,
-				C37313EB2620746200EDAAF8 /* Intro2.sks */,
-				C37313EF2620756A00EDAAF8 /* Intro3.sks */,
-				C37313F22620757900EDAAF8 /* Intro4.sks */,
-				C37313F52620758400EDAAF8 /* Intro5.sks */,
+				C37313E32620707D00EDAAF8 /* Intro0.sks */,
+				C37313EB2620746200EDAAF8 /* Intro1.sks */,
+				C37313EF2620756A00EDAAF8 /* Intro2.sks */,
+				C37313F22620757900EDAAF8 /* Intro3.sks */,
+				C37313F52620758400EDAAF8 /* Intro4.sks */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -260,23 +260,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C37313F02620756A00EDAAF8 /* Intro3.sks in Resources */,
+				C37313F02620756A00EDAAF8 /* Intro2.sks in Resources */,
 				C3CC1C69262346AE00C501A0 /* OutroBad3.sks in Resources */,
 				C3CC1C6A262346AE00C501A0 /* OutroBad4.sks in Resources */,
 				C3CC1C73262346C500C501A0 /* OutroGood0.sks in Resources */,
 				C38D1D81261D8F1300D9EC1C /* Main.storyboard in Resources */,
-				C37313EC2620746200EDAAF8 /* Intro2.sks in Resources */,
+				C37313EC2620746200EDAAF8 /* Intro1.sks in Resources */,
 				C3CC1C67262346AE00C501A0 /* OutroBad2.sks in Resources */,
 				C3CC1C75262346C500C501A0 /* OutroGood3.sks in Resources */,
 				C3CC1C74262346C500C501A0 /* OutroGood1.sks in Resources */,
-				C37313E42620707D00EDAAF8 /* Intro1.sks in Resources */,
+				C37313E42620707D00EDAAF8 /* Intro0.sks in Resources */,
 				C38D435C262177C4006DBA57 /* UdinDiaryScene.sks in Resources */,
 				D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */,
 				C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */,
 				C3CC1C71262346C500C501A0 /* OutroGood4.sks in Resources */,
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
 				C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */,
-				C37313F32620757900EDAAF8 /* Intro4.sks in Resources */,
+				C37313F32620757900EDAAF8 /* Intro3.sks in Resources */,
 				C38D43692621874F006DBA57 /* InteractionYusuf.sks in Resources */,
 				C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */,
 				C3CC1C68262346AE00C501A0 /* OutroBad1.sks in Resources */,
@@ -284,7 +284,7 @@
 				C38D437126218886006DBA57 /* InteractionToni.sks in Resources */,
 				C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */,
 				C3CC1C72262346C500C501A0 /* OutroGood2.sks in Resources */,
-				C37313F62620758400EDAAF8 /* Intro5.sks in Resources */,
+				C37313F62620758400EDAAF8 /* Intro4.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
