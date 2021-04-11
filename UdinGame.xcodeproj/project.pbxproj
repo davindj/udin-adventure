@@ -81,7 +81,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C37313F926207A8200EDAAF8 /* Introduction */ = {
+		C37313F926207A8200EDAAF8 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
 				C37313E62620710F00EDAAF8 /* IntroScene.swift */,
@@ -91,7 +91,7 @@
 				C37313F22620757900EDAAF8 /* Intro4.sks */,
 				C37313F52620758400EDAAF8 /* Intro5.sks */,
 			);
-			path = Introduction;
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		C38D1D69261D8F1300D9EC1C = {
@@ -125,7 +125,8 @@
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
 				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
 				C3A8B66F2622374F00B20028 /* Event */,
-				C37313F926207A8200EDAAF8 /* Introduction */,
+				C37313F926207A8200EDAAF8 /* Intro */,
+				C3CC1C58262345CF00C501A0 /* Outro */,
 				C38D1D7F261D8F1300D9EC1C /* Main.storyboard */,
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
 				C38D1D82261D8F1400D9EC1C /* Assets.xcassets */,
@@ -147,6 +148,29 @@
 				C38D435E262178A0006DBA57 /* UdinDiaryScene.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		C3CC1C58262345CF00C501A0 /* Outro */ = {
+			isa = PBXGroup;
+			children = (
+				C3CC1C5B262345FA00C501A0 /* GoodEnding */,
+				C3CC1C5A262345EF00C501A0 /* BadEnding */,
+			);
+			path = Outro;
+			sourceTree = "<group>";
+		};
+		C3CC1C5A262345EF00C501A0 /* BadEnding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BadEnding;
+			sourceTree = "<group>";
+		};
+		C3CC1C5B262345FA00C501A0 /* GoodEnding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GoodEnding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
