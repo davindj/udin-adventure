@@ -13,15 +13,21 @@ class InteractionYusuf: SKScene {
     var playerBubble: SKNode?
     var yusufBubble: SKNode?
     
-    var textYusuf = ""
+    var textYusuf0 = ""
     var textYusuf1 = ""
     var textYusuf2 = ""
-    var textPlayer = ""
+    
+    var textPlayer0 = ""
     var textPlayer1 = ""
     
     var touchCount = 0
     
     static var fromScene = ""
+    
+    // Text properties
+    static var fontName = "Verdana"
+    static var fontType = "Bold"
+    static var fontColor = UIColor.brown
     
     override func didMove(to view: SKView) {
         playerBubble = childNode(withName: "playerBubble")
@@ -39,12 +45,14 @@ class InteractionYusuf: SKScene {
         playerBubble?.isHidden = true
         yusufBubble?.isHidden = true
         
+        
+        
         setText()
     }
     
     func setText() {
-        textYusuf = "Kamu tahu tidak dulu Udin \nanaknya ceria dan asik sekali. \nTidak seperti sekarang, penyendiri"
-        textPlayer = "Oh ya? Kenapa dia berubah?"
+        textYusuf0 = "Kamu tahu tidak dulu Udin \nanaknya ceria dan asik sekali. \nTidak seperti sekarang, penyendiri"
+        textPlayer0 = "Oh ya? Kenapa dia berubah?"
         textYusuf1 = "Kurang tahu sih, tapi akhir-akhir ini \ndia sering kali datang dan \npulang dari sekolah sendiri juga"
         textPlayer1 = "Emangnya dia biasanya \nbersama orang tuanya kah?"
         textYusuf2 = "Iya, biasanya Ibunya siap menjemputnya \nbahkan sebelum bel berbunyi \nibunya sudah berada di gerbang sekolah"
@@ -55,14 +63,15 @@ class InteractionYusuf: SKScene {
         guard let yusufChat = yusufChat else { return }
         touchCount += 1
         
+        // MARK: Event Yusuf Insight
         switch touchCount{
         case 1:
             yusufBubble?.isHidden = false
-            textAlignment(label: yusufChat, string: textYusuf)
+            textAlignment(label: yusufChat, string: textYusuf0)
         case 2:
             yusufBubble?.isHidden = true
             playerBubble?.isHidden = false
-            textAlignment(label: playerChat, string: textPlayer)
+            textAlignment(label: playerChat, string: textPlayer0)
         case 3:
             playerBubble?.isHidden = true
             yusufBubble?.isHidden = false
@@ -92,12 +101,13 @@ class InteractionYusuf: SKScene {
     }
     
     func textAlignment(label: SKLabelNode ,string: String) {
+        let font = "\(InteractionYusuf.fontName)-\(InteractionYusuf.fontType)"
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 23.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : InteractionYusuf.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 23.0)!], range: range)
         label.attributedText = attrString
     }
 }

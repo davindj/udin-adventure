@@ -68,6 +68,10 @@ class GameScene: SKScene {
     static var playerPosition = CGPoint(x: 650, y: -145)
     static var point = 0
     
+    // Text properties
+    static var fontName = "Verdana"
+    static var fontType = "Bold"
+    
     override func didMove(to view: SKView) {
         player = childNode(withName: "player")
         player?.position = GameScene.playerPosition
@@ -434,12 +438,13 @@ extension GameScene {
     }
     
     func textAlignment(string: String, label: SKLabelNode, size: CGFloat = 32.0, color: UIColor = .white) {
+        let font = "\(GameScene.fontName)-\(GameScene.fontType)"
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: size)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: font, size: size)!], range: range)
         label.attributedText = attrString
     }
     

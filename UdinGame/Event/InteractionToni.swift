@@ -13,14 +13,20 @@ class InteractionToni: SKScene {
     var playerBubble: SKNode?
     var toniBubble: SKNode?
     
-    var textToni = ""
+    var textToni0 = ""
     var textToni1 = ""
-    var textPlayer = ""
+    var textPlayer0 = ""
     var textPlayer1 = ""
     
     var touchCount = 0
     
+    // Navigation
     static var fromScene = ""
+    
+    // Text properties
+    static var fontName = "Verdana"
+    static var fontType = "Bold"
+    static var fontColor = UIColor.brown
     
     override func didMove(to view: SKView) {
         playerBubble = childNode(withName: "playerBubble")
@@ -42,8 +48,8 @@ class InteractionToni: SKScene {
     }
     
     func setText() {
-        textToni = "Kamu kenal Udin? Dia dulu meraih tingkat pertama \ndi kelas kita namun semenjak semester baru"
-        textPlayer = "Nggak ah ton, kasihan gitu anaknya pendiam"
+        textToni0 = "Kamu kenal Udin? Dia dulu meraih tingkat pertama \ndi kelas kita namun semenjak semester baru"
+        textPlayer0 = "Nggak ah ton, kasihan gitu anaknya pendiam"
         textToni1 = "Ah ga asik Lam..."
         textPlayer1 = "Tahu deh ton"
     }
@@ -56,11 +62,11 @@ class InteractionToni: SKScene {
         switch touchCount {
         case 1:
             toniBubble?.isHidden = false
-            textAlignment(label: toniChat, string: textToni)
+            textAlignment(label: toniChat, string: textToni0)
         case 2:
             toniBubble?.isHidden = true
             playerBubble?.isHidden = false
-            textAlignment(label: playerChat, string: textPlayer)
+            textAlignment(label: playerChat, string: textPlayer0)
         case 3:
             playerBubble?.isHidden = true
             toniBubble?.isHidden = false
@@ -81,17 +87,18 @@ class InteractionToni: SKScene {
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
             }
         default:
-            textAlignment(label: toniChat, string: textToni)
+            textAlignment(label: toniChat, string: textToni0)
         }
     }
     
     func textAlignment(label: SKLabelNode ,string: String) {
+        let font = "\(InteractionToni.fontName)-\(InteractionToni.fontType)"
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 23.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : InteractionToni.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 23.0)!], range: range)
         label.attributedText = attrString
     }
 }

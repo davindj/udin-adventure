@@ -134,8 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
-				C35A07F8261F124000CD47BD /* BagpackScene.sks */,
-				C39CB4EF262022F1009F0D52 /* BagpackScene.swift */,
 				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
 				D7E07637261DC97700F20CD9 /* GameScene.sks */,
@@ -144,6 +142,7 @@
 				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
 				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
+				C3CC1C7D262351BF00C501A0 /* Bagpack */,
 				C3A8B66F2622374F00B20028 /* Event */,
 				C37313F926207A8200EDAAF8 /* Intro */,
 				C3CC1C58262345CF00C501A0 /* Outro */,
@@ -201,6 +200,15 @@
 				C3CC1C6C262346C500C501A0 /* OutroGood4.sks */,
 			);
 			path = GoodEnding;
+			sourceTree = "<group>";
+		};
+		C3CC1C7D262351BF00C501A0 /* Bagpack */ = {
+			isa = PBXGroup;
+			children = (
+				C35A07F8261F124000CD47BD /* BagpackScene.sks */,
+				C39CB4EF262022F1009F0D52 /* BagpackScene.swift */,
+			);
+			path = Bagpack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

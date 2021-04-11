@@ -37,6 +37,7 @@ class SettingsMenu: SKScene {
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
             
+            // Set Button Pressed Effect
             switch buttonPoint.name {
             case "closeButton":
                 closeButton?.run(.setTexture(SKTexture(imageNamed: "closeButton2")))
@@ -90,23 +91,27 @@ class SettingsMenu: SKScene {
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "musicButton":
                 if musicButtonName == "musicButton2" {
+                    // Turn to no music
                     musicButton?.run(.setTexture(SKTexture(imageNamed: "nomusicButton")))
                 } else if musicButtonName == "nomusicButton2" {
                     musicButton?.run(.setTexture(SKTexture(imageNamed: "musicButton")))
                 }
             case "soundButton":
                 if soundButtonName == "soundButton2" {
+                    // Turn to no sound
                     soundButton?.run(.setTexture(SKTexture(imageNamed: "nosoundButton")))
                 } else if soundButtonName == "nosoundButton2" {
                     soundButton?.run(.setTexture(SKTexture(imageNamed: "soundButton")))
                 }
             case "vibrateButton":
                 if vibrateButtonName == "vibrateButton2" {
+                    // Turn to no vibration
                     vibrateButton?.run(.setTexture(SKTexture(imageNamed: "novibrateButton")))
                 } else if vibrateButtonName == "novibrateButton2" {
                     vibrateButton?.run(.setTexture(SKTexture(imageNamed: "vibrateButton")))
                 }
             case "emailButton":
+                // Send support email
                 emailButton?.run(.setTexture(SKTexture(imageNamed: "supportButton")))
             default:
                 print("")

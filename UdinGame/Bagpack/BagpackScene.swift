@@ -22,6 +22,11 @@ class BagpackScene: SKScene {
     
     static var items = [String]()
     
+    // Text properties
+    static var fontName = "Verdana"
+    static var fontType = "Bold"
+    static var fontColor = UIColor.brown
+    
     override func didMove(to view: SKView) {
         closeButton = childNode(withName: "closeButton")
         item0 = childNode(withName: "item0") as? SKSpriteNode
@@ -38,8 +43,6 @@ class BagpackScene: SKScene {
         item2?.isHidden = true
         item3?.isHidden = true
         
-        
-        
         print(GameScene.point)
         insertItem()
     }
@@ -50,6 +53,7 @@ class BagpackScene: SKScene {
         guard let textItem2 = textItem2 else { return }
         guard let textItem3 = textItem3 else { return }
         
+        // Insert items/clues to bagpack
         for (index, item) in BagpackScene.items.enumerated() {
             switch index {
             case 0:
@@ -57,32 +61,32 @@ class BagpackScene: SKScene {
                 item0?.isHidden = false
                 item0?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text0, _) = getItemLabelAndScene(item: item)
-                textAlignment(string: text0, label: textItem0, color: UIColor.brown)
+                textAlignment(string: text0, label: textItem0)
             case 1:
                 let text1: String
                 item1?.isHidden = false
                 item1?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text1, _) = getItemLabelAndScene(item: item)
-                textAlignment(string: text1, label: textItem1, color: UIColor.brown)
+                textAlignment(string: text1, label: textItem1)
             case 2:
                 let text2: String
                 item2?.isHidden = false
                 item2?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text2, _) = getItemLabelAndScene(item: item)
-                textAlignment(string: text2, label: textItem2, color: UIColor.brown)
+                textAlignment(string: text2, label: textItem2)
             case 3:
                 let text3: String
                 item3?.isHidden = false
                 item3?.run(.setTexture(SKTexture(imageNamed: item)))
                 (text3, _) = getItemLabelAndScene(item: item)
-                textAlignment(string: text3, label: textItem3, color: UIColor.brown)
+                textAlignment(string: text3, label: textItem3)
             default:
                 print("")
             }
         }
     }
     
-    // based on texture name (assets)
+    // Based on texture name (Assets)
     func getItemLabelAndScene(item: String) -> (String, String) {
         var itemLabel: String
         var itemScene: String
@@ -154,7 +158,7 @@ class BagpackScene: SKScene {
                 (_, sceneName0) = getItemLabelAndScene(item: itemName0)
                 setFromScene(scene: sceneName0)
                 
-                // Go to item0
+                // Review to item0
                 let scene0 = SKScene(fileNamed: sceneName0)
                 scene0?.scaleMode = .aspectFill
                 self.view?.presentScene(scene0!, transition: SKTransition.fade(withDuration: 1.0))
@@ -163,7 +167,7 @@ class BagpackScene: SKScene {
                 (_, sceneName1) = getItemLabelAndScene(item: itemName1)
                 setFromScene(scene: sceneName1)
                 
-                // Go to item1
+                // Review to item1
                 let scene1 = SKScene(fileNamed: sceneName1)
                 scene1?.scaleMode = .aspectFill
                 self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
@@ -172,7 +176,7 @@ class BagpackScene: SKScene {
                 (_, sceneName2) = getItemLabelAndScene(item: itemName2)
                 setFromScene(scene: sceneName2)
                 
-                // Go to item2
+                // Review to item2
                 let scene2 = SKScene(fileNamed: sceneName2)
                 scene2?.scaleMode = .aspectFill
                 self.view?.presentScene(scene2!, transition: SKTransition.fade(withDuration: 1.0))
@@ -181,13 +185,28 @@ class BagpackScene: SKScene {
                 (_, sceneName3) = getItemLabelAndScene(item: itemName3)
                 setFromScene(scene: sceneName3)
                 
-                // Go to item3
+                // Review to item3
                 let scene3 = SKScene(fileNamed: sceneName3)
                 scene3?.scaleMode = .aspectFill
                 self.view?.presentScene(scene3!, transition: SKTransition.fade(withDuration: 1.0))
             default:
                 print("")
             }
+        }
+    }
+    
+    func setFromScene(scene: String) {
+        switch scene {
+        case "UdinDiaryScene":
+            UdinDiaryScene.fromScene = "BagpackScene"
+        case "InteractionAnton":
+            InteractionAnton.fromScene = "BagpackScene"
+        case "InteractionYusuf":
+            InteractionYusuf.fromScene = "BagpackScene"
+        case "InteractionToni":
+            InteractionToni.fromScene = "BagpackScene"
+        default:
+            print("")
         }
     }
     
@@ -209,28 +228,14 @@ class BagpackScene: SKScene {
         return texture
     }
     
-    func setFromScene(scene: String) {
-        switch scene {
-        case "UdinDiaryScene":
-            UdinDiaryScene.fromScene = "BagpackScene"
-        case "InteractionAnton":
-            InteractionAnton.fromScene = "BagpackScene"
-        case "InteractionYusuf":
-            InteractionYusuf.fromScene = "BagpackScene"
-        case "InteractionToni":
-            InteractionToni.fromScene = "BagpackScene"
-        default:
-            print("")
-        }
-    }
-    
-    func textAlignment(string: String, label: SKLabelNode, color: UIColor = .white) {
+    func textAlignment(string: String, label: SKLabelNode) {
+        let font = "\(BagpackScene.fontName)-\(BagpackScene.fontType)"
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: "Verdana-Bold", size: 32.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : BagpackScene.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 32.0)!], range: range)
         label.attributedText = attrString
     }
 }
