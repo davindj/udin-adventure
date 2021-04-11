@@ -7,6 +7,11 @@
 
 import SpriteKit
 
+struct Message {
+    var speaker: String
+    var content: String
+}
+
 struct Dialog {
     // Parent
     var dialog: SKNode
@@ -60,6 +65,19 @@ class BattleScene: SKScene{
     // Variable
     var previousTime: TimeInterval = 0
     
+    // Action
+    var playerAction: Int = -1
+    // PLayer Action berguna untuk menyimpan action yg mau dilakukan oleh player
+    // -1 -> Tidak ada action
+    //  0 -> Confront Udin
+    //  1 -> Listen to Udin
+    //  2 -> Ask Clue
+    var playerIncomingAction: Int = -1
+    // Menyimpan Action Yang hendak dilakukan
+    var idxChat: Int = -1 // Idx Chat Saat ini
+    var chat: [Message] = [] // Chat saat ini
+    var isChatAnimating: Bool = false // apakah masih animasi chat
+    
     override func didMove(to view: SKView) {
         // Get Component
         self.camera = childNode(withName: "camera") as? SKCameraNode
@@ -82,6 +100,138 @@ class BattleScene: SKScene{
         previousTime = currentTime
     }
     
+    // MARK: Action
+    // Menjalakan action sesuai pada player incoming action
+    func doAction(){
+        if playerIncomingAction == -1 || playerAction != -1{
+            return
+        }// Run Action
+        playerAction = playerIncomingAction
+        // Reset Incoming Action
+        playerIncomingAction = -1
+        // Reset Idx Cjat
+        idxChat = -1
+        // Assign Konten Chat
+        chat = [[ // Confront
+            Message(speaker: "Player", content: "Udin jangan galau"),
+            Message(speaker: "Udin", content: "Udah jangan ganggu aku"),
+            Message(speaker: "Udin", content: "Aku aja ga kenal kamu siapa"),
+        ],[ // Listen
+            Message(speaker: "Player", content: "..."),
+            Message(speaker: "Udin", content: "kamu tau nda aku itu pendiam"),
+            Message(speaker: "Udin", content: "gada yg bisa ngertiin aku\nAkhirnya aku menyendiri")
+        ],[ // Ask About
+            Message(speaker: "Player", content: "Udin aku mau tanya..."),
+            Message(speaker: "Udin", content: "Jangan tanya-tanya"),
+        ]][playerAction];
+        // Hide Button Group
+        dialog.btnGroup.run(.fadeOut(withDuration: 0.5))
+        // Extend Bubblechat
+        let action = SKAction.resize(toHeight: (180) * 2, duration: 0.5)
+        dialog.bubbleChat.run(action)
+        // Mulai Conversation
+        speak()
+    }
+    // Untuk Berbicara dan mengubah
+    func speak(){
+        if isChatAnimating{ // Jika Masih Animasikan chat maka langsung diskip aja
+            self.isChatAnimating = false
+            let message = chat[idxChat]
+            dialog.labelChat.text = message.content
+        }else{ // Jika tidak lagi dianimasikan
+            // Increment IDX Chat
+            idxChat += 1
+            // Check Apakah sudah akhir dari Chat atau blm
+            if idxChat >= chat.count{
+                endOfConversation()
+            }else{// masih blm akhir dari chat
+                let message = chat[idxChat]
+                // Update Speaker
+                dialog.labelSpeaker.text = message.speaker
+                // Animate Chat
+                animateLabel(label: dialog.labelChat, text: message.content, durationPerChar: 0.025)
+            }
+        }
+    }
+    // Action yg dijalankan ketika speak sudah sampai terakhir
+    func endOfConversation(){
+        // Hide Button Group
+        dialog.btnGroup.run(.fadeIn(withDuration: 0.5))
+        // Extend Bubblechat
+        let action = SKAction.resize(toHeight: (108) * 2, duration: 0.25)
+        dialog.bubbleChat.run(action)
+        // Reset Player Action
+        playerAction = -1
+    }
+    
+    // MARK: Event Handler
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Untuk check apakah button yg ditekan benar
+        var isValid = false;
+        var tempIdxAction = -1;
+        
+        for touch in touches{
+            let locationButton = touch.location(in: self)
+            var node = atPoint(locationButton)
+            
+            // Check Bubble Chat
+            // Check Button / BubbleChat
+            
+            // Jika dirinya Label node maka...
+            if let label = node as? SKLabelNode{
+                if label.name == "innerText"{
+                    // Jika Inner Text maka merupakan label button
+                    node = node.parent!
+                }else if ["labelChat","labelSpeaker"].contains(label.name){
+                    // Jika Label Chat / Label speaker jdi Bubble Chat
+                    node = node.parent!
+                }
+            }
+            let list_btn = ["btnConfront", "btnListen", "btnAskAbout"]
+            let name = node.name ?? ""
+            switch name{
+            case _ where list_btn.contains(name): // Button Action
+                node.run(.setTexture(SKTexture(imageNamed: "button2")))
+                isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
+                tempIdxAction = list_btn.firstIndex(of: name)!
+            case "bubbleChat" where playerAction != -1: // Bubble Chat yg ditekan
+                speak()
+            default:
+                print("Do Nothing...")
+            }
+        }
+        // Check Valid Button ditkean
+        if isValid && playerAction == -1{ // Jika Valid dan blm ada action
+            playerIncomingAction = tempIdxAction
+            print("Touch Action: \(playerIncomingAction)")
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches{
+            let locationButton = touch.location(in: self)
+            var button = atPoint(locationButton)
+            
+            // Check Button
+            if let label = button as? SKLabelNode{
+                button = label.parent ?? self
+            }
+            let list_btn = ["btnConfront", "btnListen", "btnAskAbout"]
+            let name = button.name ?? ""
+            switch name{
+            case _ where list_btn.contains(name):
+                button.run(.setTexture(SKTexture(imageNamed: "button1")))
+                let idx = list_btn.firstIndex(of: name)!
+                // Check Apakah Index yg dipilih sama dengan Incoming Action
+                if playerIncomingAction == idx{
+                    doAction()
+                }
+            default:
+                print("Do Nothing...")
+            }
+        }
+    }
+    
     // MARK: Animate Function
     // Animate Label Text
     
@@ -92,14 +242,17 @@ class BattleScene: SKScene{
         durationPerDot durDot: TimeInterval = CHAR_DURATION,
         callBack cb: @escaping (()->Void) = {}
     ){
+        // Mulai Animasi Chat
+        self.isChatAnimating = true
         // Hapus text Dulu
         label.text = ""
         // SKAction
         var idx = 0
         var closureAnim: (()->Void)!
         closureAnim = {
-            if idx >= text.count{
+            if idx >= text.count || !self.isChatAnimating{
                 // Sudah Dianimasikan Semua...
+                self.isChatAnimating = false
                 cb()
             }else{
                 // Masih Dalam Iterasi
@@ -108,6 +261,7 @@ class BattleScene: SKScene{
                 let action = SKAction.sequence([
                     SKAction.wait(forDuration: currentString == "." ? durDot : durChar),
                     SKAction.run{
+                        if !self.isChatAnimating{return}
                         idx += 1
                         label.text = String(text.prefix(idx))
                     }
