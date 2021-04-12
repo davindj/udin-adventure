@@ -612,6 +612,13 @@ class BattleScene: SKScene{
     }
     
     // Note
-    // Button ubah jadi disable dn transparan
+    // Button Confront & Listen ubah jadi disable dn transparan
     // ALign label
+    // load clue
+    // disable clue yang blm ditemukan
+    // insight conversation
+    // audio
+    // redir ke endingscene
+    
+    // itch.io cari music
 }
