@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+// MARK: Conversation
 struct Conversation{
     var idxMessage: Int // Index Message Saat ini
     var messages: [Message]
@@ -26,11 +27,13 @@ struct Conversation{
     }
 }
 
+// MARK: Message
 struct Message {
     var speaker: String
     var content: String
 }
 
+// MARK: Dialog
 struct Dialog {
     // Parent
     var dialog: SKNode
@@ -85,7 +88,7 @@ struct Dialog {
         self.btnGroupClue.position = self.btnGroup.position
         self.btnGroupClue.run(SKAction.fadeOut(withDuration: 0.00001))
         // Assign Text Clue
-        for i in 1...3{
+        for i in 1...4{
             guard let btnClue = self.btnGroupClue.childNode(withName: "btnClue\(i)") as? SKSpriteNode else {
                 fatalError("Button Clue \(i) not found!")
             }
@@ -106,19 +109,50 @@ struct Dialog {
     }
     func updateProgressBar(value: Int){
         var progress = value
-        if progress > 100{
-            progress = 100
+        if progress > 40{
+            progress = 40
         }else if progress < 0{
             progress = 0
         }
-        let action = SKAction.resize(toWidth: 9.8 * CGFloat(progress), duration: 0.5)
+        progress = 950 * progress / 40
+        let action = SKAction.resize(toWidth: CGFloat(progress), duration: 0.5)
         self.bar.run(action)
+    }
+    func disableComponent(
+        isConfrontActive confront: Bool,
+        isListenActive listen: Bool,
+        isClue1Active clue1: Bool,
+        isClue2Active clue2: Bool,
+        isClue3Active clue3: Bool,
+        isClue4Active clue4: Bool
+    ){
+        toggleDisableChild(parentNode: btnGroup, childName: "btnConfront", isDisable: !confront)
+        toggleDisableChild(parentNode: btnGroup, childName: "btnListen", isDisable: !listen)
+        toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue1", isDisable: !clue1)
+        toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue2", isDisable: !clue2)
+        toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue3", isDisable: !clue3)
+        toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue4", isDisable: !clue4)
+    }
+    func toggleDisableChild(parentNode parent: SKNode, childName name: String, isDisable: Bool){
+        guard let btn = parent.childNode(withName: name) as? SKSpriteNode else{
+            fatalError("\(name) not found")
+        }
+        if isDisable{
+            btn.run(SKAction.hide())
+        }
     }
 }
 
+// MARK: Main Class
 class BattleScene: SKScene{
     // CONSTANT
     static let CHAR_DURATION: TimeInterval = 0.15
+    
+    // Idx Conversation
+    var idxConfront: Int = 0
+    var idxListen: Int = 0
+    var isDoneConfront: Bool = false
+    var isDoneListen: Bool = false
     
     // Trust Point
     var trustPoint: Int = 0{
@@ -134,6 +168,7 @@ class BattleScene: SKScene{
     
     // Clue yang dimiliki oleh player
     var list_clue = [String]()
+    var done_clue = [false, false, false, false]
     
     // Conversation
     var activeConversation: Conversation? = nil
@@ -146,15 +181,17 @@ class BattleScene: SKScene{
     // Menyimpan Action Yang hendak dilakukan
     var isChatAnimating: Bool = false // apakah masih animasi chat
     
+    // MARK: Constructor
     override func didMove(to view: SKView) {
         // Get Clue
-        list_clue = ["Clue 1", "Clue 2 (Buku)", ""]
+        list_clue = ["Clue 1", "Clue 2 (Buku)", "", ""]
         // Get Component
         self.camera = childNode(withName: "camera") as? SKCameraNode
         loadDialog()
         // Load Sprite
         loadSprite()
         // Animating
+        self.trustPoint = 0
         animateIntroScene{
             self.animateBackground(duration: 1.5)
             self.animateCamera(duration: 1.5)
@@ -165,6 +202,45 @@ class BattleScene: SKScene{
                 }
             }
         }
+    }
+    
+    // MARK: Get Conversion Function
+    func getConfrontConversation() -> Conversation{
+        return [
+            Conversation(messages: [ // Confront 1
+                Message(speaker: "Player", content: "Udin jangan galau"),
+                Message(speaker: "Udin", content: "Udah jangan ganggu aku"),
+                Message(speaker: "Udin", content: "Aku aja ga kenal kamu siapa")
+            ], reward: -10),
+            Conversation(messages: [ // Confront 2
+                Message(speaker: "Player", content: "Udin kamu jgn sombong ya"),
+                Message(speaker: "Udin", content: "Jangan ganggu aku")
+            ], reward: -10),
+            Conversation(messages: [ // Confront 3
+                Message(speaker: "Player", content: "Udin jelek, Udin jelek"),
+                Message(speaker: "Udin", content: "....."),
+                Message(speaker: "Udin", content: "*sob*")
+            ], reward: -15)
+        ][idxConfront]
+    }
+    func getListenConversation() -> Conversation{
+        return [
+            Conversation(messages: [ // Listen 1
+                Message(speaker: "Player", content: "..."),
+                Message(speaker: "Udin", content: "kamu tau ga? aku itu pendiam"),
+                Message(speaker: "Udin", content: "gada yg bisa ngertiin aku\nAkhirnya aku menyendiri")
+            ], reward: 5),
+            Conversation(messages: [ // Listen 2
+                Message(speaker: "Player", content: "..."),
+                Message(speaker: "Udin", content: "terkadang orang mendengarku untuk memakiku"),
+                Message(speaker: "Udin", content: "maka dari itu aku menjauh dari orang")
+            ], reward: 5),
+            Conversation(messages: [ // Listen 3
+                Message(speaker: "Player", content: "..."),
+                Message(speaker: "Udin", content: "kenapa kamu ngetliat aku?"),
+                Message(speaker: "Udin", content: "kamu mau maki aku?")
+            ], reward: -10)
+        ][idxListen]
     }
     
     // MARK: Action
@@ -178,16 +254,8 @@ class BattleScene: SKScene{
         playerIncomingAction = -1
         // Assign Konten Chat
         let conversation = [
-            Conversation(messages: [ // Confront
-                Message(speaker: "Player", content: "Udin jangan galau"),
-                Message(speaker: "Udin", content: "Udah jangan ganggu aku"),
-                Message(speaker: "Udin", content: "Aku aja ga kenal kamu siapa")
-            ], reward: 10),
-            Conversation(messages: [ // Listen
-                Message(speaker: "Player", content: "..."),
-                Message(speaker: "Udin", content: "kamu tau nda aku itu pendiam"),
-                Message(speaker: "Udin", content: "gada yg bisa ngertiin aku\nAkhirnya aku menyendiri")
-            ], reward: 10),
+            getConfrontConversation(), // Confront
+            getListenConversation(), // Listen
             Conversation(messages: [ // Clue 1
                 Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 1"),
                 Message(speaker: "Udin", content: "Jangan tanya-tanya clue 1 dong")
@@ -200,12 +268,32 @@ class BattleScene: SKScene{
                 Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 3"),
                 Message(speaker: "Udin", content: "Jangan tanya-tanya clue 3 dong")
             ], reward: 10),
+            Conversation(messages: [ // Clue 4
+                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 4"),
+                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 4 dong")
+            ], reward: 10),
             Conversation(messages: [ // Clue X
                 Message(speaker: "Player", content: "Emmmmm"),
                 Message(speaker: "Udin", content: ".... ???")
             ], reward: -10),
         ][playerAction];
         activeConversation = conversation;
+        // Update idx
+        if playerAction == 0{
+            idxConfront += 1
+            if idxConfront >= 3 {
+                idxConfront = 2
+                isDoneConfront = true
+            }
+        }else if playerAction == 1{
+            idxListen += 1
+            if idxListen >= 3 {
+                idxListen = 2
+                isDoneListen = true
+            }
+        }else{
+            done_clue[playerAction - 2] = true
+        }
         // Hide Button Group / Button Group CLue
         dialog.toggleVisible(isChatVisible: false, isClueVisible: false)
         // Extend Bubblechat
@@ -247,6 +335,15 @@ class BattleScene: SKScene{
         print("Point: \(trustPoint)")
         // Reset Player Action
         activeConversation = nil
+        // Block action
+        dialog.disableComponent(
+            isConfrontActive: !isDoneConfront,
+            isListenActive: !isDoneListen,
+            isClue1Active: !done_clue[0],
+            isClue2Active: !done_clue[1],
+            isClue3Active: !done_clue[2],
+            isClue4Active: !done_clue[3]
+        )
     }
     
     // MARK: Event Handler
@@ -328,7 +425,7 @@ class BattleScene: SKScene{
                 if playerIncomingAction == idx{ // Cluenya dijalankan
                     let clue = list_clue[idx-2]
                     if clue == ""{ // JIka Clue tidak ditemukan
-                        playerIncomingAction = 5 // set Clue X
+                        playerIncomingAction = 6 // set Clue X
                     }
                     doAction()
                 }
@@ -386,7 +483,7 @@ class BattleScene: SKScene{
     func animateIntroScene(callBack cb: @escaping (()->Void) = {}){
         // Change Z Index of bgNode
         guard let bgNode = childNode(withName: "bgIntro") as? SKSpriteNode else {return}
-        bgNode.zPosition = 0
+        bgNode.zPosition = 5
         // Animate Text
         let introText: String = "Udin..."
         guard let textIntro = childNode(withName: "textIntro") as? SKLabelNode else{return}
@@ -408,7 +505,9 @@ class BattleScene: SKScene{
             colorBlendFactor: 1,
             duration: duration
         )
-        bgNode.run(action)
+        bgNode.run(action){
+            bgNode.zPosition = -10000
+        }
     }
     
     // Animate Zoom Out Camera
