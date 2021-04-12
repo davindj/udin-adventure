@@ -65,9 +65,9 @@ class InteractionToni: SKScene {
     func setText() {
         textToni0 = "Hei anak baru! Main basket yuk"
         textPlayer0 = "Wah boleh, siapa saja yang ikut?"
-        textToni1 = "Semua anak-anak kelas ini kecuali Udin mungkin. Dia mah \norangnya tidak punya hobi."
-        textPlayer1 = "Masa sih? setiap orang kan pasti suka melakukan sesuatu."
-        textToni2 = "Setiap orang kecuali Udin, cuek sekali orangnya."
+        textToni1 = "Semua anak-anak kelas ini \nkecuali Udin mungkin. Dia mah \norangnya tidak punya hobi."
+        textPlayer1 = "Masa sih? setiap orang kan \npasti suka melakukan sesuatu."
+        textToni2 = "Setiap orang kecuali Udin, \ncuek sekali orangnya."
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -129,7 +129,7 @@ class InteractionToni: SKScene {
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : InteractionToni.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 23.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : InteractionToni.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 32.0)!], range: range)
         label.attributedText = attrString
     }
 }
