@@ -15,8 +15,12 @@ class InteractionToni: SKScene {
     
     var textToni0 = ""
     var textToni1 = ""
+    var textToni2 = ""
+    var textToni3 = ""
     var textPlayer0 = ""
     var textPlayer1 = ""
+    var textPlayer2 = ""
+    var textPlayer3 = ""
     
     var touchCount = 0
     
@@ -63,10 +67,14 @@ class InteractionToni: SKScene {
     }
     
     func setText() {
-        textToni0 = "Kamu kenal Udin? Dia dulu meraih tingkat pertama \ndi kelas kita namun semenjak semester baru"
-        textPlayer0 = "Nggak ah ton, kasihan gitu anaknya pendiam"
-        textToni1 = "Ah ga asik Lam..."
-        textPlayer1 = "Tahu deh ton"
+        textToni0 = "Hei anak baru, kamu satu tempat duduk \ndengan Udin ya?"
+        textPlayer0 = "Iya Ton, ada apa??"
+        textToni1 = "Tau gak, anak itu sombong sekali"
+        textPlayer1 = "Ah apa iya ton?"
+        textToni2 = "Kemaren aku ajak bercanda, tiba-tiba Udin diam aja. \nSepertinya dia marah"
+        textPlayer2 = "Kamu ajak bercanda bagaimana?"
+        textToni3 = "Aku coret-coret buku Dia"
+        textPlayer3 = "Itu namanya kamu yang jahil Toni"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -101,6 +109,25 @@ class InteractionToni: SKScene {
             textAlignment(label: playerChat, string: textPlayer1)
             SettingsMenu.runSound(node: playerChatSound)
         case 5:
+            playerBubble?.isHidden = true
+            toniBubble?.isHidden = false
+            textAlignment(label: toniChat, string: textToni2)
+            SettingsMenu.runSound(node: toniChatSound)
+        case 6:
+            toniBubble?.isHidden = true
+            playerBubble?.isHidden = false
+            textAlignment(label: playerChat, string: textPlayer2)
+            SettingsMenu.runSound(node: playerChatSound)
+        case 7:
+            playerBubble?.isHidden = true
+            toniBubble?.isHidden = false
+            textAlignment(label: toniChat, string: textToni3)
+            SettingsMenu.runSound(node: toniChatSound)
+        case 8:
+            playerBubble?.isHidden = false
+            textAlignment(label: playerChat, string: textPlayer3)
+            SettingsMenu.runSound(node: playerChatSound)
+        case 9:
             SettingsMenu.stopMusic(node: backgroundMusic)
             SettingsMenu.runSound(node: closeSound)
             

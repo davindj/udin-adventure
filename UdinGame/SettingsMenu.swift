@@ -211,6 +211,8 @@ class SettingsMenu: SKScene {
     static func runMusic(node: SKAudioNode) {
         if SettingsMenu.hasMusic {
             node.run(SKAction.play())
+            node.run(SKAction.changeVolume(to: 0.5, duration: 0.0))
+            node.autoplayLooped = true
         }
     }
     

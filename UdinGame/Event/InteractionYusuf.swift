@@ -67,7 +67,7 @@ class InteractionYusuf: SKScene {
         textYusuf0 = "Kamu tahu tidak dulu Udin \nanaknya ceria dan asik sekali. \nTidak seperti sekarang, penyendiri"
         textPlayer0 = "Oh ya? Kenapa dia berubah?"
         textYusuf1 = "Kurang tahu sih, tapi akhir-akhir ini \ndia sering kali datang dan \npulang dari sekolah sendiri juga"
-        textPlayer1 = "Emangnya dia biasanya \nbersama orang tuanya kah?"
+        textPlayer1 = "Emangnya dia biasanya \nbersama orang tuanya ya?"
         textYusuf2 = "Iya, biasanya Ibunya siap menjemputnya \nbahkan sebelum bel berbunyi \nibunya sudah berada di gerbang sekolah"
     }
     
