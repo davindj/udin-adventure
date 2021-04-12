@@ -53,7 +53,7 @@ class InteractionYusuf: SKScene {
         yusufBubble?.isHidden = true
         
         if InteractionYusuf.fromScene != "BagpackScene" {
-            BagpackScene.items.append("insight1")
+            BagpackScene.items.append("insight3")
         }
         
         setText()
