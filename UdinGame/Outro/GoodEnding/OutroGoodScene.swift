@@ -11,9 +11,6 @@ import SpriteKit
 class OutroGoodScene: SKScene {
     var story0: SKLabelNode?
     var story1: SKLabelNode?
-    var story2: SKLabelNode?
-    var story3: SKLabelNode?
-    var story4: SKLabelNode?
     
     // Text properties
     static var fontName = "Verdana"
@@ -25,9 +22,6 @@ class OutroGoodScene: SKScene {
     override func didMove(to view: SKView) {
         story0 = childNode(withName: "storyGoodEnd0") as? SKLabelNode
         story1 = childNode(withName: "storyGoodEnd1") as? SKLabelNode
-        story2 = childNode(withName: "storyGoodEnd2") as? SKLabelNode
-        story3 = childNode(withName: "storyGoodEnd3") as? SKLabelNode
-        story4 = childNode(withName: "storyGoodEnd4") as? SKLabelNode
         
         setText()
     }
@@ -35,9 +29,6 @@ class OutroGoodScene: SKScene {
     func setText() {
         let text0 = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
         let text1 = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
-        let text2 = "Namun sifatnya sangat tertutup, dia enggan berbicara banyak dengan ku."
-        let text3 = "Karena sifat tertutup itu, dia sering dijahili oleh teman-temannya."
-        let text4 = "Kira-kira apa yang harus aku lakukan agar dapat mengetahui \nmengapa sifat Udin seperti itu?"
         
         if let story0 = story0 {
             textAlignment(label: story0, string: text0)
@@ -46,19 +37,6 @@ class OutroGoodScene: SKScene {
         if let story1 = story1 {
             textAlignment(label: story1, string: text1)
         }
-        
-        if let story2 = story2 {
-            textAlignment(label: story2, string: text2)
-        }
-        
-        if let story3 = story3 {
-            textAlignment(label: story3, string: text3)
-        }
-        
-        if let story4 = story4 {
-            textAlignment(label: story4, string: text4)
-        }
-        
     }
     
     func textAlignment(label: SKLabelNode ,string: String) {
@@ -82,21 +60,6 @@ class OutroGoodScene: SKScene {
             scene0?.scaleMode = .aspectFill
             self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
-            // Go to Intro2
-            let scene1 = SKScene(fileNamed: "OutroGood2")
-            scene1?.scaleMode = .aspectFill
-            self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 3:
-            // Go to Intro3
-            let scene2 = SKScene(fileNamed: "OutroGood3")
-            scene2?.scaleMode = .aspectFill
-            self.view?.presentScene(scene2!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 4:
-            // Go to Intro4
-            let scene3 = SKScene(fileNamed: "OutroGood4")
-            scene3?.scaleMode = .aspectFill
-            self.view?.presentScene(scene3!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 5:
             // Go to GameScene
             let scene4 = SKScene(fileNamed: "GameScene")
             scene4?.scaleMode = .aspectFill

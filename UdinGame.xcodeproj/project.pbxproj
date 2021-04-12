@@ -36,15 +36,9 @@
 		C3CA861C26243609004EF27E /* OutroGoodScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA861B26243609004EF27E /* OutroGoodScene.swift */; };
 		C3CA861F26243A5F004EF27E /* OutroBadScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA861E26243A5F004EF27E /* OutroBadScene.swift */; };
 		C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C61262346AE00C501A0 /* OutroBad0.sks */; };
-		C3CC1C67262346AE00C501A0 /* OutroBad2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C62262346AE00C501A0 /* OutroBad2.sks */; };
 		C3CC1C68262346AE00C501A0 /* OutroBad1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C63262346AE00C501A0 /* OutroBad1.sks */; };
-		C3CC1C69262346AE00C501A0 /* OutroBad3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C64262346AE00C501A0 /* OutroBad3.sks */; };
-		C3CC1C6A262346AE00C501A0 /* OutroBad4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C65262346AE00C501A0 /* OutroBad4.sks */; };
-		C3CC1C71262346C500C501A0 /* OutroGood4.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6C262346C500C501A0 /* OutroGood4.sks */; };
-		C3CC1C72262346C500C501A0 /* OutroGood2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6D262346C500C501A0 /* OutroGood2.sks */; };
 		C3CC1C73262346C500C501A0 /* OutroGood0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6E262346C500C501A0 /* OutroGood0.sks */; };
 		C3CC1C74262346C500C501A0 /* OutroGood1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6F262346C500C501A0 /* OutroGood1.sks */; };
-		C3CC1C75262346C500C501A0 /* OutroGood3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C70262346C500C501A0 /* OutroGood3.sks */; };
 		C3CC1C802623565600C501A0 /* breakdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C7F2623565600C501A0 /* breakdown.wav */; };
 		C3CC1C8926235B2200C501A0 /* Noah_Kuehne_Play.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C8326235B2200C501A0 /* Noah_Kuehne_Play.wav */; };
 		C3CC1C9126235BB500C501A0 /* Noah_Kuehne_Setting.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C9026235BB500C501A0 /* Noah_Kuehne_Setting.wav */; };
@@ -94,15 +88,9 @@
 		C3CA861B26243609004EF27E /* OutroGoodScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroGoodScene.swift; sourceTree = "<group>"; };
 		C3CA861E26243A5F004EF27E /* OutroBadScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroBadScene.swift; sourceTree = "<group>"; };
 		C3CC1C61262346AE00C501A0 /* OutroBad0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad0.sks; sourceTree = "<group>"; };
-		C3CC1C62262346AE00C501A0 /* OutroBad2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad2.sks; sourceTree = "<group>"; };
 		C3CC1C63262346AE00C501A0 /* OutroBad1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad1.sks; sourceTree = "<group>"; };
-		C3CC1C64262346AE00C501A0 /* OutroBad3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad3.sks; sourceTree = "<group>"; };
-		C3CC1C65262346AE00C501A0 /* OutroBad4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad4.sks; sourceTree = "<group>"; };
-		C3CC1C6C262346C500C501A0 /* OutroGood4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood4.sks; sourceTree = "<group>"; };
-		C3CC1C6D262346C500C501A0 /* OutroGood2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood2.sks; sourceTree = "<group>"; };
 		C3CC1C6E262346C500C501A0 /* OutroGood0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood0.sks; sourceTree = "<group>"; };
 		C3CC1C6F262346C500C501A0 /* OutroGood1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood1.sks; sourceTree = "<group>"; };
-		C3CC1C70262346C500C501A0 /* OutroGood3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood3.sks; sourceTree = "<group>"; };
 		C3CC1C7F2623565600C501A0 /* breakdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = breakdown.wav; sourceTree = "<group>"; };
 		C3CC1C8326235B2200C501A0 /* Noah_Kuehne_Play.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Noah_Kuehne_Play.wav; sourceTree = "<group>"; };
 		C3CC1C9026235BB500C501A0 /* Noah_Kuehne_Setting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Noah_Kuehne_Setting.wav; sourceTree = "<group>"; };
@@ -214,9 +202,6 @@
 			children = (
 				C3CC1C61262346AE00C501A0 /* OutroBad0.sks */,
 				C3CC1C63262346AE00C501A0 /* OutroBad1.sks */,
-				C3CC1C62262346AE00C501A0 /* OutroBad2.sks */,
-				C3CC1C64262346AE00C501A0 /* OutroBad3.sks */,
-				C3CC1C65262346AE00C501A0 /* OutroBad4.sks */,
 				C3CA861E26243A5F004EF27E /* OutroBadScene.swift */,
 			);
 			path = BadEnding;
@@ -227,9 +212,6 @@
 			children = (
 				C3CC1C6E262346C500C501A0 /* OutroGood0.sks */,
 				C3CC1C6F262346C500C501A0 /* OutroGood1.sks */,
-				C3CC1C6D262346C500C501A0 /* OutroGood2.sks */,
-				C3CC1C70262346C500C501A0 /* OutroGood3.sks */,
-				C3CC1C6C262346C500C501A0 /* OutroGood4.sks */,
 				C3CA861B26243609004EF27E /* OutroGoodScene.swift */,
 			);
 			path = GoodEnding;
@@ -322,22 +304,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37313F02620756A00EDAAF8 /* Intro2.sks in Resources */,
-				C3CC1C69262346AE00C501A0 /* OutroBad3.sks in Resources */,
-				C3CC1C6A262346AE00C501A0 /* OutroBad4.sks in Resources */,
 				C3CC1CAC26237E8300C501A0 /* Hitsound 1.mp3 in Resources */,
 				C3CC1C73262346C500C501A0 /* OutroGood0.sks in Resources */,
 				C38D1D81261D8F1300D9EC1C /* Main.storyboard in Resources */,
 				C37313EC2620746200EDAAF8 /* Intro1.sks in Resources */,
 				C3CC1C9526235FCB00C501A0 /* Robot Walk.mp3 in Resources */,
-				C3CC1C67262346AE00C501A0 /* OutroBad2.sks in Resources */,
-				C3CC1C75262346C500C501A0 /* OutroGood3.sks in Resources */,
 				C3CC1C74262346C500C501A0 /* OutroGood1.sks in Resources */,
 				C37313E42620707D00EDAAF8 /* Intro0.sks in Resources */,
 				C38D435C262177C4006DBA57 /* UdinDiaryScene.sks in Resources */,
 				D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */,
 				C3CC1CB026237EE300C501A0 /* Menu_Sound_Load_Savefile.wav in Resources */,
 				C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */,
-				C3CC1C71262346C500C501A0 /* OutroGood4.sks in Resources */,
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
 				C3CC1C9126235BB500C501A0 /* Noah_Kuehne_Setting.wav in Resources */,
 				C3CC1C98262362EB00C501A0 /* Walk.mp3 in Resources */,
@@ -356,7 +333,6 @@
 				C3CC1C9B262363CF00C501A0 /* Event Trigger.mp3 in Resources */,
 				C38D43662621868A006DBA57 /* InteractionAnton.sks in Resources */,
 				C3CC1CA82623685300C501A0 /* Menu_Sound_Save_Savefile.wav in Resources */,
-				C3CC1C72262346C500C501A0 /* OutroGood2.sks in Resources */,
 				C3CC1C802623565600C501A0 /* breakdown.wav in Resources */,
 				C37313F62620758400EDAAF8 /* Intro4.sks in Resources */,
 			);
