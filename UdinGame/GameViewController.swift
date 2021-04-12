@@ -7,10 +7,13 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 import GameplayKit
 
 class GameViewController: UIViewController {
     @IBOutlet weak var Gamescene: SKView!
+    
+    static var audioPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,17 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
             view.showsPhysics = false
         }
+        
+        do {
+            GameViewController.audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "breakdown", ofType: "wav")!))
+            GameViewController.audioPlayer.prepareToPlay()
+            GameViewController.audioPlayer.numberOfLoops = 10
+        } catch {
+            print(error)
+        }
+        
+        SettingsMenu.runMusic(node: GameViewController.audioPlayer)
+        
     }
 
     override var shouldAutorotate: Bool {

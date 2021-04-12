@@ -21,10 +21,6 @@ class UdinDiaryScene: SKScene {
         backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
         closeSound = childNode(withName: "closeSound") as? SKAudioNode
         
-        if let backgroundMusic = backgroundMusic {
-            SettingsMenu.runMusic(node: backgroundMusic)
-        }
-        
         if UdinDiaryScene.fromScene != "BagpackScene" {
             BagpackScene.items.append("diary")
         }
@@ -36,14 +32,12 @@ class UdinDiaryScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             guard let closeSound = closeSound else { return }
-            guard let backgroundMusic = backgroundMusic else { return }
             
             let touchButton = touch.location(in: self)
             let buttonPoint = atPoint(touchButton)
             
             if buttonPoint.name == "closeButton" {
                 closeButton?.run(.setTexture(SKTexture(imageNamed: "closeButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: closeSound)
             }
         }

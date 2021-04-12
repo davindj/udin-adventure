@@ -47,10 +47,6 @@ class InteractionYusuf: SKScene {
         yusufChatSound = childNode(withName: "yusufChatSound") as? SKAudioNode
         closeSound = childNode(withName: "closeSound") as? SKAudioNode
         
-        if let backgroundMusic = backgroundMusic {
-            SettingsMenu.runMusic(node: backgroundMusic)
-        }
-        
         GameScene.hasYusufInsight = true
         
         playerBubble?.isHidden = true
@@ -72,7 +68,6 @@ class InteractionYusuf: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let backgroundMusic = backgroundMusic else { return }
         guard let playerChatSound = playerChatSound else { return }
         guard let yusufChatSound = yusufChatSound else { return }
         guard let closeSound = closeSound else { return }
@@ -108,7 +103,6 @@ class InteractionYusuf: SKScene {
             textAlignment(label: yusufChat, string: textYusuf2)
             SettingsMenu.runSound(node: yusufChatSound)
         case 6:
-            SettingsMenu.stopMusic(node: backgroundMusic)
             SettingsMenu.runSound(node: closeSound)
             
             if InteractionYusuf.fromScene == "BagpackScene" {

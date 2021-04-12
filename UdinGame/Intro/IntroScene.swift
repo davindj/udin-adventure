@@ -28,13 +28,6 @@ class IntroScene: SKScene {
         story3 = childNode(withName: "storyIntro3") as? SKLabelNode
         story4 = childNode(withName: "storyIntro4") as? SKLabelNode
         
-        if let musicURL = Bundle.main.url(forResource: "breakdown", withExtension: "wav") {
-            let backgroundMusic = SKAudioNode(url: musicURL)
-            backgroundMusic.run(SKAction.changeVolume(to: 0.5, duration: 0.0))
-            backgroundMusic.autoplayLooped = true
-            addChild(backgroundMusic)
-        }
-        
         setText()
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class SettingsMenu: SKScene {
     
@@ -41,15 +42,10 @@ class SettingsMenu: SKScene {
         buttonSoundOn = childNode(withName: "buttonSoundOn") as? SKAudioNode
         buttonSoundOff = childNode(withName: "buttonSoundOff") as? SKAudioNode
         backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
-        
-        if let backgroundMusic = backgroundMusic {
-            SettingsMenu.runMusic(node: backgroundMusic)
-        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            guard let backgroundMusic = backgroundMusic else { return }
             guard let closeSound = closeSound else { return }
             
             guard let musicDescription = musicButton?.texture?.description else { return }
@@ -68,7 +64,6 @@ class SettingsMenu: SKScene {
             switch buttonPoint.name {
             case "closeButton":
                 closeButton?.run(.setTexture(SKTexture(imageNamed: "closeButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: closeSound)
             case "musicButton":
                 if musicButtonName == "musicButton" {
@@ -98,7 +93,6 @@ class SettingsMenu: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            guard let backgroundMusic = backgroundMusic else { return }
             guard let buttonSoundOn = buttonSoundOn else { return }
             guard let buttonSoundOff = buttonSoundOff else { return }
             
@@ -126,14 +120,14 @@ class SettingsMenu: SKScene {
                 if musicButtonName == "musicButton2" {
                     // Turn off music
                     SettingsMenu.runSound(node: buttonSoundOff)
-                    SettingsMenu.stopMusic(node: backgroundMusic)
+                    SettingsMenu.stopMusic(node: GameViewController.audioPlayer)
                     SettingsMenu.hasMusic = false
                     musicButton?.run(.setTexture(SKTexture(imageNamed: "nomusicButton")))
                 } else if musicButtonName == "nomusicButton2" {
                     // Turn on music
                     SettingsMenu.runSound(node: buttonSoundOn)
                     SettingsMenu.hasMusic = true
-                    SettingsMenu.runMusic(node: backgroundMusic)
+                    SettingsMenu.runMusic(node: GameViewController.audioPlayer)
                     musicButton?.run(.setTexture(SKTexture(imageNamed: "musicButton")))
                 }
             case "soundButton":
@@ -208,11 +202,10 @@ class SettingsMenu: SKScene {
     }
     
     // MARK: Play Sound and Music
-    static func runMusic(node: SKAudioNode) {
+    static func runMusic(node: AVAudioPlayer) {
         if SettingsMenu.hasMusic {
-            node.run(SKAction.play())
-            node.run(SKAction.changeVolume(to: 0.5, duration: 0.0))
-            node.autoplayLooped = true
+            node.volume = 0.7
+            node.play()
         }
     }
     
@@ -222,8 +215,8 @@ class SettingsMenu: SKScene {
         }
     }
     
-    static func stopMusic(node: SKAudioNode) {
-        node.run(SKAction.stop())
+    static func stopMusic(node: AVAudioPlayer) {
+        node.stop()
     }
     
     static func stopSound(node: SKAudioNode) {
