@@ -9,8 +9,8 @@ import Foundation
 import SpriteKit
 
 class OutroBadScene: SKScene {
-    var story0: SKLabelNode?
-    var story1: SKLabelNode?
+    var textBadEnd: SKLabelNode?
+    var recapBadEnd: SKLabelNode?
     
     // Text properties
     static var fontName = "Verdana"
@@ -20,22 +20,22 @@ class OutroBadScene: SKScene {
     static var touchCount = 0
     
     override func didMove(to view: SKView) {
-        story0 = childNode(withName: "storyBadEnd0") as? SKLabelNode
-        story1 = childNode(withName: "storyBadEnd1") as? SKLabelNode
+        textBadEnd = childNode(withName: "textBadEnd") as? SKLabelNode
+        recapBadEnd = childNode(withName: "recapBadEnd") as? SKLabelNode
         
         setText()
     }
     
     func setText() {
-        let text0 = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
-        let text1 = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
+        let textBadEndText = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
+        let recapBadEndText = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
         
-        if let story0 = story0 {
-            textAlignment(label: story0, string: text0)
+        if let textBadEnd = textBadEnd {
+            textAlignment(label: textBadEnd, string: textBadEndText)
         }
         
-        if let story1 = story1 {
-            textAlignment(label: story1, string: text1)
+        if let recapBadEnd = recapBadEnd {
+            textAlignment(label: recapBadEnd, string: recapBadEndText)
         }
     }
     
@@ -61,7 +61,7 @@ class OutroBadScene: SKScene {
             self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
             // Go to GameScene
-            let scene4 = SKScene(fileNamed: "GameScene")
+            let scene4 = SKScene(fileNamed: "Credit")
             scene4?.scaleMode = .aspectFill
             self.view?.presentScene(scene4!, transition: SKTransition.fade(withDuration: 1.0))
         default:

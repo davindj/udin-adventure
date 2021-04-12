@@ -9,8 +9,8 @@ import Foundation
 import SpriteKit
 
 class OutroGoodScene: SKScene {
-    var story0: SKLabelNode?
-    var story1: SKLabelNode?
+    var textGoodEnd: SKLabelNode?
+    var recapGoodEnd: SKLabelNode?
     
     // Text properties
     static var fontName = "Verdana"
@@ -20,22 +20,22 @@ class OutroGoodScene: SKScene {
     static var touchCount = 0
     
     override func didMove(to view: SKView) {
-        story0 = childNode(withName: "storyGoodEnd0") as? SKLabelNode
-        story1 = childNode(withName: "storyGoodEnd1") as? SKLabelNode
+        textGoodEnd = childNode(withName: "textGoodEnd") as? SKLabelNode
+        recapGoodEnd = childNode(withName: "recapGoodEnd") as? SKLabelNode
         
         setText()
     }
     
     func setText() {
-        let text0 = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
-        let text1 = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
+        let goodEndText = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
+        let recapGoodEndText = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
         
-        if let story0 = story0 {
-            textAlignment(label: story0, string: text0)
+        if let textGoodEnd = textGoodEnd {
+            textAlignment(label: textGoodEnd, string: goodEndText)
         }
         
-        if let story1 = story1 {
-            textAlignment(label: story1, string: text1)
+        if let recapGoodEnd = recapGoodEnd {
+            textAlignment(label: recapGoodEnd, string: recapGoodEndText)
         }
     }
     
@@ -61,9 +61,9 @@ class OutroGoodScene: SKScene {
             self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
             // Go to GameScene
-            let scene4 = SKScene(fileNamed: "GameScene")
-            scene4?.scaleMode = .aspectFill
-            self.view?.presentScene(scene4!, transition: SKTransition.fade(withDuration: 1.0))
+            let scene1 = SKScene(fileNamed: "Credit")
+            scene1?.scaleMode = .aspectFill
+            self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
         default:
             // default in Intro0
             let scene0 = SKScene(fileNamed: "OutroGood0")
