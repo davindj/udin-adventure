@@ -78,6 +78,7 @@ struct Dialog {
         self.bubbleChat = bubbleChat
         self.labelSpeaker = labelSpeaker
         self.labelChat = labelChat
+        
         self.btnGroup = btnGroup
         self.btnGroupClue = btnGroupClue
         self.bar = bar
@@ -344,6 +345,17 @@ class BattleScene: SKScene{
             isClue3Active: !done_clue[2],
             isClue4Active: !done_clue[3]
         )
+        // Check Score
+        let isWinning = trustPoint >= 40
+        let isLosing = trustPoint <= 0
+        // Jika menang atau kalah maka pindah halaman
+        if isWinning || isLosing{
+            if isWinning{
+                fatalError("You win not implemented yet")
+            }else{
+                fatalError("You lose not implemented yet")
+            }
+        }
     }
     
     // MARK: Event Handler
@@ -586,4 +598,20 @@ class BattleScene: SKScene{
         }
         return listTexture
     }
+    
+    // MARK: Helper Function
+    func textAlignment(string: String, label: SKLabelNode, size: CGFloat = 32.0, color: UIColor = .white) {
+        let font = "\(GameScene.fontName)-\(GameScene.fontType)"
+        let attrString = NSMutableAttributedString(string: string)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let range = NSRange(location: 0, length: string.count)
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : color, NSAttributedString.Key.font : UIFont(name: font, size: size)!], range: range)
+        label.attributedText = attrString
+    }
+    
+    // Note
+    // Button ubah jadi disable dn transparan
+    // ALign label
 }
