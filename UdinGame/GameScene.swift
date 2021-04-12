@@ -320,7 +320,7 @@ extension GameScene {
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
                 
                 // Go to BagpackScene
-                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
+                let bagpackScene = BagpackScene(fileNamed: "OutroGoodScene")
                 bagpackScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "setting":

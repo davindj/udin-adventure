@@ -33,6 +33,8 @@
 		C38D437126218886006DBA57 /* InteractionToni.sks in Resources */ = {isa = PBXBuildFile; fileRef = C38D437026218886006DBA57 /* InteractionToni.sks */; };
 		C38D43742621891C006DBA57 /* InteractionToni.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D43732621891C006DBA57 /* InteractionToni.swift */; };
 		C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39CB4EF262022F1009F0D52 /* BagpackScene.swift */; };
+		C3CA861C26243609004EF27E /* OutroGoodScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA861B26243609004EF27E /* OutroGoodScene.swift */; };
+		C3CA861F26243A5F004EF27E /* OutroBadScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA861E26243A5F004EF27E /* OutroBadScene.swift */; };
 		C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C61262346AE00C501A0 /* OutroBad0.sks */; };
 		C3CC1C67262346AE00C501A0 /* OutroBad2.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C62262346AE00C501A0 /* OutroBad2.sks */; };
 		C3CC1C68262346AE00C501A0 /* OutroBad1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C63262346AE00C501A0 /* OutroBad1.sks */; };
@@ -89,6 +91,8 @@
 		C38D437026218886006DBA57 /* InteractionToni.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InteractionToni.sks; sourceTree = "<group>"; };
 		C38D43732621891C006DBA57 /* InteractionToni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionToni.swift; sourceTree = "<group>"; };
 		C39CB4EF262022F1009F0D52 /* BagpackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagpackScene.swift; sourceTree = "<group>"; };
+		C3CA861B26243609004EF27E /* OutroGoodScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroGoodScene.swift; sourceTree = "<group>"; };
+		C3CA861E26243A5F004EF27E /* OutroBadScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroBadScene.swift; sourceTree = "<group>"; };
 		C3CC1C61262346AE00C501A0 /* OutroBad0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad0.sks; sourceTree = "<group>"; };
 		C3CC1C62262346AE00C501A0 /* OutroBad2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad2.sks; sourceTree = "<group>"; };
 		C3CC1C63262346AE00C501A0 /* OutroBad1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad1.sks; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				C3CC1C62262346AE00C501A0 /* OutroBad2.sks */,
 				C3CC1C64262346AE00C501A0 /* OutroBad3.sks */,
 				C3CC1C65262346AE00C501A0 /* OutroBad4.sks */,
+				C3CA861E26243A5F004EF27E /* OutroBadScene.swift */,
 			);
 			path = BadEnding;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				C3CC1C6D262346C500C501A0 /* OutroGood2.sks */,
 				C3CC1C70262346C500C501A0 /* OutroGood3.sks */,
 				C3CC1C6C262346C500C501A0 /* OutroGood4.sks */,
+				C3CA861B26243609004EF27E /* OutroGoodScene.swift */,
 			);
 			path = GoodEnding;
 			sourceTree = "<group>";
@@ -370,12 +376,14 @@
 				C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */,
 				C38D435F262178A0006DBA57 /* UdinDiaryScene.swift in Sources */,
 				C38D43742621891C006DBA57 /* InteractionToni.swift in Sources */,
+				C3CA861F26243A5F004EF27E /* OutroBadScene.swift in Sources */,
 				D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */,
 				4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */,
 				C38D1DAF261DC87100D9EC1C /* BattleScene.swift in Sources */,
 				C38D43652621868A006DBA57 /* InteractionAnton.swift in Sources */,
 				C37313E72620710F00EDAAF8 /* IntroScene.swift in Sources */,
 				C38D1D76261D8F1300D9EC1C /* AppDelegate.swift in Sources */,
+				C3CA861C26243609004EF27E /* OutroGoodScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
