@@ -50,10 +50,6 @@ class InteractionToni: SKScene {
         toniChatSound = childNode(withName: "toniChatSound") as? SKAudioNode
         closeSound = childNode(withName: "closeSound") as? SKAudioNode
         
-        if let backgroundMusic = backgroundMusic {
-            SettingsMenu.runMusic(node: backgroundMusic)
-        }
-        
         GameScene.hasToniInsight = true
         
         playerBubble?.isHidden = true
@@ -78,7 +74,6 @@ class InteractionToni: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let backgroundMusic = backgroundMusic else { return }
         guard let playerChatSound = playerChatSound else { return }
         guard let toniChatSound = toniChatSound else { return }
         guard let closeSound = closeSound else { return }
@@ -128,7 +123,6 @@ class InteractionToni: SKScene {
             textAlignment(label: playerChat, string: textPlayer3)
             SettingsMenu.runSound(node: playerChatSound)
         case 9:
-            SettingsMenu.stopMusic(node: backgroundMusic)
             SettingsMenu.runSound(node: closeSound)
             
             if InteractionToni.fromScene == "BagpackScene" {

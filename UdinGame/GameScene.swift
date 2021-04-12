@@ -127,10 +127,6 @@ class GameScene: SKScene {
         settingSound = childNode(withName: "settingSound") as? SKAudioNode
         popUpSound = childNode(withName: "popUpSound") as? SKAudioNode
         
-        if let backgroundMusic = backgroundMusic {
-            SettingsMenu.runMusic(node: backgroundMusic)
-        }
-        
         // Hide
         actionButton?.isHidden = true
         udinButton?.isHidden = true
@@ -173,7 +169,6 @@ class GameScene: SKScene {
 extension GameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            guard let backgroundMusic = backgroundMusic else { return }
             guard let buttonSound = buttonSound else { return }
             guard let bagpackSound = bagpackSound else { return }
             guard let settingSound = settingSound else { return }
@@ -201,31 +196,24 @@ extension GameScene {
             switch buttonPoint.name {
             case "actionButton":
                 actionButton?.run(.setTexture(SKTexture(imageNamed: "interactButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: buttonSound)
             case "udinButton":
                 udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: buttonSound)
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: buttonSound)
             case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: buttonSound)
             case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: buttonSound)
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: bagpackSound)
             case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: settingSound)
             default:
                 print("")
@@ -413,7 +401,7 @@ extension GameScene {
         buttonText?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 400.0)
         bag?.position = CGPoint(x: positionPlayer.x + 1050.0, y: positionPlayer.y - 400.0)
         settingButton?.position = CGPoint(x: positionPlayer.x - 1050.0, y: positionPlayer.y + 450.0)
-        popUpUdin?.position = CGPoint(x: positionPlayer.x, y: positionPlayer.y)
+        popUpUdin?.position = CGPoint(x: positionPlayer.x, y: positionPlayer.y - 350.0)
     }
     
     // MARK: Trigger Event

@@ -53,10 +53,6 @@ class BagpackScene: SKScene {
         closeSound = childNode(withName: "closeSound") as? SKAudioNode
         itemSound = childNode(withName: "itemSound") as? SKAudioNode
         
-        if let music = backgroundMusic {
-            SettingsMenu.runMusic(node: music)
-        }
-        
         print(GameScene.point)
         insertItem()
     }
@@ -131,7 +127,6 @@ class BagpackScene: SKScene {
             // MARK: Sound and Music
             guard let closeSound = closeSound else { return }
             guard let itemSound = itemSound else { return }
-            guard let backgroundMusic = backgroundMusic else { return }
             
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
@@ -139,19 +134,14 @@ class BagpackScene: SKScene {
             switch buttonPoint.name {
             case "closeButton":
                 closeButton!.run(.setTexture(SKTexture(imageNamed: "bagcloseButton2")))
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: closeSound)
             case "item0":
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: itemSound)
             case "item1":
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: itemSound)
             case "item2":
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: itemSound)
             case "item3":
-                SettingsMenu.stopMusic(node: backgroundMusic)
                 SettingsMenu.runSound(node: itemSound)
             default:
                 print("")
