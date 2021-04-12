@@ -320,7 +320,7 @@ extension GameScene {
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
                 
                 // Go to BagpackScene
-                let bagpackScene = BagpackScene(fileNamed: "OutroGoodScene")
+                let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
                 bagpackScene?.scaleMode = .aspectFill
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "setting":
@@ -401,7 +401,7 @@ extension GameScene {
         buttonText?.position = CGPoint(x: positionPlayer.x + 850.0, y: positionPlayer.y - 400.0)
         bag?.position = CGPoint(x: positionPlayer.x + 1050.0, y: positionPlayer.y - 400.0)
         settingButton?.position = CGPoint(x: positionPlayer.x - 1050.0, y: positionPlayer.y + 450.0)
-        popUpUdin?.position = CGPoint(x: positionPlayer.x, y: positionPlayer.y)
+        popUpUdin?.position = CGPoint(x: positionPlayer.x, y: positionPlayer.y - 350.0)
     }
     
     // MARK: Trigger Event
