@@ -7,6 +7,25 @@
 
 import SpriteKit
 
+struct Conversation{
+    var idxMessage: Int // Index Message Saat ini
+    var messages: [Message]
+    var reward: Int // Reward dari Conversation
+    // Computer Property
+    var activeMessage: Message?{
+        idxMessage >= 0 && !isEndOfConversation ? messages[idxMessage] : nil
+    }
+    var isEndOfConversation: Bool{
+        idxMessage >= messages.count
+    }
+    
+    init(messages: [Message], reward: Int){
+        self.idxMessage = -1;
+        self.messages = messages
+        self.reward = reward
+    }
+}
+
 struct Message {
     var speaker: String
     var content: String
@@ -15,17 +34,25 @@ struct Message {
 struct Dialog {
     // Parent
     var dialog: SKNode
+    // Progress Bar
+    var bar: SKSpriteNode
     // Bubble Chat
     var bubbleChat: SKNode
     var labelSpeaker: SKLabelNode
     var labelChat: SKLabelNode
     // Button
     var btnGroup: SKNode
+    var btnGroupClue: SKNode
     
-    
-    
-    init(dialog: SKNode){
+    init(dialog: SKNode, clue: [String]){
         self.dialog = dialog
+        // Load Progress bar
+        guard let progressBar = dialog.childNode(withName: "progressBar") else {
+            fatalError("Progress Bar not found!")
+        }
+        guard let bar = progressBar.childNode(withName: "bar") as? SKSpriteNode else {
+            fatalError("Progress Bar's Bar not found!")
+        }
         // Load Bubble Chat
         guard let bubbleChat = dialog.childNode(withName: "bubbleChat") else {
             fatalError("Bubble chat not found!")
@@ -40,16 +67,52 @@ struct Dialog {
         guard let btnGroup = dialog.childNode(withName: "btnGroup") else {
             fatalError("Button group chat not found!")
         }
-        
+        // Load Button Group Clue
+        guard let btnGroupClue = dialog.childNode(withName: "btnGroupClue") else {
+            fatalError("Button group Clue not found!")
+        }
         // Assign
         self.bubbleChat = bubbleChat
         self.labelSpeaker = labelSpeaker
         self.labelChat = labelChat
         self.btnGroup = btnGroup
-        
+        self.btnGroupClue = btnGroupClue
+        self.bar = bar
         // Fade Out
         let action = SKAction.fadeOut(withDuration: 0.00001)
         self.dialog.run(action)
+        // Samain Posisi btngroupclue dgn btngroup chat
+        self.btnGroupClue.position = self.btnGroup.position
+        self.btnGroupClue.run(SKAction.fadeOut(withDuration: 0.00001))
+        // Assign Text Clue
+        for i in 1...3{
+            guard let btnClue = self.btnGroupClue.childNode(withName: "btnClue\(i)") as? SKSpriteNode else {
+                fatalError("Button Clue \(i) not found!")
+            }
+            guard let label = btnClue.childNode(withName: "innerText") as? SKLabelNode else {
+                fatalError("InnerText Button Clue \(i) not found!")
+            }
+            let clueNotEmpty = clue[i-1] != ""
+            label.text = clueNotEmpty ? clue[i-1] : "-"
+        }
+    }
+    
+    // Function
+    func toggleVisible(isChatVisible chat: Bool, isClueVisible clue: Bool){
+        let actionFadeIn = SKAction.fadeIn(withDuration: 0.5)
+        let actionFadeOut = SKAction.fadeOut(withDuration: 0.5)
+        self.btnGroup.run(chat ? actionFadeIn : actionFadeOut)
+        self.btnGroupClue.run(clue ? actionFadeIn : actionFadeOut)
+    }
+    func updateProgressBar(value: Int){
+        var progress = value
+        if progress > 100{
+            progress = 100
+        }else if progress < 0{
+            progress = 0
+        }
+        let action = SKAction.resize(toWidth: 9.8 * CGFloat(progress), duration: 0.5)
+        self.bar.run(action)
     }
 }
 
@@ -57,16 +120,23 @@ class BattleScene: SKScene{
     // CONSTANT
     static let CHAR_DURATION: TimeInterval = 0.15
     
+    // Trust Point
+    var trustPoint: Int = 0{
+        didSet{
+            self.dialog.updateProgressBar(value: trustPoint)
+        }
+    }
     // Component (Dialog)
     var dialog: Dialog!
+    
     // Frame
     var framePlayerFront = [SKTexture]()
     
-    // Variable
-    var previousTime: TimeInterval = 0
+    // Clue yang dimiliki oleh player
+    var list_clue = [String]()
     
-    // Action
-    var playerAction: Int = -1
+    // Conversation
+    var activeConversation: Conversation? = nil
     // PLayer Action berguna untuk menyimpan action yg mau dilakukan oleh player
     // -1 -> Tidak ada action
     //  0 -> Confront Udin
@@ -74,11 +144,11 @@ class BattleScene: SKScene{
     //  2 -> Ask Clue
     var playerIncomingAction: Int = -1
     // Menyimpan Action Yang hendak dilakukan
-    var idxChat: Int = -1 // Idx Chat Saat ini
-    var chat: [Message] = [] // Chat saat ini
     var isChatAnimating: Bool = false // apakah masih animasi chat
     
     override func didMove(to view: SKView) {
+        // Get Clue
+        list_clue = ["Clue 1", "Clue 2 (Buku)", ""]
         // Get Component
         self.camera = childNode(withName: "camera") as? SKCameraNode
         loadDialog()
@@ -90,42 +160,54 @@ class BattleScene: SKScene{
             self.animateCamera(duration: 1.5)
             self.animateCharacter{
                 self.animateUdin(duration: 0.5)
-                self.animateDialog()
+                self.animateDialog{
+                    self.trustPoint = 20
+                }
             }
         }
-    }
-    
-    override func update(_ currentTime: TimeInterval) {
-        let deltaTime = currentTime - previousTime
-        previousTime = currentTime
     }
     
     // MARK: Action
     // Menjalakan action sesuai pada player incoming action
     func doAction(){
-        if playerIncomingAction == -1 || playerAction != -1{
+        if playerIncomingAction == -1 || activeConversation != nil{
             return
         }// Run Action
-        playerAction = playerIncomingAction
+        let playerAction = playerIncomingAction
         // Reset Incoming Action
         playerIncomingAction = -1
-        // Reset Idx Cjat
-        idxChat = -1
         // Assign Konten Chat
-        chat = [[ // Confront
-            Message(speaker: "Player", content: "Udin jangan galau"),
-            Message(speaker: "Udin", content: "Udah jangan ganggu aku"),
-            Message(speaker: "Udin", content: "Aku aja ga kenal kamu siapa"),
-        ],[ // Listen
-            Message(speaker: "Player", content: "..."),
-            Message(speaker: "Udin", content: "kamu tau nda aku itu pendiam"),
-            Message(speaker: "Udin", content: "gada yg bisa ngertiin aku\nAkhirnya aku menyendiri")
-        ],[ // Ask About
-            Message(speaker: "Player", content: "Udin aku mau tanya..."),
-            Message(speaker: "Udin", content: "Jangan tanya-tanya"),
-        ]][playerAction];
-        // Hide Button Group
-        dialog.btnGroup.run(.fadeOut(withDuration: 0.5))
+        let conversation = [
+            Conversation(messages: [ // Confront
+                Message(speaker: "Player", content: "Udin jangan galau"),
+                Message(speaker: "Udin", content: "Udah jangan ganggu aku"),
+                Message(speaker: "Udin", content: "Aku aja ga kenal kamu siapa")
+            ], reward: 10),
+            Conversation(messages: [ // Listen
+                Message(speaker: "Player", content: "..."),
+                Message(speaker: "Udin", content: "kamu tau nda aku itu pendiam"),
+                Message(speaker: "Udin", content: "gada yg bisa ngertiin aku\nAkhirnya aku menyendiri")
+            ], reward: 10),
+            Conversation(messages: [ // Clue 1
+                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 1"),
+                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 1 dong")
+            ], reward: 10),
+            Conversation(messages: [ // Clue 2
+                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 2"),
+                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 2 dong")
+            ], reward: 10),
+            Conversation(messages: [ // Clue 3
+                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 3"),
+                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 3 dong")
+            ], reward: 10),
+            Conversation(messages: [ // Clue X
+                Message(speaker: "Player", content: "Emmmmm"),
+                Message(speaker: "Udin", content: ".... ???")
+            ], reward: -10),
+        ][playerAction];
+        activeConversation = conversation;
+        // Hide Button Group / Button Group CLue
+        dialog.toggleVisible(isChatVisible: false, isClueVisible: false)
         // Extend Bubblechat
         let action = SKAction.resize(toHeight: (180) * 2, duration: 0.5)
         dialog.bubbleChat.run(action)
@@ -136,16 +218,16 @@ class BattleScene: SKScene{
     func speak(){
         if isChatAnimating{ // Jika Masih Animasikan chat maka langsung diskip aja
             self.isChatAnimating = false
-            let message = chat[idxChat]
+            let message = activeConversation!.activeMessage!
             dialog.labelChat.text = message.content
         }else{ // Jika tidak lagi dianimasikan
             // Increment IDX Chat
-            idxChat += 1
+            activeConversation?.idxMessage += 1
             // Check Apakah sudah akhir dari Chat atau blm
-            if idxChat >= chat.count{
+            if activeConversation!.isEndOfConversation{
                 endOfConversation()
             }else{// masih blm akhir dari chat
-                let message = chat[idxChat]
+                let message = activeConversation!.activeMessage!
                 // Update Speaker
                 dialog.labelSpeaker.text = message.speaker
                 // Animate Chat
@@ -155,13 +237,16 @@ class BattleScene: SKScene{
     }
     // Action yg dijalankan ketika speak sudah sampai terakhir
     func endOfConversation(){
-        // Hide Button Group
-        dialog.btnGroup.run(.fadeIn(withDuration: 0.5))
+        // UnHide Button Group
+        dialog.toggleVisible(isChatVisible: true, isClueVisible: false)
         // Extend Bubblechat
         let action = SKAction.resize(toHeight: (108) * 2, duration: 0.25)
         dialog.bubbleChat.run(action)
+        // Tambahi Point Trust
+        trustPoint += activeConversation!.reward
+        print("Point: \(trustPoint)")
         // Reset Player Action
-        playerAction = -1
+        activeConversation = nil
     }
     
     // MARK: Event Handler
@@ -188,20 +273,25 @@ class BattleScene: SKScene{
                 }
             }
             let list_btn = ["btnConfront", "btnListen", "btnAskAbout"]
+            let list_btn_clue = ["btnClue1", "btnClue2", "btnClue3"]
             let name = node.name ?? ""
             switch name{
             case _ where list_btn.contains(name): // Button Action
                 node.run(.setTexture(SKTexture(imageNamed: "button2")))
                 isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
                 tempIdxAction = list_btn.firstIndex(of: name)!
-            case "bubbleChat" where playerAction != -1: // Bubble Chat yg ditekan
+            case _ where list_btn_clue.contains(name):
+                node.run(.setTexture(SKTexture(imageNamed: "button2")))
+                isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
+                tempIdxAction = list_btn_clue.firstIndex(of: name)! + 2 // ditambah 2 jk clue
+            case "bubbleChat" where activeConversation != nil: // Bubble Chat yg ditekan
                 speak()
             default:
                 print("Do Nothing...")
             }
         }
         // Check Valid Button ditkean
-        if isValid && playerAction == -1{ // Jika Valid dan blm ada action
+        if isValid && activeConversation == nil{ // Jika Valid dan blm ada action
             playerIncomingAction = tempIdxAction
             print("Touch Action: \(playerIncomingAction)")
         }
@@ -217,6 +307,7 @@ class BattleScene: SKScene{
                 button = label.parent ?? self
             }
             let list_btn = ["btnConfront", "btnListen", "btnAskAbout"]
+            let list_btn_clue = ["btnClue1", "btnClue2", "btnClue3"]
             let name = button.name ?? ""
             switch name{
             case _ where list_btn.contains(name):
@@ -224,6 +315,21 @@ class BattleScene: SKScene{
                 let idx = list_btn.firstIndex(of: name)!
                 // Check Apakah Index yg dipilih sama dengan Incoming Action
                 if playerIncomingAction == idx{
+                    if name == "btnAskAbout"{ // Tampilkan semua Clue
+                        playerIncomingAction = -1
+                        dialog.toggleVisible(isChatVisible: false, isClueVisible: true)
+                    }else{
+                        doAction()
+                    }
+                }
+            case _ where list_btn_clue.contains(name):
+                button.run(.setTexture(SKTexture(imageNamed: "button1")))
+                let idx = list_btn_clue.firstIndex(of: name)! + 2 // ditambah 2 jk clue
+                if playerIncomingAction == idx{ // Cluenya dijalankan
+                    let clue = list_clue[idx-2]
+                    if clue == ""{ // JIka Clue tidak ditemukan
+                        playerIncomingAction = 5 // set Clue X
+                    }
                     doAction()
                 }
             default:
@@ -356,7 +462,7 @@ class BattleScene: SKScene{
         guard let dialog = childNode(withName: "dialog") else {
             fatalError("Dialog not found!")
         }
-        self.dialog = Dialog(dialog: dialog)
+        self.dialog = Dialog(dialog: dialog, clue: list_clue)
     }
     
     // MARK: Load Sprite Function
