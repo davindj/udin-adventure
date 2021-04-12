@@ -292,7 +292,7 @@ extension GameScene {
                 udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
                 // Go to BattleScene
-                let udinScene = InteractionAnton(fileNamed: "BattleScene")
+                let udinScene = BattleScene(fileNamed: "BattleScene")
                 udinScene?.scaleMode = .aspectFill
                 self.view?.presentScene(udinScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "antonButton":
