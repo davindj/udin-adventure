@@ -65,7 +65,7 @@ class GameScene: SKScene {
     static var hasPopUp = false
     
     // Player position data
-    static var playerPosition = CGPoint(x: 650, y: -145)
+    static var playerPosition = CGPoint(x: 120, y: 285)
     
     // Game point
     static var point = 0
