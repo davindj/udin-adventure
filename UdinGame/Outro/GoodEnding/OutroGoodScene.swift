@@ -15,7 +15,7 @@ class OutroGoodScene: SKScene {
     // Text properties
     static var fontName = "Verdana"
     static var fontType = "Bold"
-    static var fontColor = UIColor.white
+    static var fontColor = UIColor.brown
     
     static var touchCount = 0
     
