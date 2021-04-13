@@ -227,7 +227,7 @@ class BattleScene: SKScene{
         // Iterate setiap clue yg ditemukan kedalam list_clue
         for i in 0...3{
             let currentClue = available_clue[i]
-            if BagpackScene.items.contains(currentClue) || true{
+            if BagpackScene.items.contains(currentClue){
                 list_clue[i] = currentClue
             }else{ // Clue jadi tidak bisa diakses
                 done_clue[i] = true
@@ -675,8 +675,6 @@ class BattleScene: SKScene{
     // OTW
     // end line
     // insight conversation
-    // audio
-    // itch.io cari music
-    
+    // audio (itch.io)
     // bad clue
 }
