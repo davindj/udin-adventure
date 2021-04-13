@@ -102,21 +102,19 @@ class InteractionYusuf: SKScene {
             yusufBubble?.isHidden = false
             textAlignment(label: yusufChat, string: textYusuf2)
             SettingsMenu.runSound(node: yusufChatSound)
-        case 6:
+        default:
             SettingsMenu.runSound(node: closeSound)
             
             if InteractionYusuf.fromScene == "BagpackScene" {
                 let bagpackScene = SKScene(fileNamed: "BagpackScene")
-                bagpackScene?.scaleMode = .aspectFill
+                bagpackScene?.scaleMode = .aspectFit
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             } else {
                 GameScene.point += 10
                 let gameScene = SKScene(fileNamed: "GameScene")
-                gameScene?.scaleMode = .aspectFill
+                gameScene?.scaleMode = .aspectFit
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
             }
-        default:
-            textAlignment(label: yusufChat, string: textYusuf1)
         }
     }
     
