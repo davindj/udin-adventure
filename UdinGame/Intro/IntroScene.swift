@@ -97,11 +97,9 @@ class IntroScene: SKScene {
             scene3?.scaleMode = .aspectFit
             self.view?.presentScene(scene3!, transition: SKTransition.crossFade(withDuration: 0.75))
         default:
-            IntroViewController.navigate()
-            // Go to GameScene
-//            let scene4 = SKScene(fileNamed: "GameScene")
-//            scene4?.scaleMode = .aspectFit
-//            self.view?.presentScene(scene4!, transition: SKTransition.fade(withDuration: 1.0))
+            let gameScene = GameScene(fileNamed: "GameScene")
+            let transition = SKTransition.fade(withDuration: 1.0)
+            IntroViewController.presentGameScene(toScene: gameScene!, transition: transition)
         }
     }
 }

@@ -286,50 +286,51 @@ extension GameScene {
                 
                 // Go to BookScene
                 let bookScene = UdinDiaryScene(fileNamed: "UdinDiaryScene")
-                bookScene?.scaleMode = .aspectFit
-                self.view?.presentScene(bookScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: bookScene!, transition: transition)
             case "udinButton":
                 udinButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
                 // Go to BattleScene
                 let udinScene = BattleScene(fileNamed: "BattleScene")
-                udinScene?.scaleMode = .aspectFit
-                self.view?.presentScene(udinScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: udinScene!, transition: transition)
             case "antonButton":
                 antonButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
                 // Go to InteractionAnton
                 let antonScene = InteractionAnton(fileNamed: "InteractionAnton")
-                antonScene?.scaleMode = .aspectFit
-                self.view?.presentScene(antonScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: antonScene!, transition: transition)
             case "yusufButton":
                 yusufButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
                 // Go to InteractionToni
                 let yusufScene = InteractionYusuf(fileNamed: "InteractionYusuf")
-                yusufScene?.scaleMode = .aspectFit
-                self.view?.presentScene(yusufScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: yusufScene!, transition: transition)
             case "toniButton" :
                 toniButton?.run(.setTexture(SKTexture(imageNamed: "talkButton")))
                 
                 // Go to InteractionToni
                 let toniScene = InteractionToni(fileNamed: "InteractionToni")
-                toniScene?.scaleMode = .aspectFit
-                self.view?.presentScene(toniScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: toniScene!, transition: transition)
             case "bag":
                 bag?.run(.setTexture(SKTexture(imageNamed: "bagButton")))
                 
                 // Go to BagpackScene
                 let bagpackScene = BagpackScene(fileNamed: "BagpackScene")
-                bagpackScene?.scaleMode = .aspectFit
-                self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: bagpackScene!, transition: transition)
+                
             case "setting":
                 settingButton?.run(.setTexture(SKTexture(imageNamed: "settingButton")))
                 
                 // Go to SettingsMenu
                 let settingScene = SettingsMenu(fileNamed: "SettingsMenu")
-                settingScene?.scaleMode = .aspectFit
-                self.view?.presentScene(settingScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: settingScene!, transition: transition)
             default:
                 print("")
             }

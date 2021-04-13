@@ -675,6 +675,7 @@ class BattleScene: SKScene{
     // OTW
     // end line
     // insight conversation
+    // insight button
     // audio (itch.io)
     // bad clue
 }

@@ -114,8 +114,8 @@ class SettingsMenu: SKScene {
                 
                 //Back to GameScene
                 let gameScene = GameScene(fileNamed: "GameScene")
-                gameScene?.scaleMode = .aspectFit
-                self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
+                let transition = SKTransition.fade(withDuration: 1.0)
+                IntroViewController.presentGameScene(toScene: gameScene!, transition: transition)
             case "musicButton":
                 if musicButtonName == "musicButton2" {
                     // Turn off music
