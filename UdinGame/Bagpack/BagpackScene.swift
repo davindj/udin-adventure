@@ -105,10 +105,10 @@ class BagpackScene: SKScene {
         case "diary":
             itemLabel = "Diari Udin"
             itemScene = "UdinDiaryScene"
-        case "InsightAnton":
+        case "insight1":
             itemLabel = "Opini Anton"
             itemScene = "InteractionAnton"
-        case "insight1":
+        case "insight3":
             itemLabel = "Opini Yusuf"
             itemScene = "InteractionYusuf"
         case "insight2":

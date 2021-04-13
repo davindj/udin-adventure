@@ -35,6 +35,8 @@
 		C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39CB4EF262022F1009F0D52 /* BagpackScene.swift */; };
 		C3CA861C26243609004EF27E /* OutroGoodScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA861B26243609004EF27E /* OutroGoodScene.swift */; };
 		C3CA861F26243A5F004EF27E /* OutroBadScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA861E26243A5F004EF27E /* OutroBadScene.swift */; };
+		C3CA862926247C2A004EF27E /* Credit.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CA862826247C2A004EF27E /* Credit.sks */; };
+		C3CA862C26247C7B004EF27E /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CA862B26247C7B004EF27E /* Credit.swift */; };
 		C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C61262346AE00C501A0 /* OutroBad0.sks */; };
 		C3CC1C68262346AE00C501A0 /* OutroBad1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C63262346AE00C501A0 /* OutroBad1.sks */; };
 		C3CC1C73262346C500C501A0 /* OutroGood0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1C6E262346C500C501A0 /* OutroGood0.sks */; };
@@ -89,6 +91,8 @@
 		C39CB4EF262022F1009F0D52 /* BagpackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagpackScene.swift; sourceTree = "<group>"; };
 		C3CA861B26243609004EF27E /* OutroGoodScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroGoodScene.swift; sourceTree = "<group>"; };
 		C3CA861E26243A5F004EF27E /* OutroBadScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroBadScene.swift; sourceTree = "<group>"; };
+		C3CA862826247C2A004EF27E /* Credit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Credit.sks; sourceTree = "<group>"; };
+		C3CA862B26247C7B004EF27E /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		C3CC1C61262346AE00C501A0 /* OutroBad0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad0.sks; sourceTree = "<group>"; };
 		C3CC1C63262346AE00C501A0 /* OutroBad1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroBad1.sks; sourceTree = "<group>"; };
 		C3CC1C6E262346C500C501A0 /* OutroGood0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OutroGood0.sks; sourceTree = "<group>"; };
@@ -194,9 +198,19 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		C3CA862F26247CA0004EF27E /* Credit */ = {
+			isa = PBXGroup;
+			children = (
+				C3CA862826247C2A004EF27E /* Credit.sks */,
+				C3CA862B26247C7B004EF27E /* Credit.swift */,
+			);
+			path = Credit;
+			sourceTree = "<group>";
+		};
 		C3CC1C58262345CF00C501A0 /* Outro */ = {
 			isa = PBXGroup;
 			children = (
+				C3CA862F26247CA0004EF27E /* Credit */,
 				C3CC1C5B262345FA00C501A0 /* GoodEnding */,
 				C3CC1C5A262345EF00C501A0 /* BadEnding */,
 			);
@@ -319,6 +333,7 @@
 				C37313E42620707D00EDAAF8 /* Intro0.sks in Resources */,
 				C38D435C262177C4006DBA57 /* UdinDiaryScene.sks in Resources */,
 				D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */,
+				C3CA862926247C2A004EF27E /* Credit.sks in Resources */,
 				C3CC1CB026237EE300C501A0 /* Menu_Sound_Load_Savefile.wav in Resources */,
 				C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */,
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
@@ -355,6 +370,7 @@
 				C38D1D99261D911D00D9EC1C /* GameScene.swift in Sources */,
 				C38D436C26218840006DBA57 /* InteractionYusuf.swift in Sources */,
 				D743A2B626256A9500949591 /* RedemptionScene.swift in Sources */,
+				C3CA862C26247C7B004EF27E /* Credit.swift in Sources */,
 				C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */,
 				05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */,
 				C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */,

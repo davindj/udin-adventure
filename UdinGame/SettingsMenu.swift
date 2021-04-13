@@ -3,7 +3,7 @@
 //  UdinGame
 //
 //  Created by Alamsyah Oktavian on 08/04/21.
-//
+//  Maintined by Dimas A. Prabowo on 12/04/21.
 
 import SpriteKit
 import AVFoundation
@@ -30,10 +30,10 @@ class SettingsMenu: SKScene {
     override func didMove(to view: SKView) {
         // Button
         closeButton = childNode(withName: "closeButton")
+        emailButton = childNode(withName: "emailButton")
         musicButton = childNode(withName: "musicButton") as? SKSpriteNode
         soundButton = childNode(withName: "soundButton") as? SKSpriteNode
         vibrateButton = childNode(withName: "vibrateButton") as? SKSpriteNode
-        emailButton = childNode(withName: "emailButton")
         
         buttonState()
         
