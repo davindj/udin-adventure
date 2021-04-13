@@ -9,7 +9,9 @@ import Foundation
 import SpriteKit
 
 class OutroGoodScene: SKScene {
-    var textGoodEnd: SKLabelNode?
+    var textBubbleGood: SKNode?
+    var textGoodEnd0: SKLabelNode?
+    var textGoodEnd1: SKLabelNode?
     var recapGoodEnd: SKLabelNode?
     
     // Text properties
@@ -20,18 +22,27 @@ class OutroGoodScene: SKScene {
     static var touchCount = 0
     
     override func didMove(to view: SKView) {
-        textGoodEnd = childNode(withName: "textGoodEnd") as? SKLabelNode
+        textBubbleGood = childNode(withName: "textBubbleGood")
+        textGoodEnd0 = textBubbleGood?.childNode(withName: "textGoodEnd0") as? SKLabelNode
+        textGoodEnd1 = textBubbleGood?.childNode(withName: "textGoodEnd1") as? SKLabelNode
         recapGoodEnd = childNode(withName: "recapGoodEnd") as? SKLabelNode
         
+        textBubbleGood?.isHidden = true
         setText()
     }
     
     func setText() {
-        let goodEndText = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
+        
+        let goodEndText0 = "Selamat! Anda berhasil mengembalikan kepercayaan diri Udin dan membuat Udin \nsemangat kembali. Berkat bantuanmu, Udin dapat lebih menghargai dirinya dan sesamanya."
+        let goodEndText1 = "Menghadapi orang yang memiliki depresi \ntentunya tidaklah mudah dan dibutuhkan kesabaran. Oleh karena itu, \njangan mudah mengecap orang dan mulailah mencoba untuk mengenalinya."
         let recapGoodEndText = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
         
-        if let textGoodEnd = textGoodEnd {
-            textAlignment(label: textGoodEnd, string: goodEndText)
+        if let textGoodEnd0 = textGoodEnd0 {
+            textAlignment(label: textGoodEnd0, string: goodEndText0)
+        }
+        
+        if let textGoodEnd1 = textGoodEnd1 {
+            textAlignment(label: textGoodEnd1, string: goodEndText1)
         }
         
         if let recapGoodEnd = recapGoodEnd {
@@ -40,34 +51,37 @@ class OutroGoodScene: SKScene {
     }
     
     func textAlignment(label: SKLabelNode ,string: String) {
-        let font = "\(IntroScene.fontName)-\(IntroScene.fontType)"
+        let font = "\(OutroGoodScene.fontName)-\(OutroGoodScene.fontType)"
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : IntroScene.fontColor, NSAttributedString.Key.underlineColor: UIColor.black, NSAttributedString.Key.font : UIFont(name: font, size: 48.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : OutroGoodScene.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 32.0)!], range: range)
         label.attributedText = attrString
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        IntroScene.touchCount += 1
+        OutroGoodScene.touchCount += 1
         
-        switch IntroScene.touchCount {
+        switch OutroGoodScene.touchCount {
         case 1:
+            // Show text
+            textBubbleGood?.isHidden = false
+        case 2:
             // Go to Intro1
             let scene0 = SKScene(fileNamed: "OutroGood1")
-            scene0?.scaleMode = .aspectFill
+            scene0?.scaleMode = .aspectFit
             self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 2:
+        case 3:
             // Go to GameScene
             let scene1 = SKScene(fileNamed: "Credit")
-            scene1?.scaleMode = .aspectFill
+            scene1?.scaleMode = .aspectFit
             self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
         default:
             // default in Intro0
             let scene0 = SKScene(fileNamed: "OutroGood0")
-            scene0?.scaleMode = .aspectFill
+            scene0?.scaleMode = .aspectFit
             self.view?.presentScene(scene0!, transition: SKTransition.fade(withDuration: 1.0))
         }
     }
