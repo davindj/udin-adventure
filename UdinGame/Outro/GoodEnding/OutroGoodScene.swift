@@ -69,12 +69,7 @@ class OutroGoodScene: SKScene {
             // Show text
             textBubbleGood?.isHidden = false
         case 2:
-            // Go to Intro1
-            let scene0 = SKScene(fileNamed: "OutroGood1")
-            scene0?.scaleMode = .aspectFit
-            self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 3:
-            // Go to GameScene
+            // Go to Credit
             let scene1 = SKScene(fileNamed: "Credit")
             scene1?.scaleMode = .aspectFit
             self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))

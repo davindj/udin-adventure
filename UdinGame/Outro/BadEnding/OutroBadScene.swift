@@ -20,33 +20,36 @@ class OutroBadScene: SKScene {
     static var touchCount = 0
     
     override func didMove(to view: SKView) {
-        textBadEnd = childNode(withName: "textBadEnd") as? SKLabelNode
-        recapBadEnd = childNode(withName: "recapBadEnd") as? SKLabelNode
+        let textBubbleBad = childNode(withName: "textBubbleBad")
+        textBadEnd = textBubbleBad?.childNode(withName: "textBadEnd0") as? SKLabelNode
+        recapBadEnd = textBubbleBad?.childNode(withName: "textBadEnd1") as? SKLabelNode
         
         setText()
     }
     
     func setText() {
-        let textBadEndText = "Aku adalah murid baru kelas 4 pada salah satu Sekolah Dasar di Surabaya."
-        let recapBadEndText = "Pada hari pertama masuk sekolah aku duduk sebangku dengan siswa bernama Udin."
+        let textBadEndText = "Sayang sekali namun Anda tidak berhasil membantu memecahkan masalah Udin.\nHal ini dibutuhkan kesabaran dan pengertian."
+        let recapBadEndText = "Oleh karena itu, jangan mudah mengecap orang dan mulailah mencoba untuk mengenalinya.\nTindakan kecil dapat membawakan dampak yang besar bagi seseorang."
         
-        if let textBadEnd = textBadEnd {
-            textAlignment(label: textBadEnd, string: textBadEndText)
+        guard let textBadEnd = textBadEnd else {
+            fatalError("Text Bad End 0 tidak ditemukan")
+        }
+        guard let recapBadEnd = recapBadEnd else {
+            fatalError("Text Bad End 1 tidak ditemukan")
         }
         
-        if let recapBadEnd = recapBadEnd {
-            textAlignment(label: recapBadEnd, string: recapBadEndText)
-        }
+        textAlignment(label: textBadEnd, string: textBadEndText)
+        textAlignment(label: recapBadEnd, string: recapBadEndText)
     }
     
     func textAlignment(label: SKLabelNode ,string: String) {
-        let font = "\(IntroScene.fontName)-\(IntroScene.fontType)"
+        let font = "\(OutroGoodScene.fontName)-\(OutroGoodScene.fontType)"
         let attrString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let range = NSRange(location: 0, length: string.count)
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: range)
-        attrString.addAttributes([NSAttributedString.Key.foregroundColor : IntroScene.fontColor, NSAttributedString.Key.underlineColor: UIColor.black, NSAttributedString.Key.font : UIFont(name: font, size: 48.0)!], range: range)
+        attrString.addAttributes([NSAttributedString.Key.foregroundColor : OutroGoodScene.fontColor, NSAttributedString.Key.font : UIFont(name: font, size: 32.0)!], range: range)
         label.attributedText = attrString
     }
     
@@ -55,11 +58,6 @@ class OutroBadScene: SKScene {
         
         switch IntroScene.touchCount {
         case 1:
-            // Go to Intro1
-            let scene0 = SKScene(fileNamed: "OutroBad1")
-            scene0?.scaleMode = .aspectFill
-            self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 2:
             // Go to GameScene
             let scene4 = SKScene(fileNamed: "Credit")
             scene4?.scaleMode = .aspectFill
