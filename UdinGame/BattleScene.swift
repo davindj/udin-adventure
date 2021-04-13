@@ -133,13 +133,20 @@ struct Dialog {
         toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue2", isDisable: !clue2)
         toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue3", isDisable: !clue3)
         toggleDisableChild(parentNode: btnGroupClue, childName: "btnClue4", isDisable: !clue4)
+        // Disable Button Ask about
+        let isBtnAskAboutEnable = clue1 || clue2 || clue3 || clue4
+        if !isBtnAskAboutEnable{
+            toggleDisableChild(parentNode: btnGroup, childName: "btnAskAbout", isDisable: true)
+        }
     }
     func toggleDisableChild(parentNode parent: SKNode, childName name: String, isDisable: Bool){
         guard let btn = parent.childNode(withName: name) as? SKSpriteNode else{
             fatalError("\(name) not found")
         }
         if isDisable{
-            btn.run(SKAction.hide())
+            btn.run(.setTexture(SKTexture(imageNamed: "button2")))
+            btn.run(.fadeAlpha(to: BattleScene.DISABLE_ALPHA, duration: 0.001))
+            print("Asset berubah!")
         }
     }
 }
@@ -148,6 +155,7 @@ struct Dialog {
 class BattleScene: SKScene{
     // CONSTANT
     static let CHAR_DURATION: TimeInterval = 0.15
+    static let DISABLE_ALPHA: CGFloat = 0.5
     
     // Idx Conversation
     var idxConfront: Int = 0
@@ -184,8 +192,8 @@ class BattleScene: SKScene{
     
     // MARK: Constructor
     override func didMove(to view: SKView) {
-        // Get Clue
-        list_clue = ["Clue 1", "Clue 2 (Buku)", "", ""]
+        // Load Clue
+        loadClue()
         // Get Component
         self.camera = childNode(withName: "camera") as? SKCameraNode
         loadDialog()
@@ -193,7 +201,7 @@ class BattleScene: SKScene{
         loadSprite()
         // Animating
         self.trustPoint = 0
-        animateIntroScene{
+        self.animateIntroScene{
             self.animateBackground(duration: 1.5)
             self.animateCamera(duration: 1.5)
             self.animateCharacter{
@@ -201,6 +209,28 @@ class BattleScene: SKScene{
                 self.animateDialog{
                     self.trustPoint = 20
                 }
+            }
+        }
+        // Toggle Disable Enable Component, siapa tau ada clue yg tidak ditemukan
+        self.toggleDisableEnable()
+    }
+    
+    func loadClue(){
+        // Load Clue nya pake Static Bagpack
+        list_clue = ["", "", "", ""]
+        // List All Posssible Clue
+        // 1 diary
+        // 2 insight1
+        // 3 insight2
+        // 4 insight3
+        let available_clue = ["diary", "insight1", "insight2", "insight3"]
+        // Iterate setiap clue yg ditemukan kedalam list_clue
+        for i in 0...3{
+            let currentClue = available_clue[i]
+            if BagpackScene.items.contains(currentClue) || true{
+                list_clue[i] = currentClue
+            }else{ // Clue jadi tidak bisa diakses
+                done_clue[i] = true
             }
         }
     }
@@ -279,6 +309,7 @@ class BattleScene: SKScene{
             ], reward: -10),
         ][playerAction];
         activeConversation = conversation;
+        print("Start Conversation: \(playerAction)")
         // Update idx
         if playerAction == 0{
             idxConfront += 1
@@ -337,14 +368,7 @@ class BattleScene: SKScene{
         // Reset Player Action
         activeConversation = nil
         // Block action
-        dialog.disableComponent(
-            isConfrontActive: !isDoneConfront,
-            isListenActive: !isDoneListen,
-            isClue1Active: !done_clue[0],
-            isClue2Active: !done_clue[1],
-            isClue3Active: !done_clue[2],
-            isClue4Active: !done_clue[3]
-        )
+        toggleDisableEnable()
         // Check Score
         let isWinning = trustPoint >= 40
         let isLosing = trustPoint <= 0
@@ -358,7 +382,25 @@ class BattleScene: SKScene{
         }
     }
     
+    func toggleDisableEnable(){
+        dialog.disableComponent(
+            isConfrontActive: !isDoneConfront,
+            isListenActive: !isDoneListen,
+            isClue1Active: !done_clue[0],
+            isClue2Active: !done_clue[1],
+            isClue3Active: !done_clue[2],
+            isClue4Active: !done_clue[3]
+        )
+    }
+    
     // MARK: Event Handler
+    func checkButtonAvailability(button: SKNode) -> Bool{
+        guard let btn = button as? SKSpriteNode else{
+            return false
+        }
+        return btn.alpha != BattleScene.DISABLE_ALPHA
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Untuk check apakah button yg ditekan benar
         var isValid = false;
@@ -382,21 +424,28 @@ class BattleScene: SKScene{
                 }
             }
             let list_btn = ["btnConfront", "btnListen", "btnAskAbout"]
-            let list_btn_clue = ["btnClue1", "btnClue2", "btnClue3"]
+            let list_btn_clue = ["btnClue1", "btnClue2", "btnClue3", "btnClue4"]
             let name = node.name ?? ""
             switch name{
             case _ where list_btn.contains(name): // Button Action
-                node.run(.setTexture(SKTexture(imageNamed: "button2")))
-                isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
-                tempIdxAction = list_btn.firstIndex(of: name)!
+                // Check Button Condition
+                let isAvailable = checkButtonAvailability(button: node)
+                if isAvailable{
+                    node.run(.setTexture(SKTexture(imageNamed: "button2")))
+                    isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
+                    tempIdxAction = list_btn.firstIndex(of: name)!
+                }
             case _ where list_btn_clue.contains(name):
-                node.run(.setTexture(SKTexture(imageNamed: "button2")))
-                isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
-                tempIdxAction = list_btn_clue.firstIndex(of: name)! + 2 // ditambah 2 jk clue
+                let isAvailable = checkButtonAvailability(button: node)
+                if isAvailable{
+                    node.run(.setTexture(SKTexture(imageNamed: "button2")))
+                    isValid = tempIdxAction == -1 // Valid jika tidak action sm sekali
+                    tempIdxAction = list_btn_clue.firstIndex(of: name)! + 2 // ditambah 2 jk clue
+                }
             case "bubbleChat" where activeConversation != nil: // Bubble Chat yg ditekan
                 speak()
             default:
-                print("Do Nothing...")
+                print("[Touch Begin] Do Nothing...")
             }
         }
         // Check Valid Button ditkean
@@ -416,7 +465,7 @@ class BattleScene: SKScene{
                 button = label.parent ?? self
             }
             let list_btn = ["btnConfront", "btnListen", "btnAskAbout"]
-            let list_btn_clue = ["btnClue1", "btnClue2", "btnClue3"]
+            let list_btn_clue = ["btnClue1", "btnClue2", "btnClue3", "btnClue4"]
             let name = button.name ?? ""
             switch name{
             case _ where list_btn.contains(name):
@@ -442,7 +491,7 @@ class BattleScene: SKScene{
                     doAction()
                 }
             default:
-                print("Do Nothing...")
+                print("[Touch Ended] Do Nothing...")
             }
         }
     }
@@ -613,12 +662,13 @@ class BattleScene: SKScene{
     
     // Note
     // Button Confront & Listen ubah jadi disable dn transparan
-    // ALign label
+    // Disable clue yang blm ditemukan
+    // Align Text label
     // load clue
-    // disable clue yang blm ditemukan
+    
     // insight conversation
     // audio
     // redir ke endingscene
-    
     // itch.io cari music
+    // bad clue
 }
