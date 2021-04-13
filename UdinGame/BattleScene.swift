@@ -374,11 +374,10 @@ class BattleScene: SKScene{
         let isLosing = trustPoint <= 0
         // Jika menang atau kalah maka pindah halaman
         if isWinning || isLosing{
-            if isWinning{
-                fatalError("You win not implemented yet")
-            }else{
-                fatalError("You lose not implemented yet")
-            }
+            RedemptionScene.isHappyEnding = isWinning
+            let gameScene: SKScene = RedemptionScene(fileNamed: "RedemptionScene")!;
+            gameScene.scaleMode = .aspectFill
+            self.view?.presentScene(gameScene, transition: SKTransition.fade(withDuration: 1.0))
         }
     }
     
@@ -504,6 +503,7 @@ class BattleScene: SKScene{
         text: String,
         durationPerChar durChar: TimeInterval = CHAR_DURATION,
         durationPerDot durDot: TimeInterval = CHAR_DURATION,
+        isUsingAttributeText isAtext: Bool = false,
         callBack cb: @escaping (()->Void) = {}
     ){
         // Mulai Animasi Chat
@@ -527,7 +527,12 @@ class BattleScene: SKScene{
                     SKAction.run{
                         if !self.isChatAnimating{return}
                         idx += 1
-                        label.text = String(text.prefix(idx))
+                        let text = String(text.prefix(idx))
+                        if isAtext{
+                            self.textAlignment(string: text, label: label, color: .black)
+                        }else{
+                            label.text = text
+                        }
                     }
                 ])
                 label.run(action){
@@ -660,15 +665,18 @@ class BattleScene: SKScene{
         label.attributedText = attrString
     }
     
-    // Note
+    // Done
     // Button Confront & Listen ubah jadi disable dn transparan
     // Disable clue yang blm ditemukan
     // Align Text label
     // load clue
+    // redir ke endingscene
     
+    // OTW
+    // end line
     // insight conversation
     // audio
-    // redir ke endingscene
     // itch.io cari music
+    
     // bad clue
 }

@@ -52,6 +52,8 @@
 		C3CC1CAC26237E8300C501A0 /* Hitsound 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1CAA26237E8300C501A0 /* Hitsound 1.mp3 */; };
 		C3CC1CAD26237E8300C501A0 /* Hitsound 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1CAB26237E8300C501A0 /* Hitsound 2.mp3 */; };
 		C3CC1CB026237EE300C501A0 /* Menu_Sound_Load_Savefile.wav in Resources */ = {isa = PBXBuildFile; fileRef = C3CC1CAF26237EE300C501A0 /* Menu_Sound_Load_Savefile.wav */; };
+		D743A2B626256A9500949591 /* RedemptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743A2B526256A9500949591 /* RedemptionScene.swift */; };
+		D743A2BE26256DB800949591 /* RedemptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D743A2BD26256DB800949591 /* RedemptionScene.sks */; };
 		D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D726C9261F069100C10602 /* BattleSceneViewController.swift */; };
 		D7E07638261DC97700F20CD9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7E07637261DC97700F20CD9 /* GameScene.sks */; };
 /* End PBXBuildFile section */
@@ -104,6 +106,8 @@
 		C3CC1CAA26237E8300C501A0 /* Hitsound 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hitsound 1.mp3"; sourceTree = "<group>"; };
 		C3CC1CAB26237E8300C501A0 /* Hitsound 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hitsound 2.mp3"; sourceTree = "<group>"; };
 		C3CC1CAF26237EE300C501A0 /* Menu_Sound_Load_Savefile.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Menu_Sound_Load_Savefile.wav; sourceTree = "<group>"; };
+		D743A2B526256A9500949591 /* RedemptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionScene.swift; sourceTree = "<group>"; };
+		D743A2BD26256DB800949591 /* RedemptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedemptionScene.sks; sourceTree = "<group>"; };
 		D7D726C9261F069100C10602 /* BattleSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSceneViewController.swift; sourceTree = "<group>"; };
 		D7E07637261DC97700F20CD9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +165,8 @@
 				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
 				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
 				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
+				D743A2BD26256DB800949591 /* RedemptionScene.sks */,
+				D743A2B526256A9500949591 /* RedemptionScene.swift */,
 				C3CC1C7D262351BF00C501A0 /* Bagpack */,
 				C3A8B66F2622374F00B20028 /* Event */,
 				C37313F926207A8200EDAAF8 /* Intro */,
@@ -316,6 +322,7 @@
 				C3CC1CB026237EE300C501A0 /* Menu_Sound_Load_Savefile.wav in Resources */,
 				C3CC1C66262346AE00C501A0 /* OutroBad0.sks in Resources */,
 				4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */,
+				D743A2BE26256DB800949591 /* RedemptionScene.sks in Resources */,
 				C3CC1C9126235BB500C501A0 /* Noah_Kuehne_Setting.wav in Resources */,
 				C3CC1C98262362EB00C501A0 /* Walk.mp3 in Resources */,
 				C38D1D83261D8F1400D9EC1C /* Assets.xcassets in Resources */,
@@ -347,6 +354,7 @@
 			files = (
 				C38D1D99261D911D00D9EC1C /* GameScene.swift in Sources */,
 				C38D436C26218840006DBA57 /* InteractionYusuf.swift in Sources */,
+				D743A2B626256A9500949591 /* RedemptionScene.swift in Sources */,
 				C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */,
 				05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */,
 				C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */,
