@@ -8,22 +8,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
+        <!--Intro View Controller-->
         <scene sceneID="u1l-lp-ei4">
             <objects>
-                <viewController storyboardIdentifier="gamescene" id="fB7-TT-LNg" customClass="GameViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gamescene" id="fB7-TT-LNg" customClass="IntroViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="0C1-AW-Xb7">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </skView>
                     <navigationItem key="navigationItem" id="Oxi-iC-XRG"/>
                     <connections>
-                        <outlet property="Gamescene" destination="0C1-AW-Xb7" id="L0V-Bv-ASL"/>
+                        <outlet property="introScene" destination="0C1-AW-Xb7" id="vQ8-mh-mcG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8t-HQ-qp4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="948"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="JLe-0b-axR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L95-Rm-hhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="gameView" id="BEp-RC-tg3" customClass="GameViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="Aw9-hy-FzU">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <connections>
+                        <outlet property="gameScene" destination="Aw9-hy-FzU" id="r95-fv-XG5"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="701" y="1768"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="eb2-u9-2P3">
@@ -138,6 +154,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCO-3Z-oTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9.24170616113744" y="947.69230769230762"/>
+        </scene>
+        <!--Battle Scene View Controller-->
+        <scene sceneID="j8C-Tj-pqd">
+            <objects>
+                <viewController storyboardIdentifier="battleView" id="CBt-2c-Ida" customClass="BattleSceneViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="6y0-2Z-nej">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <connections>
+                        <outlet property="battleScene" destination="6y0-2Z-nej" id="CCX-uP-RH1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVL-6Q-kA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="948"/>
+        </scene>
+        <!--Outro Good View Controller-->
+        <scene sceneID="CCh-F9-Y5D">
+            <objects>
+                <viewController storyboardIdentifier="outroGoodView" id="sxN-FZ-PLA" customClass="OutroGoodViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="3ng-cW-Bwl">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <connections>
+                        <outlet property="outroScene" destination="3ng-cW-Bwl" id="3PT-v2-ct8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Brc-rd-ZWS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="1768"/>
+        </scene>
+        <!--Outro Bad View Controller-->
+        <scene sceneID="O4Y-8U-Ypb">
+            <objects>
+                <viewController storyboardIdentifier="outroBadView" id="dM0-Ma-AtP" customClass="OutroBadViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="c8P-wQ-un6">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <connections>
+                        <outlet property="outroSceneBad" destination="c8P-wQ-un6" id="fNP-Yg-6ez"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36W-Z2-LyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="2582"/>
         </scene>
     </scenes>
     <resources>

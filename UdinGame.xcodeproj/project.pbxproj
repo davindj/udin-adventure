@@ -10,6 +10,9 @@
 		05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */; };
 		4E88B760261DA413005AB6E3 /* SettingsMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */; };
 		4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECFC85261EF08E00043358 /* SettingsMenu.swift */; };
+		C3000D1426258E6500D0AC19 /* OutroGoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3000D1326258E6500D0AC19 /* OutroGoodViewController.swift */; };
+		C3000D1726258EDC00D0AC19 /* OutroBadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3000D1626258EDC00D0AC19 /* OutroBadViewController.swift */; };
+		C31191912625845600FA2D61 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31191902625845600FA2D61 /* IntroViewController.swift */; };
 		C35A07F9261F124000CD47BD /* BagpackScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C35A07F8261F124000CD47BD /* BagpackScene.sks */; };
 		C37313E42620707D00EDAAF8 /* Intro0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C37313E32620707D00EDAAF8 /* Intro0.sks */; };
 		C37313E72620710F00EDAAF8 /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37313E62620710F00EDAAF8 /* IntroScene.swift */; };
@@ -64,6 +67,9 @@
 		05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsMenu.sks; sourceTree = "<group>"; };
 		4EECFC85261EF08E00043358 /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
+		C3000D1326258E6500D0AC19 /* OutroGoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroGoodViewController.swift; sourceTree = "<group>"; };
+		C3000D1626258EDC00D0AC19 /* OutroBadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutroBadViewController.swift; sourceTree = "<group>"; };
+		C31191902625845600FA2D61 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		C35A07F8261F124000CD47BD /* BagpackScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BagpackScene.sks; sourceTree = "<group>"; };
 		C37313E32620707D00EDAAF8 /* Intro0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Intro0.sks; sourceTree = "<group>"; };
 		C37313E62620710F00EDAAF8 /* IntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 				C37313EF2620756A00EDAAF8 /* Intro2.sks */,
 				C37313F22620757900EDAAF8 /* Intro3.sks */,
 				C37313F52620758400EDAAF8 /* Intro4.sks */,
+				C31191902625845600FA2D61 /* IntroViewController.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -159,7 +166,6 @@
 		C38D1D74261D8F1300D9EC1C /* UdinGame */ = {
 			isa = PBXGroup;
 			children = (
-				C3CC1C8226235B0B00C501A0 /* Music */,
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
 				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
 				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
@@ -177,6 +183,7 @@
 				C3CC1C58262345CF00C501A0 /* Outro */,
 				C38D1D7F261D8F1300D9EC1C /* Main.storyboard */,
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
+				C3CC1C8226235B0B00C501A0 /* Music */,
 				C38D1D82261D8F1400D9EC1C /* Assets.xcassets */,
 				C38D1D84261D8F1400D9EC1C /* Info.plist */,
 			);
@@ -223,6 +230,7 @@
 				C3CC1C61262346AE00C501A0 /* OutroBad0.sks */,
 				C3CC1C63262346AE00C501A0 /* OutroBad1.sks */,
 				C3CA861E26243A5F004EF27E /* OutroBadScene.swift */,
+				C3000D1626258EDC00D0AC19 /* OutroBadViewController.swift */,
 			);
 			path = BadEnding;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 				C3CC1C6E262346C500C501A0 /* OutroGood0.sks */,
 				C3CC1C6F262346C500C501A0 /* OutroGood1.sks */,
 				C3CA861B26243609004EF27E /* OutroGoodScene.swift */,
+				C3000D1326258E6500D0AC19 /* OutroGoodViewController.swift */,
 			);
 			path = GoodEnding;
 			sourceTree = "<group>";
@@ -373,9 +382,11 @@
 				C3CA862C26247C7B004EF27E /* Credit.swift in Sources */,
 				C39CB4F0262022F1009F0D52 /* BagpackScene.swift in Sources */,
 				05D5BAAD261EDDD3003C9F32 /* MainMenuViewController.swift in Sources */,
+				C3000D1426258E6500D0AC19 /* OutroGoodViewController.swift in Sources */,
 				C38D1D9A261D911D00D9EC1C /* GameViewController.swift in Sources */,
 				C38D435F262178A0006DBA57 /* UdinDiaryScene.swift in Sources */,
 				C38D43742621891C006DBA57 /* InteractionToni.swift in Sources */,
+				C31191912625845600FA2D61 /* IntroViewController.swift in Sources */,
 				C3CA861F26243A5F004EF27E /* OutroBadScene.swift in Sources */,
 				D7D726CA261F069100C10602 /* BattleSceneViewController.swift in Sources */,
 				4EECFC86261EF08E00043358 /* SettingsMenu.swift in Sources */,
@@ -383,6 +394,7 @@
 				C38D43652621868A006DBA57 /* InteractionAnton.swift in Sources */,
 				C37313E72620710F00EDAAF8 /* IntroScene.swift in Sources */,
 				C38D1D76261D8F1300D9EC1C /* AppDelegate.swift in Sources */,
+				C3000D1726258EDC00D0AC19 /* OutroBadViewController.swift in Sources */,
 				C3CA861C26243609004EF27E /* OutroGoodScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

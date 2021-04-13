@@ -104,21 +104,19 @@ class InteractionToni: SKScene {
             toniBubble?.isHidden = false
             textAlignment(label: toniChat, string: textToni2)
             SettingsMenu.runSound(node: toniChatSound)
-        case 6:
+        default:
             SettingsMenu.runSound(node: closeSound)
             
             if InteractionToni.fromScene == "BagpackScene" {
                 let bagpackScene = SKScene(fileNamed: "BagpackScene")
-                bagpackScene?.scaleMode = .aspectFill
+                bagpackScene?.scaleMode = .aspectFit
                 self.view?.presentScene(bagpackScene!, transition: SKTransition.fade(withDuration: 1.0))
             } else {
                 GameScene.point += 10
                 let gameScene = GameScene(fileNamed: "GameScene")
-                gameScene?.scaleMode = .aspectFill
+                gameScene?.scaleMode = .aspectFit
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
             }
-        default:
-            textAlignment(label: toniChat, string: textToni0)
         }
     }
     

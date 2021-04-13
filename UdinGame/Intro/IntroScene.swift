@@ -73,38 +73,35 @@ class IntroScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         IntroScene.touchCount += 1
+        print(IntroScene.touchCount)
         
         switch IntroScene.touchCount {
         case 1:
             // Go to Intro1
             let scene0 = SKScene(fileNamed: "Intro1")
-            scene0?.scaleMode = .aspectFill
+            scene0?.scaleMode = .aspectFit
             self.view?.presentScene(scene0!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 2:
             // Go to Intro2
             let scene1 = SKScene(fileNamed: "Intro2")
-            scene1?.scaleMode = .aspectFill
+            scene1?.scaleMode = .aspectFit
             self.view?.presentScene(scene1!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 3:
             // Go to Intro3
             let scene2 = SKScene(fileNamed: "Intro3")
-            scene2?.scaleMode = .aspectFill
+            scene2?.scaleMode = .aspectFit
             self.view?.presentScene(scene2!, transition: SKTransition.crossFade(withDuration: 0.75))
         case 4:
             // Go to Intro4
             let scene3 = SKScene(fileNamed: "Intro4")
-            scene3?.scaleMode = .aspectFill
+            scene3?.scaleMode = .aspectFit
             self.view?.presentScene(scene3!, transition: SKTransition.crossFade(withDuration: 0.75))
-        case 5:
-            // Go to GameScene
-            let scene4 = SKScene(fileNamed: "GameScene")
-            scene4?.scaleMode = .aspectFill
-            self.view?.presentScene(scene4!, transition: SKTransition.fade(withDuration: 1.0))
         default:
-            // default in Intro0
-            let scene0 = SKScene(fileNamed: "Intro0")
-            scene0?.scaleMode = .aspectFill
-            self.view?.presentScene(scene0!, transition: SKTransition.fade(withDuration: 1.0))
+            IntroViewController.navigate()
+            // Go to GameScene
+//            let scene4 = SKScene(fileNamed: "GameScene")
+//            scene4?.scaleMode = .aspectFit
+//            self.view?.presentScene(scene4!, transition: SKTransition.fade(withDuration: 1.0))
         }
     }
 }

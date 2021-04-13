@@ -174,7 +174,7 @@ class BagpackScene: SKScene {
                 
                 // Back to GameScene
                 let gameScene = GameScene(fileNamed: "GameScene")
-                gameScene?.scaleMode = .aspectFill
+                gameScene?.scaleMode = .aspectFit
                 self.view?.presentScene(gameScene!, transition: SKTransition.fade(withDuration: 1.0))
             case "item0":
                 let sceneName0: String
@@ -184,7 +184,7 @@ class BagpackScene: SKScene {
                 
                 // Review to item0
                 let scene0 = SKScene(fileNamed: sceneName0)
-                scene0?.scaleMode = .aspectFill
+                scene0?.scaleMode = .aspectFit
                 self.view?.presentScene(scene0!, transition: SKTransition.fade(withDuration: 1.0))
             case "item1":
                 let sceneName1: String
@@ -193,7 +193,7 @@ class BagpackScene: SKScene {
                 
                 // Review to item1
                 let scene1 = SKScene(fileNamed: sceneName1)
-                scene1?.scaleMode = .aspectFill
+                scene1?.scaleMode = .aspectFit
                 self.view?.presentScene(scene1!, transition: SKTransition.fade(withDuration: 1.0))
             case "item2":
                 let sceneName2: String
@@ -202,7 +202,7 @@ class BagpackScene: SKScene {
                 
                 // Review to item2
                 let scene2 = SKScene(fileNamed: sceneName2)
-                scene2?.scaleMode = .aspectFill
+                scene2?.scaleMode = .aspectFit
                 self.view?.presentScene(scene2!, transition: SKTransition.fade(withDuration: 1.0))
             case "item3":
                 let sceneName3: String
@@ -211,7 +211,7 @@ class BagpackScene: SKScene {
                 
                 // Review to item3
                 let scene3 = SKScene(fileNamed: sceneName3)
-                scene3?.scaleMode = .aspectFill
+                scene3?.scaleMode = .aspectFit
                 self.view?.presentScene(scene3!, transition: SKTransition.fade(withDuration: 1.0))
             default:
                 print("")

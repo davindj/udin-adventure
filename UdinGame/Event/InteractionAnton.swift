@@ -117,7 +117,7 @@ class InteractionAnton: SKScene {
                     textAlignment(label: antonSay, string: text3)
                 } else if touchCount == 3 {
                     if let gameScene = SKScene(fileNamed: "GameScene") {
-                        gameScene.scaleMode = .aspectFill
+                        gameScene.scaleMode = .aspectFit
                         self.view?.presentScene(gameScene, transition: SKTransition.fade(withDuration: 1.0))
                     }
                 }
@@ -151,7 +151,7 @@ class InteractionAnton: SKScene {
                     textAlignment(label: antonSay, string: text3)
                 case 4:
                     if let bagpackScene = SKScene(fileNamed: "BagpackScene") {
-                        bagpackScene.scaleMode = .aspectFill
+                        bagpackScene.scaleMode = .aspectFit
                         self.view?.presentScene(bagpackScene, transition: SKTransition.fade(withDuration: 1.0))
                     }
                 default:

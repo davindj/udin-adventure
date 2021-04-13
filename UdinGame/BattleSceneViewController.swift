@@ -9,7 +9,8 @@ import UIKit
 import SpriteKit
 
 class BattleSceneViewController: UIViewController {
-
+    @IBOutlet weak var battleScene: SKView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Load Game
