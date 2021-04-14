@@ -293,7 +293,7 @@ class BattleScene: SKScene{
                 Message(speaker: "Player", content: "Udin aku mau tanya..."),
                 Message(speaker: "Player", content: "Maaf sebelumnya aku ga singaja baca Diary kamu"),
                 Message(speaker: "Udin", content: "......"),
-                Message(speaker: "Player", content: "Udin tetap semangat ya"),
+                Message(speaker: "Player", content: "Udin bagaimana kabarmu?"),
                 Message(speaker: "Player", content: "Bukan berarti kamu menyusahkan orang tua kamu"),
                 Message(speaker: "Player", content: "Orang tua kamu bekerja keras, karena sayang sama kamu"),
                 Message(speaker: "Player", content: "Tinggal kita sebagai anak harus membalasnya"),
@@ -305,10 +305,11 @@ class BattleScene: SKScene{
                 Message(speaker: "Udin", content: "Terima kasih ya masukannya..."),
                 Message(speaker: "Udin", content: "Ternyata kamu tidak seperti anak-anak lainnya..."),
                 Message(speaker: "Udin", content: "Yang menggunakan Diaryku sebagai bahan tertawa mereka"),
-                Message(speaker: "Player", content: "Jangan khawatir din, aku selalu ada untukmur")
+                Message(speaker: "Player", content: "Jangan khawatir din, aku selalu ada untukmur"),
+                Message(speaker: "Player", content: "Udin tetap semangat ya")
             ], reward: 10),
             Conversation(messages: [ // Clue 2 (Anton)
-                Message(speaker: "Player", content: "Udin apa kamu sering diganggu sama teman-teman"),
+                Message(speaker: "Player", content: "Udin apa kamu sering diganggu sama teman-teman?"),
                 Message(speaker: "Udin", content: "aku ga mau bicarain tentang itu..."),
                 Message(speaker: "Player", content: "Tidak apa-apa Udin, santai aja.."),
                 Message(speaker: "Player", content: "Kita semua pasti ada yang ganggu kita"),
