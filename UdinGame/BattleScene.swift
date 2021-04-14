@@ -224,11 +224,12 @@ class BattleScene: SKScene{
         // 3 insight2
         // 4 insight3
         let available_clue = ["diary", "insight1", "insight2", "insight3"]
+        let preview_clue = ["Diary","Anton","Yusuf","Toni"]
         // Iterate setiap clue yg ditemukan kedalam list_clue
         for i in 0...3{
             let currentClue = available_clue[i]
-            if BagpackScene.items.contains(currentClue){
-                list_clue[i] = currentClue
+            if BagpackScene.items.contains(currentClue) || true{
+                list_clue[i] = preview_clue[i]
             }else{ // Clue jadi tidak bisa diakses
                 done_clue[i] = true
             }
@@ -240,11 +241,11 @@ class BattleScene: SKScene{
         return [
             Conversation(messages: [ // Confront 1
                 Message(speaker: "Player", content: "Udin jangan galau"),
-                Message(speaker: "Udin", content: "Udah jangan ganggu aku"),
-                Message(speaker: "Udin", content: "Aku aja ga kenal kamu siapa")
+                Message(speaker: "Udin", content: "jangan ganggu aku"),
+                Message(speaker: "Udin", content: "Aku lagi ingin sendirian")
             ], reward: -10),
             Conversation(messages: [ // Confront 2
-                Message(speaker: "Player", content: "Udin kamu jgn sombong ya"),
+                Message(speaker: "Player", content: "Udin kamu jangan sombong ya"),
                 Message(speaker: "Udin", content: "Jangan ganggu aku")
             ], reward: -10),
             Conversation(messages: [ // Confront 3
@@ -259,7 +260,8 @@ class BattleScene: SKScene{
             Conversation(messages: [ // Listen 1
                 Message(speaker: "Player", content: "..."),
                 Message(speaker: "Udin", content: "kamu tau ga? aku itu pendiam"),
-                Message(speaker: "Udin", content: "gada yg bisa ngertiin aku\nAkhirnya aku menyendiri")
+                Message(speaker: "Udin", content: "gada yg bisa ngertiin aku..."),
+                Message(speaker: "Udin", content: "Akhirnya aku menyendiri...")
             ], reward: 5),
             Conversation(messages: [ // Listen 2
                 Message(speaker: "Player", content: "..."),
@@ -287,21 +289,53 @@ class BattleScene: SKScene{
         let conversation = [
             getConfrontConversation(), // Confront
             getListenConversation(), // Listen
-            Conversation(messages: [ // Clue 1
-                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 1"),
-                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 1 dong")
+            Conversation(messages: [ // Clue 1 (Diary)
+                Message(speaker: "Player", content: "Udin aku mau tanya..."),
+                Message(speaker: "Player", content: "Maaf sebelumnya aku ga singaja baca Diary kamu"),
+                Message(speaker: "Udin", content: "......"),
+                Message(speaker: "Player", content: "Udin tetap semangat ya"),
+                Message(speaker: "Player", content: "Bukan berarti kamu menyusahkan orang tua kamu"),
+                Message(speaker: "Player", content: "Orang tua kamu bekerja keras, karena sayang sama kamu"),
+                Message(speaker: "Player", content: "Tinggal kita sebagai anak harus membalasnya"),
+                Message(speaker: "Player", content: "Untuk membalasnya bisa dibalas dengan hal-hal kecil"),
+                Message(speaker: "Player", content: "Seperti senyuman manis yang kamu berikan ke mereka"),
+                Message(speaker: "Player", content: "Jangan berpikiran seperti itu ya din..."),
+                Message(speaker: "Player", content: "Orang-orang disekitarmu akan sedih jika kamu tidak ada"),
+                Message(speaker: "Player", content: "Termasuk orang tua-mu..."),
+                Message(speaker: "Udin", content: "Terima kasih ya masukannya..."),
+                Message(speaker: "Udin", content: "Ternyata kamu tidak seperti anak-anak lainnya..."),
+                Message(speaker: "Udin", content: "Yang menggunakan Diaryku sebagai bahan tertawa mereka"),
+                Message(speaker: "Player", content: "Jangan khawatir din, aku selalu ada untukmur")
             ], reward: 10),
-            Conversation(messages: [ // Clue 2
-                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 2"),
-                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 2 dong")
+            Conversation(messages: [ // Clue 2 (Anton)
+                Message(speaker: "Player", content: "Udin apa kamu sering diganggu sama teman-teman"),
+                Message(speaker: "Udin", content: "aku ga mau bicarain tentang itu..."),
+                Message(speaker: "Player", content: "Tidak apa-apa Udin, santai aja.."),
+                Message(speaker: "Player", content: "Kita semua pasti ada yang ganggu kita"),
+                Message(speaker: "Player", content: "Orang-orang seperti itu kita abaikan saja"),
+                Message(speaker: "Player", content: "Tidak perlu dimasukan hati :)"),
+                Message(speaker: "Player", content: "Tapi jangan khawatir, bila ada yang ganggu kamu..."),
+                Message(speaker: "Player", content: "Aku siap kok bantu kamu")
             ], reward: 10),
-            Conversation(messages: [ // Clue 3
-                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 3"),
-                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 3 dong")
+            Conversation(messages: [ // Clue 3 (Yusuf)
+                Message(speaker: "Player", content: "Udin aku mau tanya sesuatu..."),
+                Message(speaker: "Player", content: "Aku dengar dulu kamu selalu dijemput ibumu ya?"),
+                Message(speaker: "Player", content: "Kenapa kok kamu sekarang pulang sendiri?"),
+                Message(speaker: "Udin", content: "Oh.... Tentang itu..."),
+                Message(speaker: "Udin", content: "Pada waktu dulu, ibuku belum mejadi wanita karir"),
+                Message(speaker: "Udin", content: "Semenjak ada ayahku kena tipu"),
+                Message(speaker: "Udin", content: "Ibuku terpaksa bekerja..."),
+                Message(speaker: "Udin", content: "dan akhirnya aku mulai pulang sekolah sendiri...")
             ], reward: 10),
-            Conversation(messages: [ // Clue 4
-                Message(speaker: "Player", content: "Udin aku mau tanya tentang Clue 4"),
-                Message(speaker: "Udin", content: "Jangan tanya-tanya clue 4 dong")
+            Conversation(messages: [ // Clue 4 (Toni)
+                Message(speaker: "Player",  content: "Udin ayo main basket dengan anak-anak lainnya"),
+                Message(speaker: "Udin", content: "Kamu aja deh, aku lagi tidak selera"),
+                Message(speaker: "Player",  content: "Kalau gitu ayo kapan-kapan kita main bareng"),
+                Message(speaker: "Player",  content: "Terserah mau main apapun"),
+                Message(speaker: "Player",  content: "Karena refreshing itu cukup penting Din"),
+                Message(speaker: "Player",  content: "Dan sebagai teman sebangkumu..."),
+                Message(speaker: "Player",  content: "Aku mau kenal lebih dekat dengan kamu"),
+                Message(speaker: "Udin",  content: "Oh... hmm.. Terima kasih atas perhatiannya")
             ], reward: 10),
             Conversation(messages: [ // Clue X
                 Message(speaker: "Player", content: "Emmmmm"),
@@ -671,11 +705,12 @@ class BattleScene: SKScene{
     // Align Text label
     // load clue
     // redir ke endingscene
+    // insight button
+    // Ending Scene and Redir to Credit
+    // Credit Scene
+    // insight conversation
     
     // OTW
-    // end line
-    // insight conversation
-    // insight button
     // audio (itch.io)
     // bad clue
 }
