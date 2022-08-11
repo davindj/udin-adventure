@@ -17,9 +17,9 @@ According to child and adolescent psychologist Ms. Vera Itabiliana Hadiwidjojo, 
 Games as a means of education can further stimulate children's curiosity. Especially Visual Novel type game whose main framework is a story whose plot is determined by the user, it will cause curiosity from children (users). Games are also a safe place for children to simulate their actions / expressions on a topic. Children can balance real situations that they might encounter without any risk in a game, and with the repetition system they can unconsciously learn and shape their mindset about certain topics contained in the game content. Special topics How to identify and treat people with mental disorders.
 
 ## App Features
-## Interactive and educational gameplay
+### Interactive and educational gameplay
 Get to know better about mental health disorders by exploring the stigma of real-world conditions. You can walk around and interact with objects and people.
-## Choose your story
+### Choose your story
 You'll get to pick your own story based on your decision and interaction. There are multiple endings with hidden messages to explore.
 
 ## How to run
