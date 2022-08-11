@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cf6-C5-Ric">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cf6-C5-Ric">
     <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,7 +29,6 @@
         <!--Game View Controller-->
         <scene sceneID="JLe-0b-axR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L95-Rm-hhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="gameView" id="BEp-RC-tg3" customClass="GameViewController" customModule="UdinGame" customModuleProvider="target" sceneMemberID="viewController">
                     <skView key="view" contentMode="scaleToFill" id="Aw9-hy-FzU">
                         <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
@@ -38,6 +38,7 @@
                         <outlet property="gameScene" destination="Aw9-hy-FzU" id="r95-fv-XG5"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L95-Rm-hhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="701" y="1768"/>
         </scene>
@@ -99,18 +100,6 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRY-TU-bx9">
-                                <rect key="frame" x="733" y="291" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="cRY-TU-bx9" secondAttribute="height" multiplier="1:1" id="0hP-vj-vmB"/>
-                                    <constraint firstAttribute="height" constant="70" id="YGT-SN-hm3"/>
-                                    <constraint firstAttribute="width" constant="70" id="ZgR-jx-ePP"/>
-                                </constraints>
-                                <state key="normal" image="settingButton"/>
-                                <connections>
-                                    <action selector="settingButtonPressed:" destination="Cf6-C5-Ric" eventType="touchUpInside" id="dGh-RS-niz"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo game" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-sT-F1O">
                                 <rect key="frame" x="255.66666666666663" y="36" width="333" height="107"/>
                                 <constraints>
@@ -131,13 +120,11 @@
                             <constraint firstItem="C5L-zT-uvp" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="109" id="MCt-XK-N17"/>
                             <constraint firstItem="LoM-sT-F1O" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="N7E-aI-VkF"/>
                             <constraint firstItem="pfY-M3-acu" firstAttribute="top" secondItem="LoM-sT-F1O" secondAttribute="bottom" constant="143" id="Q4n-K8-r4c"/>
-                            <constraint firstItem="bLo-Ey-G3u" firstAttribute="bottom" secondItem="cRY-TU-bx9" secondAttribute="bottom" constant="8" id="R5u-Ig-tM3"/>
                             <constraint firstItem="LoM-sT-F1O" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="36" id="Wsc-lH-Cym"/>
                             <constraint firstItem="kPU-sO-Qr9" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" id="azA-As-ZbQ"/>
                             <constraint firstItem="pfY-M3-acu" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="bgM-T4-cfs"/>
                             <constraint firstItem="xlT-T2-iSX" firstAttribute="top" secondItem="bLo-Ey-G3u" secondAttribute="top" constant="58" id="eF0-6F-gU6"/>
                             <constraint firstAttribute="bottom" secondItem="kPU-sO-Qr9" secondAttribute="bottom" id="gNY-X9-iMb"/>
-                            <constraint firstAttribute="trailing" secondItem="cRY-TU-bx9" secondAttribute="trailing" constant="41" id="jR6-JF-Q1e"/>
                             <constraint firstItem="XGy-gc-Om0" firstAttribute="leading" secondItem="Opu-ZE-cPf" secondAttribute="leading" constant="-14" id="jaL-0w-bbo"/>
                             <constraint firstAttribute="trailing" secondItem="xlT-T2-iSX" secondAttribute="trailing" constant="-4" id="oHD-3B-xOm"/>
                             <constraint firstItem="6OR-af-Fn6" firstAttribute="centerX" secondItem="Opu-ZE-cPf" secondAttribute="centerX" id="p49-Up-8oh"/>
@@ -148,7 +135,6 @@
                     </view>
                     <connections>
                         <outlet property="playButton" destination="pfY-M3-acu" id="Ejj-PF-0fC"/>
-                        <outlet property="settingButton" destination="cRY-TU-bx9" id="vrU-qj-nZK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCO-3Z-oTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -210,7 +196,6 @@
         <image name="mainMenu" width="2533" height="1172"/>
         <image name="playButton" width="610" height="184"/>
         <image name="school" width="2228" height="942"/>
-        <image name="settingButton" width="193" height="193"/>
         <image name="trees" width="682" height="839"/>
         <image name="trees2" width="662" height="840"/>
         <systemColor name="systemBackgroundColor">

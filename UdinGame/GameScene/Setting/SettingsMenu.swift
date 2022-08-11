@@ -11,10 +11,7 @@ import AVFoundation
 class SettingsMenu: SKScene {
     
     var closeButton: SKNode?
-    var musicButton: SKSpriteNode?
     var soundButton: SKSpriteNode?
-    var vibrateButton: SKSpriteNode?
-    var emailButton: SKNode?
     
     // Sound and Music Bool
     static var hasSound = true
@@ -25,15 +22,11 @@ class SettingsMenu: SKScene {
     var closeSound: SKAudioNode?
     var buttonSoundOn: SKAudioNode?
     var buttonSoundOff: SKAudioNode?
-    var backgroundMusic: SKAudioNode?
         
     override func didMove(to view: SKView) {
         // Button
         closeButton = childNode(withName: "closeButton")
-        emailButton = childNode(withName: "emailButton")
-        musicButton = childNode(withName: "musicButton") as? SKSpriteNode
         soundButton = childNode(withName: "soundButton") as? SKSpriteNode
-        vibrateButton = childNode(withName: "vibrateButton") as? SKSpriteNode
         
         buttonState()
         
@@ -41,21 +34,14 @@ class SettingsMenu: SKScene {
         closeSound = childNode(withName: "closeSound") as? SKAudioNode
         buttonSoundOn = childNode(withName: "buttonSoundOn") as? SKAudioNode
         buttonSoundOff = childNode(withName: "buttonSoundOff") as? SKAudioNode
-        backgroundMusic = childNode(withName: "backgroundMusic") as? SKAudioNode
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             guard let closeSound = closeSound else { return }
             
-            guard let musicDescription = musicButton?.texture?.description else { return }
-            let musicButtonName = getTextureName(textureTmp: musicDescription)
-            
             guard let soundDescription = soundButton?.texture?.description else { return }
             let soundButtonName = getTextureName(textureTmp: soundDescription)
-            
-            guard let vibrateDescription = vibrateButton?.texture?.description else { return }
-            let vibrateButtonName = getTextureName(textureTmp: vibrateDescription)
             
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
@@ -65,26 +51,12 @@ class SettingsMenu: SKScene {
             case "closeButton":
                 closeButton?.run(.setTexture(SKTexture(imageNamed: "closeButton2")))
                 SettingsMenu.runSound(node: closeSound)
-            case "musicButton":
-                if musicButtonName == "musicButton" {
-                    musicButton?.run(.setTexture(SKTexture(imageNamed: "musicButton2")))
-                } else if musicButtonName == "nomusicButton" {
-                    musicButton?.run(.setTexture(SKTexture(imageNamed: "nomusicButton2")))
-                }
             case "soundButton":
                 if soundButtonName == "soundButton" {
                     soundButton?.run(.setTexture(SKTexture(imageNamed: "soundButton2")))
                 } else if soundButtonName == "nosoundButton" {
                     soundButton?.run(.setTexture(SKTexture(imageNamed: "nosoundButton2")))
                 }
-            case "vibrateButton":
-                if vibrateButtonName == "vibrateButton" {
-                    vibrateButton?.run(.setTexture(SKTexture(imageNamed: "vibrateButton2")))
-                } else if vibrateButtonName == "novibrateButton" {
-                    vibrateButton?.run(.setTexture(SKTexture(imageNamed: "novibrateButton2")))
-                }
-            case "emailButton":
-                emailButton?.run(.setTexture(SKTexture(imageNamed: "supportButton2")))
             default:
                 print("")
             }
@@ -96,14 +68,8 @@ class SettingsMenu: SKScene {
             guard let buttonSoundOn = buttonSoundOn else { return }
             guard let buttonSoundOff = buttonSoundOff else { return }
             
-            guard let musicDescription = musicButton?.texture?.description else { return }
-            let musicButtonName = getTextureName(textureTmp: musicDescription)
-            
             guard let soundDescription = soundButton?.texture?.description else { return }
             let soundButtonName = getTextureName(textureTmp: soundDescription)
-            
-            guard let vibrateDescription = vibrateButton?.texture?.description else { return }
-            let vibrateButtonName = getTextureName(textureTmp: vibrateDescription)
             
             let locationButton = touch.location(in: self)
             let buttonPoint = atPoint(locationButton)
@@ -116,20 +82,6 @@ class SettingsMenu: SKScene {
                 let gameScene = GameScene(fileNamed: "GameScene")
                 let transition = SKTransition.fade(withDuration: 1.0)
                 IntroViewController.presentGameScene(toScene: gameScene!, transition: transition)
-            case "musicButton":
-                if musicButtonName == "musicButton2" {
-                    // Turn off music
-                    SettingsMenu.runSound(node: buttonSoundOff)
-                    SettingsMenu.stopMusic(node: GameViewController.audioPlayer)
-                    SettingsMenu.hasMusic = false
-                    musicButton?.run(.setTexture(SKTexture(imageNamed: "nomusicButton")))
-                } else if musicButtonName == "nomusicButton2" {
-                    // Turn on music
-                    SettingsMenu.runSound(node: buttonSoundOn)
-                    SettingsMenu.hasMusic = true
-                    SettingsMenu.runMusic(node: GameViewController.audioPlayer)
-                    musicButton?.run(.setTexture(SKTexture(imageNamed: "musicButton")))
-                }
             case "soundButton":
                 if soundButtonName == "soundButton2" {
                     // Turn off sound
@@ -142,21 +94,6 @@ class SettingsMenu: SKScene {
                     SettingsMenu.hasSound = true
                     soundButton?.run(.setTexture(SKTexture(imageNamed: "soundButton")))
                 }
-            case "vibrateButton":
-                if vibrateButtonName == "vibrateButton2" {
-                    // Turn off vibration
-                    SettingsMenu.runSound(node: buttonSoundOff)
-                    SettingsMenu.hasVibration = false
-                    vibrateButton?.run(.setTexture(SKTexture(imageNamed: "novibrateButton")))
-                } else if vibrateButtonName == "novibrateButton2" {
-                    // Turn on vibration
-                    SettingsMenu.runSound(node: buttonSoundOn)
-                    SettingsMenu.hasVibration = true
-                    vibrateButton?.run(.setTexture(SKTexture(imageNamed: "vibrateButton")))
-                }
-            case "emailButton":
-                // Send support email
-                emailButton?.run(.setTexture(SKTexture(imageNamed: "supportButton")))
             default:
                 print("")
             }
@@ -164,22 +101,10 @@ class SettingsMenu: SKScene {
     }
     
     func buttonState() {
-        if SettingsMenu.hasMusic {
-            musicButton?.run(.setTexture(SKTexture(imageNamed: "musicButton")))
-        } else {
-            musicButton?.run(.setTexture(SKTexture(imageNamed: "nomusicButton")))
-        }
-        
         if SettingsMenu.hasSound {
             soundButton?.run(.setTexture(SKTexture(imageNamed: "soundButton")))
         } else {
             soundButton?.run(.setTexture(SKTexture(imageNamed: "nosoundButton")))
-        }
-        
-        if SettingsMenu.hasVibration {
-            vibrateButton?.run(.setTexture(SKTexture(imageNamed: "vibrateButton")))
-        } else {
-            vibrateButton?.run(.setTexture(SKTexture(imageNamed: "novibrateButton")))
         }
     }
     
