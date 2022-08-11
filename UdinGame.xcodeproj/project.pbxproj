@@ -167,20 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				C38D1D75261D8F1300D9EC1C /* AppDelegate.swift */,
-				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
-				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
-				D7E07637261DC97700F20CD9 /* GameScene.sks */,
-				C38D1D96261D911D00D9EC1C /* GameScene.swift */,
-				C38D1D97261D911D00D9EC1C /* GameViewController.swift */,
-				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
-				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
-				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
-				D743A2BD26256DB800949591 /* RedemptionScene.sks */,
-				D743A2B526256A9500949591 /* RedemptionScene.swift */,
-				C3CC1C7D262351BF00C501A0 /* Bagpack */,
-				C3A8B66F2622374F00B20028 /* Event */,
-				C37313F926207A8200EDAAF8 /* Intro */,
-				C3CC1C58262345CF00C501A0 /* Outro */,
+				D79D4E0D28A4DC750002EA23 /* GameScene */,
 				C38D1D7F261D8F1300D9EC1C /* Main.storyboard */,
 				05D5BAAC261EDDD3003C9F32 /* MainMenuViewController.swift */,
 				C3CC1C8226235B0B00C501A0 /* Music */,
@@ -217,9 +204,9 @@
 		C3CC1C58262345CF00C501A0 /* Outro */ = {
 			isa = PBXGroup;
 			children = (
-				C3CA862F26247CA0004EF27E /* Credit */,
 				C3CC1C5B262345FA00C501A0 /* GoodEnding */,
 				C3CC1C5A262345EF00C501A0 /* BadEnding */,
+				C3CA862F26247CA0004EF27E /* Credit */,
 			);
 			path = Outro;
 			sourceTree = "<group>";
@@ -273,6 +260,59 @@
 				C3CC1C8326235B2200C501A0 /* Noah_Kuehne_Play.wav */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		D79D4E0D28A4DC750002EA23 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				C37313F926207A8200EDAAF8 /* Intro */,
+				D79D4E1028A4DCBA0002EA23 /* Classroom */,
+				D79D4E0E28A4DC820002EA23 /* Setting */,
+				C3CC1C7D262351BF00C501A0 /* Bagpack */,
+				C3A8B66F2622374F00B20028 /* Event */,
+				D79D4E1128A4DCD60002EA23 /* Redemption */,
+				D79D4E0F28A4DC9A0002EA23 /* Battle */,
+				C3CC1C58262345CF00C501A0 /* Outro */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		D79D4E0E28A4DC820002EA23 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				4E88B75F261DA413005AB6E3 /* SettingsMenu.sks */,
+				4EECFC85261EF08E00043358 /* SettingsMenu.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D79D4E0F28A4DC9A0002EA23 /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				C38D1DAE261DC87100D9EC1C /* BattleScene.sks */,
+				C38D1DAD261DC87100D9EC1C /* BattleScene.swift */,
+				D7D726C9261F069100C10602 /* BattleSceneViewController.swift */,
+			);
+			path = Battle;
+			sourceTree = "<group>";
+		};
+		D79D4E1028A4DCBA0002EA23 /* Classroom */ = {
+			isa = PBXGroup;
+			children = (
+				D7E07637261DC97700F20CD9 /* GameScene.sks */,
+				C38D1D96261D911D00D9EC1C /* GameScene.swift */,
+				C38D1D97261D911D00D9EC1C /* GameViewController.swift */,
+			);
+			path = Classroom;
+			sourceTree = "<group>";
+		};
+		D79D4E1128A4DCD60002EA23 /* Redemption */ = {
+			isa = PBXGroup;
+			children = (
+				D743A2BD26256DB800949591 /* RedemptionScene.sks */,
+				D743A2B526256A9500949591 /* RedemptionScene.swift */,
+			);
+			path = Redemption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
